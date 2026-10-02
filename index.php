@@ -2,16 +2,8 @@
 require_once __DIR__ . '/includes/auth.php';
 
 if (esta_autenticado()) {
-    header('Location: panel.php');
+    header('Location: ordenes.php');
 } else {
     header('Location: login.php');
 }
 exit;
-
-
-
-
-
-
-
-
