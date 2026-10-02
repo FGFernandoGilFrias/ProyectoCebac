@@ -4,24 +4,31 @@ exigir_privilegio('muestras.gestionar');
 
 $conexion = conexion_bd();
 
-// Traer órdenes en estado Pendiente + contar estudios y errores PENDIENTE
 $stmt = $conexion->query(
-    "SELECT o.codigo AS orden_codigo, o.fecha_orden, o.medico, o.estado,
-            p.codigo AS paciente_codigo, p.apellido, p.nombre, p.dni,
-            COUNT(DISTINCT eo.estudio_codigo) AS cantidad_estudios,
-            GROUP_CONCAT(DISTINCT e.estudio SEPARATOR ', ') AS estudios,
-            (SELECT COUNT(*) FROM historial_errores he
-                JOIN resultados r ON r.codigo = he.resultado_codigo
-                WHERE r.orden_codigo = o.codigo AND he.error_muestra LIKE 'PENDIENTE:%') AS cantidad_pendientes
-     FROM ordenes o
-     JOIN pacientes p ON p.codigo = o.paciente_codigo
-     LEFT JOIN estudios_orden eo ON eo.orden_codigo = o.codigo
-     LEFT JOIN estudios e ON e.codigo = eo.estudio_codigo
-     WHERE o.estado = 'Pendiente'
-     GROUP BY o.codigo
-     ORDER BY o.fecha_orden ASC, o.codigo ASC"
+    "SELECT os.id AS orden_estudio_id,
+            o.id AS orden_id,
+            o.codigo AS orden_codigo,
+            o.fecha_orden,
+            o.estado AS estado_orden,
+            o.medico,
+            p.apellido,
+            p.nombre,
+            p.dni,
+            e.nombre AS estudio,
+            sa.codigo AS codigo_muestra,
+            sa.recolectado_en,
+            sa.estado AS estado_muestra,
+            sa.motivo_rechazo,
+            r.estado AS estado_resultado
+     FROM ordenes_estudios os
+     JOIN ordenes o ON o.id = os.orden_id
+     JOIN pacientes p ON p.id = o.paciente_id
+     JOIN estudios e ON e.id = os.estudio_id
+     LEFT JOIN muestras sa ON sa.orden_estudio_id = os.id
+     LEFT JOIN resultados r ON r.orden_estudio_id = os.id
+     ORDER BY o.fecha_orden DESC, o.id DESC, e.nombre ASC"
 );
-$ordenesPendientes = $stmt->fetchAll();
+$items = $stmt->fetchAll();
 
 $mensaje = mensaje_flash();
 $tituloPagina = 'Check-in de Muestras | CEBAC';
@@ -31,7 +38,7 @@ include __DIR__ . '/includes/header.php';
 <div class="page-heading">
     <div>
         <h1>Check-in de Muestras</h1>
-        <p class="muted">Órdenes pendientes de validación de muestra. Una vez que todos los estudios estén validados, se habilita la carga de resultados.</p>
+        <p class="muted">Listado por estudio para validar muestras pendientes y reingresar muestras rechazadas.</p>
     </div>
 </div>
 <?php if ($mensaje): ?><div class="alert success-alert"><?= escapar_html($mensaje) ?></div><?php endif; ?>
@@ -42,53 +49,73 @@ include __DIR__ . '/includes/header.php';
             <tr>
                 <th>Orden</th>
                 <th>Paciente</th>
-                <th>Fecha</th>
-                <th>Médico</th>
-                <th>Estudios</th>
-                <th>Estado</th>
+                <th>Estudio</th>
+                <th>Muestra</th>
+                <th>Estado muestra</th>
+                <th>Resultado</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($ordenesPendientes as $o): ?>
+            <?php foreach ($items as $item): ?>
                 <?php
-                $cantidadEstudios = (int) $o['cantidad_estudios'];
-                $cantidadPendientes = (int) $o['cantidad_pendientes'];
-                // Parcial: si algunos están pendientes pero no todos
-                $esParcial = $cantidadPendientes > 0 && $cantidadPendientes < $cantidadEstudios;
+                $estadoMuestra = $item['estado_muestra'] ?? 'Pendiente';
+                $requiereAccion = in_array($estadoMuestra, ['Pendiente', 'Rechazada'], true);
                 ?>
                 <tr>
                     <td>
-                        <strong><?= formatear_codigo_orden($o['orden_codigo']) ?></strong>
+                        <strong><?= formatear_codigo_orden($item['orden_codigo']) ?></strong><br>
+                        <small class="muted"><?= escapar_html($item['fecha_orden']) ?> · <?= escapar_html($item['estado_orden']) ?></small>
                     </td>
                     <td>
-                        <?= escapar_html($o['apellido'] . ', ' . $o['nombre']) ?><br>
-                        <small class="muted"><?= escapar_html($o['dni']) ?></small>
-                    </td>
-                    <td><?= escapar_html($o['fecha_orden']) ?></td>
-                    <td><?= escapar_html($o['medico']) ?></td>
-                    <td>
-                        <?= $cantidadEstudios ?> estudio(s)<br>
-                        <small class="muted"><?= escapar_html($o['estudios'] ?? '—') ?></small>
+                        <?= escapar_html($item['apellido'] . ', ' . $item['nombre']) ?><br>
+                        <small class="muted"><?= escapar_html($item['dni']) ?></small>
                     </td>
                     <td>
-                        <span class="badge"><?= escapar_html($o['estado']) ?></span>
-                        <?php if ($esParcial): ?>
-                            <br><span class="badge warning">Parcial</span>
-                            <br><small class="muted"><?= $cantidadPendientes ?> sin recibir</small>
-                        <?php elseif ($cantidadPendientes > 0 && $cantidadPendientes === $cantidadEstudios): ?>
-                            <br><span class="badge warning">Sin recibir muestra</span>
+                        <strong><?= escapar_html($item['estudio']) ?></strong><br>
+                        <small class="muted">Médico: <?= escapar_html($item['medico']) ?></small>
+                    </td>
+                    <td>
+                        <?php if (!empty($item['codigo_muestra'])): ?>
+                            <?= escapar_html($item['codigo_muestra']) ?><br>
+                            <small class="muted">Recolectada: <?= escapar_html($item['recolectado_en'] ?? '—') ?></small>
+                        <?php else: ?>
+                            <span class="muted">Sin muestra recibida</span>
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a class="button-small" href="checkin_muestra_formulario.php?orden_id=<?= (int) $o['orden_codigo'] ?>">
-                            <?= $esParcial ? 'Completar check-in' : 'Hacer check-in' ?>
-                        </a>
+                        <span class="badge"><?= escapar_html($estadoMuestra) ?></span>
+                        <?php if ($estadoMuestra === 'Pendiente'): ?>
+                            <br><small class="muted">Pendiente de validación</small>
+                        <?php elseif ($estadoMuestra === 'Rechazada'): ?>
+                            <br><span class="badge warning">Requiere nueva muestra</span>
+                            <?php if (!empty($item['motivo_rechazo'])): ?>
+                                <br><small class="muted">Motivo: <?= escapar_html($item['motivo_rechazo']) ?></small>
+                            <?php endif; ?>
+                        <?php elseif ($estadoMuestra === 'Validada'): ?>
+                            <br><small class="muted">Habilitada para resultados</small>
+                        <?php elseif ($estadoMuestra === 'Finalizada'): ?>
+                            <br><small class="muted">Muestra cerrada</small>
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <span class="badge"><?= escapar_html($item['estado_resultado'] ?? 'Pendiente') ?></span>
+                    </td>
+                    <td>
+                        <?php if ($requiereAccion): ?>
+                            <a class="button-small" href="muestra_formulario.php?orden_estudio_id=<?= (int) $item['orden_estudio_id'] ?>">
+                                <?= $estadoMuestra === 'Rechazada' ? 'Recibir nueva muestra' : 'Validar muestra' ?>
+                            </a>
+                        <?php else: ?>
+                            <a class="button-small" href="muestra_formulario.php?orden_estudio_id=<?= (int) $item['orden_estudio_id'] ?>">
+                                Ver check-in
+                            </a>
+                        <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
-            <?php if (!$ordenesPendientes): ?>
-                <tr><td colspan="7" class="muted">No hay órdenes pendientes de check-in.</td></tr>
+            <?php if (!$items): ?>
+                <tr><td colspan="7" class="muted">No hay estudios para check-in.</td></tr>
             <?php endif; ?>
         </tbody>
     </table>

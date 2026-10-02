@@ -74,9 +74,9 @@ function actualizar_finalizacion_orden(int $ordenId): void
 {
     $conexion = conexion_bd();
     $consulta = $conexion->prepare(
-        "SELECT o.total_adeudado, o.monto_pagado,
+        "SELECT o.total_adeudado, o.monto_pagado, o.estado,
                 COUNT(os.id) AS cantidad_estudios,
-                SUM(CASE WHEN m.estado = 'Finalizada' THEN 1 ELSE 0 END) AS muestras_finalizadas,
+                SUM(CASE WHEN m.id IS NULL OR m.estado IN ('Pendiente', 'Rechazada') THEN 1 ELSE 0 END) AS muestras_bloqueadas,
                 SUM(CASE WHEN r.estado = 'Entregado' THEN 1 ELSE 0 END) AS resultados_entregados
          FROM ordenes o
          JOIN ordenes_estudios os ON os.orden_id = o.id
@@ -92,14 +92,16 @@ function actualizar_finalizacion_orden(int $ordenId): void
     }
     $completo = (float) $progreso['monto_pagado'] >= (float) $progreso['total_adeudado']
         && (int) $progreso['cantidad_estudios'] > 0
-        && (int) $progreso['muestras_finalizadas'] === (int) $progreso['cantidad_estudios']
+        && (int) $progreso['muestras_bloqueadas'] === 0
         && (int) $progreso['resultados_entregados'] === (int) $progreso['cantidad_estudios'];
-    if ($completo) {
-        $actualizacion = $conexion->prepare("UPDATE ordenes SET estado = 'Finalizada' WHERE id = :id");
-        $actualizacion->execute(['id' => $ordenId]);
+    $nuevoEstado = $completo
+        ? 'Finalizada'
+        : ((int) $progreso['cantidad_estudios'] > 0 && (int) $progreso['muestras_bloqueadas'] === 0 ? 'Validada' : 'Pendiente');
+    if ($nuevoEstado !== $progreso['estado']) {
+        $actualizacion = $conexion->prepare("UPDATE ordenes SET estado = :estado WHERE id = :id");
+        $actualizacion->execute(['estado' => $nuevoEstado, 'id' => $ordenId]);
     }
 }
-
 
 
 
