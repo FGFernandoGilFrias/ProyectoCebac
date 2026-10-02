@@ -33,6 +33,20 @@ function conexion_bd(): PDO
             $consulta->execute(['tabla' => $tabla]);
             return (int) $consulta->fetchColumn() > 0;
         };
+        $obtenerColumna = static function (PDO $conexion, string $tabla, string $columna): ?array {
+            $consulta = $conexion->prepare("SHOW COLUMNS FROM `$tabla` LIKE :columna");
+            $consulta->execute(['columna' => $columna]);
+            $definicion = $consulta->fetch();
+            return is_array($definicion) ? $definicion : null;
+        };
+        $existeColumna = static function (PDO $conexion, string $tabla, string $columna) use ($obtenerColumna): bool {
+            return $obtenerColumna($conexion, $tabla, $columna) !== null;
+        };
+        $existeIndice = static function (PDO $conexion, string $tabla, string $indice): bool {
+            $consulta = $conexion->prepare("SHOW INDEX FROM `$tabla` WHERE Key_name = :indice");
+            $consulta->execute(['indice' => $indice]);
+            return (bool) $consulta->fetch();
+        };
         $tablasLegacy = [
             'users' => 'usuarios', 'social_works' => 'obras_sociales',
             'patients' => 'pacientes', 'practice_prices' => 'precios_practicas',
@@ -143,6 +157,111 @@ function conexion_bd(): PDO
                 CONSTRAINT fk_usuarios_roles_rol FOREIGN KEY (rol_id) REFERENCES roles(id) ON DELETE CASCADE
             ) ENGINE=InnoDB"
         );
+        $asegurarColumnaId = static function (string $tabla, string $columnaLegacy = 'codigo') use ($conexion, $existeColumna, $existeIndice): void {
+            if (!$existeColumna($conexion, $tabla, 'id')) {
+                $conexion->exec("ALTER TABLE `$tabla` ADD COLUMN id INT UNSIGNED NULL FIRST");
+            }
+            if ($columnaLegacy !== '' && $existeColumna($conexion, $tabla, $columnaLegacy)) {
+                $conexion->exec(
+                    "UPDATE `$tabla`
+                     SET id = CAST(`$columnaLegacy` AS UNSIGNED)
+                     WHERE id IS NULL AND `$columnaLegacy` REGEXP '^[0-9]+$'"
+                );
+            }
+            $maxId = (int) $conexion->query("SELECT COALESCE(MAX(id), 0) FROM `$tabla`")->fetchColumn();
+            $conexion->exec("SET @next_id := $maxId");
+            $conexion->exec("UPDATE `$tabla` SET id = (@next_id := @next_id + 1) WHERE id IS NULL");
+            if (!$existeIndice($conexion, $tabla, 'uq_' . $tabla . '_id')) {
+                $conexion->exec("ALTER TABLE `$tabla` ADD UNIQUE KEY uq_{$tabla}_id (id)");
+            }
+            $conexion->exec("ALTER TABLE `$tabla` MODIFY id INT UNSIGNED NOT NULL");
+            try {
+                $conexion->exec("ALTER TABLE `$tabla` MODIFY id INT UNSIGNED NOT NULL AUTO_INCREMENT");
+            } catch (PDOException) {
+                // En esquemas legacy la PK puede estar en otra columna; mantener id único y no nulo es suficiente.
+            }
+        };
+        $asegurarColumnaId('usuarios');
+        $asegurarColumnaId('roles');
+        $asegurarColumnaId('privilegios');
+        if (!$existeColumna($conexion, 'roles_privilegios', 'rol_id')) {
+            $conexion->exec('ALTER TABLE roles_privilegios ADD COLUMN rol_id INT UNSIGNED NULL');
+        }
+        if (!$existeColumna($conexion, 'roles_privilegios', 'privilegio_id')) {
+            $conexion->exec('ALTER TABLE roles_privilegios ADD COLUMN privilegio_id INT UNSIGNED NULL');
+        }
+        if ($existeColumna($conexion, 'roles_privilegios', 'rol_codigo') && $existeColumna($conexion, 'roles', 'codigo')) {
+            $conexion->exec(
+                'UPDATE roles_privilegios rp
+                 JOIN roles r ON r.codigo = rp.rol_codigo
+                 SET rp.rol_id = r.id
+                 WHERE rp.rol_id IS NULL'
+            );
+        }
+        if ($existeColumna($conexion, 'roles_privilegios', 'privilegio_codigo')) {
+            if ($existeColumna($conexion, 'privilegios', 'codigo_privilegio')) {
+                $conexion->exec(
+                    'UPDATE roles_privilegios rp
+                     JOIN privilegios p ON p.codigo_privilegio = rp.privilegio_codigo
+                     SET rp.privilegio_id = p.id
+                     WHERE rp.privilegio_id IS NULL'
+                );
+            }
+            if ($existeColumna($conexion, 'privilegios', 'codigo')) {
+                $conexion->exec(
+                    'UPDATE roles_privilegios rp
+                     JOIN privilegios p ON p.codigo = rp.privilegio_codigo
+                     SET rp.privilegio_id = p.id
+                     WHERE rp.privilegio_id IS NULL'
+                );
+            }
+        }
+        if (!$existeIndice($conexion, 'roles_privilegios', 'uq_roles_privilegios_ids')) {
+            try {
+                $conexion->exec('ALTER TABLE roles_privilegios ADD UNIQUE KEY uq_roles_privilegios_ids (rol_id, privilegio_id)');
+            } catch (PDOException) {
+                if (!$existeIndice($conexion, 'roles_privilegios', 'idx_roles_privilegios_ids')) {
+                    $conexion->exec('ALTER TABLE roles_privilegios ADD INDEX idx_roles_privilegios_ids (rol_id, privilegio_id)');
+                }
+            }
+        }
+        if (!$existeColumna($conexion, 'usuarios_roles', 'usuario_id')) {
+            $conexion->exec('ALTER TABLE usuarios_roles ADD COLUMN usuario_id INT UNSIGNED NULL');
+        }
+        if (!$existeColumna($conexion, 'usuarios_roles', 'rol_id')) {
+            $conexion->exec('ALTER TABLE usuarios_roles ADD COLUMN rol_id INT UNSIGNED NULL');
+        }
+        if ($existeColumna($conexion, 'usuarios_roles', 'usuario_codigo') && $existeColumna($conexion, 'usuarios', 'codigo')) {
+            $conexion->exec(
+                'UPDATE usuarios_roles ur
+                 JOIN usuarios u ON u.codigo = ur.usuario_codigo
+                 SET ur.usuario_id = u.id
+                 WHERE ur.usuario_id IS NULL'
+            );
+        }
+        if ($existeColumna($conexion, 'usuarios_roles', 'rol_codigo') && $existeColumna($conexion, 'roles', 'codigo')) {
+            $conexion->exec(
+                'UPDATE usuarios_roles ur
+                 JOIN roles r ON r.codigo = ur.rol_codigo
+                 SET ur.rol_id = r.id
+                 WHERE ur.rol_id IS NULL'
+            );
+        }
+        if (!$existeIndice($conexion, 'usuarios_roles', 'uq_usuarios_roles_ids')) {
+            try {
+                $conexion->exec('ALTER TABLE usuarios_roles ADD UNIQUE KEY uq_usuarios_roles_ids (usuario_id, rol_id)');
+            } catch (PDOException) {
+                if (!$existeIndice($conexion, 'usuarios_roles', 'idx_usuarios_roles_ids')) {
+                    $conexion->exec('ALTER TABLE usuarios_roles ADD INDEX idx_usuarios_roles_ids (usuario_id, rol_id)');
+                }
+            }
+        }
+        $defCodigoPrivilegios = $obtenerColumna($conexion, 'privilegios', 'codigo');
+        $usaCodigoPrivilegioLegacy = false;
+        if ($defCodigoPrivilegios !== null && $existeColumna($conexion, 'privilegios', 'codigo_privilegio')) {
+            $usaCodigoPrivilegioLegacy = (bool) preg_match('/\b(int|tinyint|smallint|mediumint|bigint)\b/i', (string) $defCodigoPrivilegios['Type']);
+        }
+        $columnaCodigoPrivilegio = $usaCodigoPrivilegioLegacy ? 'codigo_privilegio' : 'codigo';
         $roles = [
             ['Administrador', 'Acceso completo al sistema'],
             ['Operador', 'Acceso a la operación diaria del laboratorio'],
@@ -164,21 +283,50 @@ function conexion_bd(): PDO
             ['practicas.gestionar', 'Gestionar prácticas', 'Administrar precios y prácticas'],
             ['usuarios.gestionar', 'Gestionar usuarios', 'Administrar usuarios, roles y accesos'],
         ];
-        $insertarPrivilegio = $conexion->prepare('INSERT IGNORE INTO privilegios (codigo, nombre, descripcion) VALUES (:codigo, :nombre, :descripcion)');
+        $insertarPrivilegio = $conexion->prepare(
+            "INSERT IGNORE INTO privilegios ($columnaCodigoPrivilegio, nombre, descripcion)
+             VALUES (:codigo, :nombre, :descripcion)"
+        );
         foreach ($privilegios as $privilegio) {
             $insertarPrivilegio->execute(['codigo' => $privilegio[0], 'nombre' => $privilegio[1], 'descripcion' => $privilegio[2]]);
         }
         $idRolAdministrador = (int) $conexion->query("SELECT id FROM roles WHERE nombre = 'Administrador'")->fetchColumn();
         $idRolOperador = (int) $conexion->query("SELECT id FROM roles WHERE nombre = 'Operador'")->fetchColumn();
         $todosPrivilegios = $conexion->query('SELECT id FROM privilegios')->fetchAll(PDO::FETCH_COLUMN);
-        $insertarRolPrivilegio = $conexion->prepare('INSERT IGNORE INTO roles_privilegios (rol_id, privilegio_id) VALUES (:rol_id, :privilegio_id)');
+        $insertarRolPrivilegio = $conexion->prepare(
+            'INSERT INTO roles_privilegios (rol_id, privilegio_id)
+             SELECT :rol_id, :privilegio_id
+             FROM DUAL
+             WHERE NOT EXISTS (
+                 SELECT 1 FROM roles_privilegios
+                 WHERE rol_id = :rol_id_existente AND privilegio_id = :privilegio_id_existente
+             )'
+        );
         foreach ($todosPrivilegios as $privilegioId) {
-            $insertarRolPrivilegio->execute(['rol_id' => $idRolAdministrador, 'privilegio_id' => (int) $privilegioId]);
+            $insertarRolPrivilegio->execute([
+                'rol_id' => $idRolAdministrador,
+                'privilegio_id' => (int) $privilegioId,
+                'rol_id_existente' => $idRolAdministrador,
+                'privilegio_id_existente' => (int) $privilegioId,
+            ]);
         }
         $codigosPermisosOperador = ['panel.ver', 'pacientes.gestionar', 'ordenes.gestionar', 'caja.gestionar', 'muestras.gestionar', 'resultados.gestionar'];
-        $privilegioOperador = $conexion->prepare('INSERT IGNORE INTO roles_privilegios (rol_id, privilegio_id) SELECT :rol_id, id FROM privilegios WHERE codigo = :codigo');
+        $privilegioOperador = $conexion->prepare(
+            "INSERT INTO roles_privilegios (rol_id, privilegio_id)
+             SELECT :rol_id, p.id
+             FROM privilegios p
+             WHERE p.$columnaCodigoPrivilegio = :codigo
+               AND NOT EXISTS (
+                   SELECT 1 FROM roles_privilegios rp
+                   WHERE rp.rol_id = :rol_id_existente AND rp.privilegio_id = p.id
+               )"
+        );
         foreach ($codigosPermisosOperador as $codigo) {
-            $privilegioOperador->execute(['rol_id' => $idRolOperador, 'codigo' => $codigo]);
+            $privilegioOperador->execute([
+                'rol_id' => $idRolOperador,
+                'rol_id_existente' => $idRolOperador,
+                'codigo' => $codigo,
+            ]);
         }
         $conexion->exec(
             "CREATE TABLE IF NOT EXISTS obras_sociales (
@@ -413,13 +561,36 @@ function conexion_bd(): PDO
             'nombre_completo' => 'Administrador del sistema',
             'hash_contrasena' => password_hash('contrasena', PASSWORD_DEFAULT),
         ]);
-        $conexion->exec("INSERT IGNORE INTO usuarios_roles (usuario_id, rol_id) SELECT id, $idRolAdministrador FROM usuarios WHERE nombre_usuario = 'admin'");
-        $conexion->exec("INSERT IGNORE INTO usuarios_roles (usuario_id, rol_id) SELECT u.id, r.id FROM usuarios u JOIN roles r ON r.nombre = 'Operador' WHERE u.rol = 'operador'");
+        $asignarRolAdmin = $conexion->prepare(
+            'INSERT INTO usuarios_roles (usuario_id, rol_id)
+             SELECT u.id, :rol_id
+             FROM usuarios u
+             WHERE u.nombre_usuario = :nombre_usuario
+               AND NOT EXISTS (
+                   SELECT 1 FROM usuarios_roles ur
+                   WHERE ur.usuario_id = u.id AND ur.rol_id = :rol_id_existente
+               )'
+        );
+        $asignarRolAdmin->execute([
+            'rol_id' => $idRolAdministrador,
+            'rol_id_existente' => $idRolAdministrador,
+            'nombre_usuario' => 'admin',
+        ]);
+        $asignarRolOperador = $conexion->prepare(
+            'INSERT INTO usuarios_roles (usuario_id, rol_id)
+             SELECT u.id, r.id
+             FROM usuarios u
+             JOIN roles r ON r.nombre = :nombre_rol
+             WHERE u.rol = :rol_usuario
+               AND NOT EXISTS (
+                   SELECT 1 FROM usuarios_roles ur
+                   WHERE ur.usuario_id = u.id AND ur.rol_id = r.id
+               )'
+        );
+        $asignarRolOperador->execute(['nombre_rol' => 'Operador', 'rol_usuario' => 'operador']);
     }
     return $conexion;
 }
-
-
 
 
 

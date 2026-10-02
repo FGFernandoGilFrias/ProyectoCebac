@@ -34,14 +34,34 @@ function tiene_privilegio(string $privilegio): bool
     if (array_key_exists($privilegio, $cache)) {
         return $cache[$privilegio];
     }
-    $consulta = conexion_bd()->prepare(
-        'SELECT COUNT(*) FROM usuarios_roles ur
+    $conexion = conexion_bd();
+    $usuarioId = (int) ($_SESSION['usuario']['id'] ?? 0);
+    if ($usuarioId <= 0 && isset($_SESSION['usuario']['codigo'])) {
+        $consultaUsuario = $conexion->prepare('SELECT id FROM usuarios WHERE codigo = :codigo LIMIT 1');
+        $consultaUsuario->execute(['codigo' => (int) $_SESSION['usuario']['codigo']]);
+        $usuarioId = (int) $consultaUsuario->fetchColumn();
+    }
+    if ($usuarioId <= 0) {
+        return $cache[$privilegio] = false;
+    }
+    $codigoPrivilegioColumna = 'p.codigo';
+    $columnaCodigoPrivilegio = $conexion->query("SHOW COLUMNS FROM privilegios LIKE 'codigo_privilegio'")->fetch();
+    $definicionCodigo = $conexion->query("SHOW COLUMNS FROM privilegios LIKE 'codigo'")->fetch();
+    if (
+        $columnaCodigoPrivilegio
+        && $definicionCodigo
+        && preg_match('/\b(int|tinyint|smallint|mediumint|bigint)\b/i', (string) $definicionCodigo['Type'])
+    ) {
+        $codigoPrivilegioColumna = 'p.codigo_privilegio';
+    }
+    $consulta = $conexion->prepare(
+        "SELECT COUNT(*) FROM usuarios_roles ur
          JOIN roles_privilegios rp ON rp.rol_id = ur.rol_id
          JOIN privilegios p ON p.id = rp.privilegio_id
          JOIN roles r ON r.id = ur.rol_id
-         WHERE ur.usuario_id = :usuario_id AND p.codigo = :codigo AND r.activo = 1'
+         WHERE ur.usuario_id = :usuario_id AND $codigoPrivilegioColumna = :codigo AND r.activo = 1"
     );
-    $consulta->execute(['usuario_id' => (int) $_SESSION['usuario']['id'], 'codigo' => $privilegio]);
+    $consulta->execute(['usuario_id' => $usuarioId, 'codigo' => $privilegio]);
     return $cache[$privilegio] = (int) $consulta->fetchColumn() > 0;
 }
 
@@ -99,7 +119,6 @@ function actualizar_finalizacion_orden(int $ordenId): void
         $actualizacion->execute(['id' => $ordenId]);
     }
 }
-
 
 
 
