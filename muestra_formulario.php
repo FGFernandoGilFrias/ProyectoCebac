@@ -40,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $save = $conexion->prepare('INSERT INTO muestras (codigo, orden_estudio_id, recolectado_en, estado, motivo_rechazo) VALUES (:codigo,:orden_estudio_id,NOW(),:estado,:reason)');
                 $save->execute(['codigo' => $codigo, 'orden_estudio_id' => $ordenEstudioId, 'estado' => $estado, 'reason' => $estado === 'Rechazada' ? $reason : null]);
             }
+            $estadoOrdenEstudio = $estado === 'Finalizada' ? 'Finalizada' : ($estado === 'Validada' ? 'Validada' : 'Pendiente');
+            $sync = $conexion->prepare('UPDATE ordenes_estudios SET estado = :estado WHERE id = :id');
+            $sync->execute(['estado' => $estadoOrdenEstudio, 'id' => $ordenEstudioId]);
             actualizar_finalizacion_orden((int) $item['orden_id']);
             mensaje_flash('Muestra actualizada correctamente.');
             header('Location: recepcion_muestras.php');
