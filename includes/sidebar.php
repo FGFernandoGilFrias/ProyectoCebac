@@ -1,55 +1,78 @@
 <?php
 $paginaActual = basename($_SERVER['PHP_SELF']);
+
 $gruposMenu = [
-    'Gestión de pacientes' => [
-        ['label' => 'Pacientes', 'href' => 'pacientes.php', 'icon' => 'P', 'privilegio' => 'pacientes.gestionar'],
-        ['label' => 'Órdenes médicas', 'href' => 'ordenes.php', 'icon' => 'O', 'privilegio' => 'ordenes.gestionar'],
-        ['label' => 'Caja', 'href' => 'caja.php', 'icon' => '$', 'privilegio' => 'caja.gestionar'],
+    'Principal' => [
+        ['label' => 'Panel', 'href' => 'panel.php', 'icon' => 'speedometer2', 'privilegio' => 'panel.ver'],
     ],
-    'Gestión de muestras' => [
-        ['label' => 'Resultados', 'href' => 'resultados.php', 'icon' => 'R', 'privilegio' => 'resultados.gestionar'],
-        ['label' => 'Muestras', 'href' => 'recepcion_muestras.php', 'icon' => 'M', 'privilegio' => 'muestras.gestionar'],
+    'Gestión de Pacientes' => [
+        ['label' => 'Pacientes', 'href' => 'pacientes.php', 'icon' => 'people', 'privilegio' => 'pacientes.gestionar'],
+        ['label' => 'Órdenes médicas', 'href' => 'ordenes.php', 'icon' => 'file-earmark-medical', 'privilegio' => 'ordenes.gestionar'],
+        ['label' => 'Caja', 'href' => 'caja.php', 'icon' => 'cash-coin', 'privilegio' => 'caja.gestionar'],
     ],
-    'Gestión de obra social' => [
-        ['label' => 'Obras sociales', 'href' => 'obras_sociales.php', 'icon' => 'S', 'privilegio' => 'obras_sociales.gestionar'],
+    'Gestión de Muestras' => [
+        ['label' => 'Check-in de Muestras', 'href' => 'recepcion_muestras.php', 'icon' => 'clipboard-check', 'privilegio' => 'muestras.gestionar'],
+        ['label' => 'Resultados', 'href' => 'resultados.php', 'icon' => 'file-earmark-text', 'privilegio' => 'resultados.gestionar'],
     ],
-    'Gestión administrativa' => [
-        ['label' => 'Precios de prácticas', 'href' => 'precios_practicas.php', 'icon' => 'P', 'privilegio' => 'practicas.gestionar'],
-        ['label' => 'Estudios', 'href' => 'estudios.php', 'icon' => 'E', 'privilegio' => 'estudios.gestionar'],
-        ['label' => 'Parámetros', 'href' => 'parametros.php', 'icon' => 'T', 'privilegio' => 'parametros.gestionar'],
-        ['label' => 'Usuarios', 'href' => 'usuarios.php', 'icon' => 'U', 'privilegio' => 'usuarios.gestionar'],
-        ['label' => 'Roles y privilegios', 'href' => 'roles.php', 'icon' => 'A', 'privilegio' => 'usuarios.gestionar'],
+    'Gestión de Obra Social' => [
+        ['label' => 'Obras sociales', 'href' => 'obras_sociales.php', 'icon' => 'shield-check', 'privilegio' => 'obras_sociales.gestionar'],
+    ],
+    'Gestión Administrativa' => [
+        ['label' => 'Estudios', 'href' => 'estudios.php', 'icon' => 'journal-medical', 'privilegio' => 'estudios.gestionar'],
+        ['label' => 'Precios de prácticas', 'href' => 'precios_practicas.php', 'icon' => 'tag', 'privilegio' => 'practicas.gestionar'],
+        ['label' => 'Reportes', 'href' => 'reportes.php', 'icon' => 'bar-chart', 'privilegio' => 'reportes.gestionar'],
+    ],
+    'Seguridad' => [
+        ['label' => 'Usuarios', 'href' => 'usuarios.php', 'icon' => 'person-badge', 'privilegio' => 'usuarios.gestionar'],
+        ['label' => 'Roles y privilegios', 'href' => 'roles.php', 'icon' => 'key', 'privilegio' => 'usuarios.gestionar'],
     ],
 ];
+
+$logoPath = __DIR__ . '/../public/assets/logo.png';
+$logoExiste = file_exists($logoPath);
 ?>
-<aside class="sidebar">
-    <div class="sidebar-brand"><span class="brand-mark">C</span><span>CEBAC<small>Laboratorio</small></span></div>
-    <nav class="sidebar-nav" aria-label="Navegación principal">
-        <?php $enlacePanel = ['label' => 'Panel principal', 'href' => 'panel.php', 'icon' => '⌂', 'privilegio' => 'panel.ver']; ?>
-        <?php if (tiene_privilegio($enlacePanel['privilegio'])): ?>
-            <a class="sidebar-link <?= $paginaActual === $enlacePanel['href'] ? 'activo' : '' ?>" href="<?= escapar_html($enlacePanel['href']) ?>">
-                <span class="sidebar-icon"><?= escapar_html($enlacePanel['icon']) ?></span><span><?= escapar_html($enlacePanel['label']) ?></span>
-            </a>
+<div class="offcanvas offcanvas-start sidebar-offcanvas" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+    <div class="offcanvas-header sidebar-header">
+        <?php if ($logoExiste): ?>
+            <img src="public/assets/logo.png" alt="CEBAC" class="sidebar-logo">
+        <?php else: ?>
+            <h5 class="offcanvas-title text-white fw-bold" id="sidebarMenuLabel">
+                <i class="bi bi-droplet-fill me-2"></i>CEBAC
+            </h5>
         <?php endif; ?>
-        <?php foreach ($gruposMenu as $nombreGrupo => $enlaces): ?>
-            <p class="sidebar-group"><?= escapar_html($nombreGrupo) ?></p>
-            <?php foreach ($enlaces as $enlace): ?>
-                <?php if (!tiene_privilegio($enlace['privilegio'])) { continue; } ?>
-                <a class="sidebar-link <?= $paginaActual === $enlace['href'] ? 'activo' : '' ?>" href="<?= escapar_html($enlace['href']) ?>">
-                    <span class="sidebar-icon"><?= escapar_html($enlace['icon']) ?></span><span><?= escapar_html($enlace['label']) ?></span>
-                </a>
-            <?php endforeach; ?>
-        <?php endforeach; ?>
-    </nav>
-    <div class="sidebar-footer">
-        <div class="sidebar-user"><strong><?= escapar_html(usuario_actual()['nombre_completo'] ?? '') ?></strong><span><?= escapar_html(usuario_actual()['rol'] ?? '') ?></span></div>
-        <a class="sidebar-logout" href="cerrar_sesion.php">Cerrar sesión</a>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
     </div>
-</aside>
 
+    <div class="offcanvas-body sidebar-body p-0">
+        <nav class="sidebar-nav">
+            <?php foreach ($gruposMenu as $nombreGrupo => $enlaces): ?>
+                <?php
+                // Verificar si hay al menos un enlace visible
+                $hayVisibles = false;
+                foreach ($enlaces as $e) {
+                    if (tiene_privilegio($e['privilegio'])) { $hayVisibles = true; break; }
+                }
+                if (!$hayVisibles) continue;
+                ?>
+                <div class="sidebar-group"><?= escapar_html($nombreGrupo) ?></div>
+                <?php foreach ($enlaces as $enlace): ?>
+                    <?php if (!tiene_privilegio($enlace['privilegio'])) continue; ?>
+                    <a class="sidebar-link <?= $paginaActual === $enlace['href'] ? 'active' : '' ?>" href="<?= escapar_html($enlace['href']) ?>">
+                        <i class="bi bi-<?= escapar_html($enlace['icon']) ?>"></i>
+                        <span><?= escapar_html($enlace['label']) ?></span>
+                    </a>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </nav>
 
-
-
-
-
-
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <strong><?= escapar_html(usuario_actual()['nombre_completo'] ?? '') ?></strong>
+                <small><?= escapar_html(usuario_actual()['rol'] ?? '') ?></small>
+            </div>
+            <a class="sidebar-logout" href="cerrar_sesion.php">
+                <i class="bi bi-box-arrow-right me-1"></i> Cerrar sesión
+            </a>
+        </div>
+    </div>
+</div>

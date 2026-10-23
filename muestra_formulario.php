@@ -51,12 +51,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 $currentStatus = $_POST['estado'] ?? $item['estado'] ?? 'Pendiente';
 $currentReason = $_POST['motivo_rechazo'] ?? $item['motivo_rechazo'] ?? '';
-?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Check-in de muestra | CEBAC</title><link rel="stylesheet" href="public/assets/app.css"></head><body><?php include __DIR__ . '/includes/sidebar.php'; ?><main class="container narrow"><p><a href="recepcion_muestras.php">← Volver al check-in</a></p><h1>Check-in de muestra</h1><div class="module"><p><strong>Orden:</strong> <?= escapar_html($item['codigo_orden']) ?></p><p><strong>Paciente:</strong> <?= escapar_html($item['apellido'] . ', ' . $item['nombre']) ?></p><p><strong>Estudio:</strong> <?= escapar_html($item['nombre_estudio']) ?></p><?php if ($item['codigo_muestra']): ?><p><strong>Código de muestra:</strong> <?= escapar_html($item['codigo_muestra']) ?></p><?php endif; ?></div><?php if ($error): ?><div class="alert error"><?= escapar_html($error) ?></div><?php endif; ?><form method="post" class="form-grid"><input type="hidden" name="orden_estudio_id" value="<?= $ordenEstudioId ?>"><div class="full"><label>Estado de muestra *</label><select name="estado" required><option <?= $currentStatus === 'Pendiente' ? 'selected' : '' ?>>Pendiente</option><option <?= $currentStatus === 'Validada' ? 'selected' : '' ?>>Validada</option><option <?= $currentStatus === 'Finalizada' ? 'selected' : '' ?>>Finalizada</option><option <?= $currentStatus === 'Rechazada' ? 'selected' : '' ?>>Rechazada</option></select></div><div class="full"><label>Motivo de rechazo</label><textarea name="motivo_rechazo" rows="4"><?= escapar_html($currentReason) ?></textarea></div><div class="full"><button type="submit">Guardar muestra</button></div></form></main></body></html>
-
-
-
-
-
-
-
-
+$tituloPagina = 'Check-in de muestra | CEBAC';
+include __DIR__ . '/includes/header.php';
+?>
+<main class="container narrow">
+<p><a href="recepcion_muestras.php">← Volver al check-in</a></p>
+<h1>Check-in de muestra</h1>
+<div class="module">
+    <p><strong>Orden:</strong> <?= escapar_html($item['codigo_orden']) ?></p>
+    <p><strong>Paciente:</strong> <?= escapar_html($item['apellido'] . ', ' . $item['nombre']) ?></p>
+    <p><strong>Estudio:</strong> <?= escapar_html($item['nombre_estudio']) ?></p>
+    <?php if ($item['codigo_muestra']): ?><p><strong>Código de muestra:</strong> <?= escapar_html($item['codigo_muestra']) ?></p><?php endif; ?>
+</div>
+<?php if ($error): ?><div class="alert error"><?= escapar_html($error) ?></div><?php endif; ?>
+<form method="post" class="form-grid">
+    <input type="hidden" name="orden_estudio_id" value="<?= $ordenEstudioId ?>">
+    <div class="full">
+        <label>Estado de muestra *</label>
+        <select name="estado" required>
+            <option <?= $currentStatus === 'Pendiente' ? 'selected' : '' ?>>Pendiente</option>
+            <option <?= $currentStatus === 'Validada' ? 'selected' : '' ?>>Validada</option>
+            <option <?= $currentStatus === 'Finalizada' ? 'selected' : '' ?>>Finalizada</option>
+            <option <?= $currentStatus === 'Rechazada' ? 'selected' : '' ?>>Rechazada</option>
+        </select>
+    </div>
+    <div class="full">
+        <label>Motivo de rechazo</label>
+        <textarea name="motivo_rechazo" rows="4"><?= escapar_html($currentReason) ?></textarea>
+    </div>
+    <div class="full"><button type="submit">Guardar muestra</button></div>
+</form>
+</main>
+<?php include __DIR__ . '/includes/footer.php'; ?>

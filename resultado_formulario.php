@@ -1,92 +1,354 @@
 <?php
 require_once __DIR__ . '/includes/auth.php';
+require_once __DIR__ . '/includes/resultado_notificar.php';
 exigir_privilegio('resultados.gestionar');
 
 $ordenId = (int) ($_GET['orden_id'] ?? $_POST['orden_id'] ?? 0);
 $conexion = conexion_bd();
-$consulta = $conexion->prepare(
-    "SELECT o.id AS orden_id, o.codigo AS codigo_orden, o.estado_pago, o.total_adeudado, o.monto_pagado,
-            p.apellido, p.nombre, os.id AS orden_estudio_id, s.codigo AS codigo_estudio,
-            s.nombre AS nombre_estudio, s.parametros AS parametros_estudios, sa.estado AS estado_muestra, r.id AS result_id,
-            r.texto_resultado, r.estado AS estado_resultado
+
+$stmt = $conexion->prepare(
+    "SELECT o.codigo AS orden_codigo, o.fecha_orden, o.estado, o.medico,
+            p.codigo AS paciente_codigo, p.apellido, p.nombre, p.dni, p.fecha_nacimiento, p.correo,
+            os.nombre AS obra_social,
+            pos.nro_credencial, pos.cobertura, pos.porcentaje_cobertura
      FROM ordenes o
-     JOIN pacientes p ON p.id = o.paciente_id
-     JOIN ordenes_estudios os ON os.orden_id = o.id
-     JOIN estudios s ON s.id = os.estudio_id
-     LEFT JOIN muestras sa ON sa.orden_estudio_id = os.id
-     LEFT JOIN resultados r ON r.orden_estudio_id = os.id
-     WHERE o.id = :id ORDER BY os.id"
+     JOIN pacientes p ON p.codigo = o.paciente_codigo
+     LEFT JOIN paciente_obra_social pos ON pos.paciente_codigo = p.codigo
+     LEFT JOIN obras_sociales os ON os.codigo = pos.obra_social_codigo
+     WHERE o.codigo = :codigo"
 );
-$consulta->execute(['id' => $ordenId]);
-$estudios = $consulta->fetchAll();
-if (!$estudios) { http_response_code(404); exit('Orden no encontrada.'); }
-$paid = (float) $estudios[0]['total_adeudado'] <= 0 || (float) $estudios[0]['monto_pagado'] >= (float) $estudios[0]['total_adeudado'];
-$parameterRows = [];
-foreach ($estudios as $estudio) {
-    $parameterStmt = $conexion->prepare('SELECT nombre_seccion, nombre, minimo, maximo, texto_referencia, descripcion, rango_min, rango_max FROM parametros_estudios WHERE estudio_id = (SELECT estudio_id FROM ordenes_estudios WHERE id = :orden_estudio_id) ORDER BY orden, id');
-    $parameterStmt->execute(['orden_estudio_id' => $estudio['orden_estudio_id']]);
-    $parameterRows[(int) $estudio['orden_estudio_id']] = $parameterStmt->fetchAll();
+$stmt->execute(['codigo' => $ordenId]);
+$orden = $stmt->fetch();
+
+if (!$orden) {
+    http_response_code(404);
+    exit('Orden no encontrada.');
 }
-$error = null;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ordenEstudioId = (int) ($_POST['orden_estudio_id'] ?? 0);
-    $values = $_POST['parameter_value'] ?? [];
-    $text = trim((string) ($_POST['texto_resultado'] ?? ''));
-    $targetStmt = $conexion->prepare(
-        "SELECT os.id, sa.estado AS estado_muestra, r.estado AS estado_resultado
-         FROM ordenes_estudios os
-         LEFT JOIN muestras sa ON sa.orden_estudio_id = os.id
-         LEFT JOIN resultados r ON r.orden_estudio_id = os.id
-         WHERE os.id = :orden_estudio_id AND os.orden_id = :orden_id"
-    );
-    $targetStmt->execute(['orden_estudio_id' => $ordenEstudioId, 'orden_id' => $ordenId]);
-    $target = $targetStmt->fetch();
-    $missingParameter = false;
-    if (isset($values[$ordenEstudioId]) && is_array($values[$ordenEstudioId])) {
-        $lines = [];
-        foreach ($values[$ordenEstudioId] as $nombre => $value) {
-            $value = trim((string) $value);
-            if ($value === '') {
-                $missingParameter = true;
-            } else {
-                $lines[] = trim((string) $nombre) . ': ' . $value;
-            }
+
+$stmt = $conexion->prepare(
+    "SELECT e.codigo, e.estudio, e.parametros, pp.precio
+     FROM estudios_orden eo
+     JOIN estudios e ON e.codigo = eo.estudio_codigo
+     LEFT JOIN precio_practica pp ON pp.codigo = e.practica_codigo
+     WHERE eo.orden_codigo = :codigo
+     ORDER BY e.estudio"
+);
+$stmt->execute(['codigo' => $ordenId]);
+$estudios = $stmt->fetchAll();
+
+$stmt = $conexion->prepare('SELECT codigo, resultado, fecha_resultado FROM resultados WHERE orden_codigo = :codigo LIMIT 1');
+$stmt->execute(['codigo' => $ordenId]);
+$resultadoActual = $stmt->fetch();
+$resultadoCodigo = (int) ($resultadoActual['codigo'] ?? 0);
+
+$errores = [];
+if ($resultadoCodigo > 0) {
+    $stmtErr = $conexion->prepare("SELECT error_muestra FROM historial_errores WHERE resultado_codigo = :codigo");
+    $stmtErr->execute(['codigo' => $resultadoCodigo]);
+    $errores = $stmtErr->fetchAll(PDO::FETCH_COLUMN);
+}
+
+$estudiosPendientes = [];
+$estudiosRechazados = [];
+foreach ($estudios as $est) {
+    $nombreEst = $est['estudio'];
+    foreach ($errores as $err) {
+        if (stripos($err, $nombreEst) === false) continue;
+        if (stripos($err, 'RECHAZADO') !== false) {
+            $estudiosRechazados[$nombreEst] = $err;
+        } elseif (stripos($err, 'PENDIENTE') !== false) {
+            $estudiosPendientes[$nombreEst] = $err;
         }
-        $text = implode("\n", $lines);
     }
-    $action = (string) ($_POST['action'] ?? 'save');
-    if (!$target) {
-        $error = 'El estudio seleccionado no pertenece a esta orden.';
-    } elseif ($target['estado_resultado'] === 'Entregado') {
-        $error = 'El resultado ya fue entregado y no puede modificarse.';
-    } elseif ($missingParameter || $text === '') {
-        $error = 'Ingresa el resultado del estudio.';
-    } elseif (!in_array($action, ['save', 'deliver'], true)) {
-        $error = 'Acción de resultado no válida.';
-    } elseif ($action === 'deliver' && !$paid) {
-        $error = 'No se pueden entregar resultados mientras exista saldo pendiente.';
-    } elseif ($action === 'deliver' && $target['estado_muestra'] !== 'Finalizada') {
-        $error = 'La muestra debe estar finalizada antes de entregar el resultado.';
-    } else {
-        $estado = $action === 'deliver' ? 'Entregado' : 'Cargado';
-        $save = $conexion->prepare(
-            "INSERT INTO resultados (orden_estudio_id, texto_resultado, estado, entregado_en)
-             VALUES (:study, :text, :estado, CASE WHEN :estado = 'Entregado' THEN NOW() ELSE NULL END)
-             ON DUPLICATE KEY UPDATE texto_resultado = VALUES(texto_resultado), estado = VALUES(estado), entregado_en = VALUES(entregado_en)"
-        );
-        $save->execute(['study' => $ordenEstudioId, 'text' => $text, 'estado' => $estado]);
-        actualizar_finalizacion_orden($ordenId);
-        mensaje_flash($action === 'deliver' ? 'Resultado entregado correctamente.' : 'Resultado guardado correctamente.');
-        header('Location: resultado_formulario.php?orden_id=' . $ordenId);
+}
+
+$totalEstudios = count($estudios);
+$cantidadPendientes = count($estudiosPendientes);
+
+if ($totalEstudios > 0 && $cantidadPendientes === $totalEstudios) {
+    if (isset($_GET['_modal']) && $_GET['_modal'] === '1') {
+        header('Content-Type: application/json');
+        echo json_encode(['ok' => false, 'error' => 'Esta orden no tiene ninguna muestra validada todavía.']);
+        exit;
+    }
+    mensaje_flash('Esta orden no tiene ninguna muestra validada todavía.');
+    header('Location: recepcion_muestras.php');
+    exit;
+}
+
+$valoresActuales = [];
+if ($resultadoActual && !empty($resultadoActual['resultado'])) {
+    foreach (preg_split('/\R/', $resultadoActual['resultado']) as $linea) {
+        $partes = explode(':', $linea, 2);
+        if (count($partes) === 2) {
+            $valoresActuales[trim($partes[0])] = trim($partes[1]);
+        }
+    }
+}
+
+$error = null;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $valores = $_POST['valor'] ?? [];
+    $rechazados = $_POST['rechazado'] ?? [];
+    $motivos = $_POST['motivo_rechazo'] ?? [];
+
+    $lineas = [];
+    $erroresRechazo = [];
+
+    foreach ($estudios as $est) {
+        $codigoEst = $est['codigo'];
+        $nombreEst = $est['estudio'];
+
+        if (isset($estudiosPendientes[$nombreEst])) continue;
+        if (isset($estudiosRechazados[$nombreEst])) continue;
+
+        if (!empty($rechazados[$codigoEst])) {
+            $motivo = trim((string) ($motivos[$codigoEst] ?? ''));
+            if ($motivo === '') {
+                $error = 'Debés indicar el motivo del rechazo para "' . $nombreEst . '".';
+                break;
+            }
+            $erroresRechazo[] = $nombreEst . ': RECHAZADO - ' . $motivo;
+            $lineas[] = $nombreEst . ': RECHAZADO (' . $motivo . ')';
+            continue;
+        }
+
+        $valor = trim((string) ($valores[$codigoEst] ?? ''));
+        if ($valor === '') {
+            $valorPrevio = $valoresActuales[$nombreEst] ?? '';
+            if ($valorPrevio !== '') {
+                $lineas[] = $nombreEst . ': ' . $valorPrevio;
+            }
+            continue;
+        }
+        $lineas[] = $nombreEst . ': ' . $valor;
+    }
+
+    foreach ($estudiosRechazados as $nombre => $err) {
+        $motivo = trim(preg_replace('/.*RECHAZADO[:\s-]*/i', '', $err));
+        $lineas[] = $nombre . ': RECHAZADO (' . $motivo . ')';
+    }
+
+    if (!$error) {
+        try {
+            $conexion->beginTransaction();
+
+            $textoResultado = implode("\n", $lineas);
+            $fechaHoy = date('Y-m-d');
+
+            if ($resultadoActual) {
+                $stmtUpd = $conexion->prepare('UPDATE resultados SET resultado = :resultado, fecha_resultado = :fecha WHERE codigo = :codigo');
+                $stmtUpd->execute([
+                    'resultado' => $textoResultado,
+                    'fecha' => $fechaHoy,
+                    'codigo' => $resultadoCodigo,
+                ]);
+            } else {
+                $stmtIns = $conexion->prepare('INSERT INTO resultados (resultado, fecha_resultado, orden_codigo) VALUES (:resultado, :fecha, :orden)');
+                $stmtIns->execute([
+                    'resultado' => $textoResultado,
+                    'fecha' => $fechaHoy,
+                    'orden' => $ordenId,
+                ]);
+                $resultadoCodigo = (int) $conexion->lastInsertId();
+            }
+
+            if (!empty($erroresRechazo)) {
+                $stmtErr = $conexion->prepare('INSERT INTO historial_errores (error_muestra, resultado_codigo) VALUES (:error, :resultado)');
+                foreach ($erroresRechazo as $err) {
+                    $stmtErr->execute(['error' => $err, 'resultado' => $resultadoCodigo]);
+                }
+            }
+
+            $conexion->commit();
+
+            // Actualizar el estado de la orden
+            actualizar_estado_orden($ordenId);
+
+            // ✅ NUEVO: Intentar enviar el email de resultados si están listos
+            $resultadoEnvio = ['enviados' => [], 'errores' => [], 'info' => []];
+            if (function_exists('notificar_orden')) {
+                $resultadoEnvio = notificar_orden($ordenId, false, false);
+            }
+
+            if (isset($_POST['_modal']) && $_POST['_modal'] === '1') {
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'ok' => true,
+                    'mensaje' => 'Resultado guardado correctamente.',
+                    'envio' => $resultadoEnvio,
+                ]);
+                exit;
+            }
+
+            // Mensaje al usuario según el resultado del envío
+            $mensaje = 'Resultado guardado correctamente.';
+            if (!empty($resultadoEnvio['enviados'])) {
+                $mensaje .= ' Se enviaron los resultados por email al paciente.';
+            } elseif (!empty($resultadoEnvio['info'])) {
+                $mensaje .= ' ' . implode(' ', $resultadoEnvio['info']);
+            } elseif (!empty($resultadoEnvio['errores'])) {
+                $mensaje .= ' Aviso: ' . implode(' ', $resultadoEnvio['errores']);
+            }
+
+            mensaje_flash($mensaje);
+            header('Location: resultado_formulario.php?orden_id=' . $ordenId);
+            exit;
+        } catch (Throwable $e) {
+            if ($conexion->inTransaction()) $conexion->rollBack();
+            $error = 'No se pudo guardar el resultado: ' . $e->getMessage();
+        }
+    }
+
+    if (isset($_POST['_modal']) && $_POST['_modal'] === '1') {
+        header('Content-Type: application/json');
+        echo json_encode(['ok' => false, 'error' => $error]);
         exit;
     }
 }
-?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Resultados de orden | CEBAC</title><link rel="stylesheet" href="public/assets/app.css"></head><body><?php include __DIR__ . '/includes/sidebar.php'; ?><main class="container"><p><a href="resultados.php">← Volver a resultados</a></p><h1>Resultados de orden <?= escapar_html($estudios[0]['codigo_orden']) ?></h1><p class="muted">Paciente: <?= escapar_html($estudios[0]['apellido'] . ', ' . $estudios[0]['nombre']) ?> · Estado de pago: <?= escapar_html($estudios[0]['estado_pago']) ?></p><?php if ($error): ?><div class="alert error"><?= escapar_html($error) ?></div><?php endif; ?><?php foreach ($estudios as $estudio): $estudioId = (int) $estudio['orden_estudio_id']; $resultadoValue = $estudio['texto_resultado'] ?? ''; $existingValues = []; foreach (preg_split('/\R/', $resultadoValue) as $line) { $parts = explode(':', $line, 2); if (count($parts) === 2) { $existingValues[trim($parts[0])] = trim($parts[1]); } } ?><form method="post" class="result-card module"><input type="hidden" name="orden_id" value="<?= $ordenId ?>"><input type="hidden" name="orden_estudio_id" value="<?= $estudioId ?>"><h2><?= escapar_html($estudio['nombre_estudio']) ?> <small><?= escapar_html($estudio['codigo_estudio']) ?></small></h2><p class="muted">Muestra: <?= escapar_html($estudio['estado_muestra'] ?? 'Pendiente') ?> · Resultado: <?= escapar_html($estudio['estado_resultado'] ?? 'Pendiente') ?></p><?php if ($parameterRows[$estudioId]): ?><div class="parameter-result-table"><div class="parameter-result-head"><span>Sección / parámetro</span><span>Referencia</span><span>Descripción</span><span>Valor obtenido</span></div><?php $lastSection = null; foreach ($parameterRows[$estudioId] as $parameter): if ($parameter['nombre_seccion'] !== $lastSection): $lastSection = $parameter['nombre_seccion']; if ($lastSection): ?><div class="parameter-section"><?= escapar_html($lastSection) ?></div><?php endif; endif; $rangeMin = $parameter['rango_min'] !== null && $parameter['rango_min'] !== '' ? $parameter['rango_min'] : ($parameter['minimo'] ?? ''); $rangeMax = $parameter['rango_max'] !== null && $parameter['rango_max'] !== '' ? $parameter['rango_max'] : ($parameter['maximo'] ?? ''); $range = trim($rangeMin . ' - ' . $rangeMax, ' -'); $reference = $parameter['texto_referencia'] ?: ($range !== '' ? $range : 'No definido'); ?><div class="parameter-result-row"><strong><?= escapar_html($parameter['nombre']) ?></strong><span><?= escapar_html($reference) ?></span><span><?= escapar_html($parameter['descripcion'] ?? '') ?></span><input name="parameter_value[<?= $estudioId ?>][<?= escapar_html($parameter['nombre']) ?>]" value="<?= escapar_html($existingValues[$parameter['nombre']] ?? '') ?>" required <?= $estudio['estado_resultado'] === 'Entregado' ? 'readonly' : '' ?>></div><?php endforeach; ?></div><?php else: ?><label>Resultado</label><textarea name="texto_resultado" rows="8" required <?= $estudio['estado_resultado'] === 'Entregado' ? 'readonly' : '' ?>><?= escapar_html($resultadoValue) ?></textarea><?php endif; ?><div class="result-actions"><button type="submit" name="action" value="save" <?= $estudio['estado_resultado'] === 'Entregado' ? 'disabled' : '' ?>>Guardar resultado</button><button type="submit" name="action" value="deliver" class="deliver-button" <?= !$paid || $estudio['estado_resultado'] === 'Entregado' ? 'disabled' : '' ?>>Entregar resultado</button></div></form><?php endforeach; ?></main></body></html>
 
+$esModal = isset($_GET['_modal']) && $_GET['_modal'] === '1';
 
+if ($esModal) {
+    ?>
+    <form method="post" id="resultado-modal-form">
+        <input type="hidden" name="_modal" value="1">
+        <input type="hidden" name="orden_id" value="<?= $ordenId ?>">
 
+        <div class="card bg-light border-0 mb-3">
+            <div class="card-body py-2">
+                <div class="row g-2">
+                    <div class="col-md-3">
+                        <small class="text-muted d-block">Orden</small>
+                        <strong>#<?= formatear_codigo_orden($orden['orden_codigo']) ?></strong>
+                    </div>
+                    <div class="col-md-4">
+                        <small class="text-muted d-block">Paciente</small>
+                        <strong><?= escapar_html($orden['apellido'] . ', ' . $orden['nombre']) ?></strong>
+                    </div>
+                    <div class="col-md-5">
+                        <small class="text-muted d-block">Obra social / Fecha</small>
+                        <strong><?= escapar_html($orden['obra_social'] ?? 'Particular') ?> · <?= escapar_html($orden['fecha_orden']) ?></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= escapar_html($error) ?></div>
+        <?php endif; ?>
 
+        <?php if (!empty($estudiosRechazados)): ?>
+            <div class="alert alert-warning">
+                <h6 class="fw-bold"><i class="bi bi-exclamation-triangle me-1"></i>Estudios rechazados:</h6>
+                <ul class="mb-0 small">
+                    <?php foreach ($estudiosRechazados as $nombre => $err): ?>
+                        <li><strong><?= escapar_html($nombre) ?></strong></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
+        <?php if (!empty($estudiosPendientes)): ?>
+            <div class="alert alert-warning small">
+                <strong>⏳ Pendientes:</strong> <?= escapar_html(implode(', ', array_keys($estudiosPendientes))) ?>
+            </div>
+        <?php endif; ?>
 
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Estudio</th>
+                        <th>Parámetros</th>
+                        <th class="text-end">Precio</th>
+                        <th>Resultado</th>
+                        <th class="text-center">Rechazar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($estudios as $est): ?>
+                        <?php
+                        $codigoEst = $est['codigo'];
+                        $nombreEst = $est['estudio'];
+                        $estaPendiente = isset($estudiosPendientes[$nombreEst]);
+                        $estaRechazado = isset($estudiosRechazados[$nombreEst]);
+                        $valorActual = $valoresActuales[$nombreEst] ?? '';
+                        $claseFila = '';
+                        if ($estaPendiente) $claseFila = 'table-warning';
+                        if ($estaRechazado) $claseFila = 'table-danger';
+                        ?>
+                        <tr class="<?= $claseFila ?>">
+                            <td>
+                                <strong><?= escapar_html($nombreEst) ?></strong>
+                                <small class="text-muted d-block"><?= escapar_html($codigoEst) ?></small>
+                            </td>
+                            <td><small><?= escapar_html($est['parametros'] ?? '—') ?></small></td>
+                            <td class="text-end">$ <?= number_format((float) ($est['precio'] ?? 0), 2, ',', '.') ?></td>
+                            <td>
+                                <?php if ($estaPendiente): ?>
+                                    <span class="text-warning fst-italic small">⏳ Sin validar</span>
+                                <?php elseif ($estaRechazado): ?>
+                                    <span class="text-danger fw-bold small">❌ Rechazado</span>
+                                <?php else: ?>
+                                    <input type="text" name="valor[<?= escapar_html($codigoEst) ?>]" value="<?= escapar_html($valorActual) ?>" placeholder="Ej: 36" class="form-control form-control-sm input-valor" data-cod="<?= escapar_html($codigoEst) ?>">
+                                <?php endif; ?>
+                            </td>
+                            <td class="text-center">
+                                <?php if ($estaPendiente || $estaRechazado): ?>
+                                    <span class="text-muted">—</span>
+                                <?php else: ?>
+                                    <input type="checkbox" class="form-check-input rechazo-check"
+                                           name="rechazado[<?= escapar_html($codigoEst) ?>]"
+                                           value="1"
+                                           data-cod="<?= escapar_html($codigoEst) ?>"
+                                           onchange="toggleMotivo('<?= escapar_html($codigoEst) ?>', this.checked)">
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <?php if (!$estaPendiente && !$estaRechazado): ?>
+                            <tr class="result-motivo-row" data-motivo="<?= escapar_html($codigoEst) ?>" style="display: none;">
+                                <td colspan="5" class="bg-danger bg-opacity-10">
+                                    <label class="form-label small text-danger fw-bold mb-1">Motivo del rechazo *</label>
+                                    <input type="text" name="motivo_rechazo[<?= escapar_html($codigoEst) ?>]" placeholder="Ej: muestra hemolizada" class="form-control form-control-sm motivo-rechazo">
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </form>
 
+    <script>
+    function toggleMotivo(codigo, marcado) {
+        var row = document.querySelector('tr[data-motivo="' + codigo + '"]');
+        if (!row) return;
+
+        row.style.display = marcado ? 'table-row' : 'none';
+
+        var input = row.querySelector('.motivo-rechazo');
+        if (input) {
+            input.required = marcado;
+            if (marcado) input.focus();
+        }
+
+        var valor = document.querySelector('input.input-valor[data-cod="' + codigo + '"]');
+        if (valor) {
+            valor.disabled = marcado;
+            if (marcado) valor.value = '';
+        }
+    }
+    </script>
+    <?php
+    exit;
+}
+
+$tituloPagina = 'Resultado de orden ' . formatear_codigo_orden($orden['orden_codigo']) . ' | CEBAC';
+include __DIR__ . '/includes/header.php';
+?>
+<main class="main-content">
+    <h1>Resultado</h1>
+</main>
+<?php include __DIR__ . '/includes/footer.php'; ?>

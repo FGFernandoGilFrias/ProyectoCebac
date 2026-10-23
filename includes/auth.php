@@ -36,12 +36,15 @@ function tiene_privilegio(string $privilegio): bool
     }
     $consulta = conexion_bd()->prepare(
         'SELECT COUNT(*) FROM usuarios_roles ur
-         JOIN roles_privilegios rp ON rp.rol_id = ur.rol_id
-         JOIN privilegios p ON p.id = rp.privilegio_id
-         JOIN roles r ON r.id = ur.rol_id
-         WHERE ur.usuario_id = :usuario_id AND p.codigo = :codigo AND r.activo = 1'
+         JOIN roles_privilegios rp ON rp.rol_codigo = ur.rol_codigo
+         JOIN privilegios p ON p.codigo = rp.privilegio_codigo
+         JOIN roles r ON r.codigo = ur.rol_codigo
+         WHERE ur.usuario_codigo = :usuario_codigo AND p.codigo_privilegio = :codigo_privilegio AND r.activo = 1'
     );
-    $consulta->execute(['usuario_id' => (int) $_SESSION['usuario']['id'], 'codigo' => $privilegio]);
+    $consulta->execute([
+        'usuario_codigo' => (int) $_SESSION['usuario']['codigo'],
+        'codigo_privilegio' => $privilegio,
+    ]);
     return $cache[$privilegio] = (int) $consulta->fetchColumn() > 0;
 }
 
@@ -70,40 +73,121 @@ function mensaje_flash(?string $mensaje = null): ?string
     return $value;
 }
 
-function actualizar_finalizacion_orden(int $ordenId): void
+/**
+ * Formatea el código de una orden con padding de 4 dígitos.
+ */
+function formatear_codigo_orden($codigo): string
 {
-    $conexion = conexion_bd();
-    $consulta = $conexion->prepare(
-        "SELECT o.total_adeudado, o.monto_pagado,
-                COUNT(os.id) AS cantidad_estudios,
-                SUM(CASE WHEN m.estado = 'Finalizada' THEN 1 ELSE 0 END) AS muestras_finalizadas,
-                SUM(CASE WHEN r.estado = 'Entregado' THEN 1 ELSE 0 END) AS resultados_entregados
-         FROM ordenes o
-         JOIN ordenes_estudios os ON os.orden_id = o.id
-         LEFT JOIN muestras m ON m.orden_estudio_id = os.id
-         LEFT JOIN resultados r ON r.orden_estudio_id = os.id
-         WHERE o.id = :id
-         GROUP BY o.id"
-    );
-    $consulta->execute(['id' => $ordenId]);
-    $progreso = $consulta->fetch();
-    if (!$progreso) {
-        return;
-    }
-    $completo = (float) $progreso['monto_pagado'] >= (float) $progreso['total_adeudado']
-        && (int) $progreso['cantidad_estudios'] > 0
-        && (int) $progreso['muestras_finalizadas'] === (int) $progreso['cantidad_estudios']
-        && (int) $progreso['resultados_entregados'] === (int) $progreso['cantidad_estudios'];
-    if ($completo) {
-        $actualizacion = $conexion->prepare("UPDATE ordenes SET estado = 'Finalizada' WHERE id = :id");
-        $actualizacion->execute(['id' => $ordenId]);
-    }
+    return str_pad((string) $codigo, 4, '0', STR_PAD_LEFT);
 }
 
+/**
+ * Actualiza el estado de la orden según el estado de sus estudios.
+ *
+ * Reglas:
+ *   - Si tiene algún estudio RECHAZADO → Pendiente (requiere segundo análisis)
+ *   - Si tiene algún estudio PENDIENTE → Pendiente (faltan muestras)
+ *   - Si TODOS los estudios tienen resultado válido → Finalizado
+ *   - Si TODOS los estudios están validados pero faltan resultados → Validado
+ *   - Si no hay check-in → Pendiente
+ */
+function actualizar_estado_orden(int $ordenCodigo): void
+{
+    $conexion = conexion_bd();
 
+    $stmt = $conexion->prepare('SELECT COUNT(*) FROM estudios_orden WHERE orden_codigo = :oid');
+    $stmt->execute(['oid' => $ordenCodigo]);
+    $totalEstudios = (int) $stmt->fetchColumn();
 
+    if ($totalEstudios === 0) {
+        return;
+    }
 
+    // Obtener resultado de la orden (si existe)
+    $stmt = $conexion->prepare('SELECT codigo, resultado FROM resultados WHERE orden_codigo = :oid LIMIT 1');
+    $stmt->execute(['oid' => $ordenCodigo]);
+    $resultado = $stmt->fetch();
+    $resultadoCodigo = (int) ($resultado['codigo'] ?? 0);
 
+    // Sin registro de check-in
+    if ($resultadoCodigo === 0) {
+        $update = $conexion->prepare('UPDATE ordenes SET estado = :estado WHERE codigo = :oid');
+        $update->execute(['estado' => 'Pendiente', 'oid' => $ordenCodigo]);
+        return;
+    }
 
+    // Contar PENDIENTES y RECHAZADOS (buscando en cualquier parte del texto)
+    $stmt = $conexion->prepare(
+        "SELECT
+            SUM(CASE WHEN error_muestra LIKE '%PENDIENTE%' THEN 1 ELSE 0 END) AS pendientes,
+            SUM(CASE WHEN error_muestra LIKE '%RECHAZADO%' THEN 1 ELSE 0 END) AS rechazados
+         FROM historial_errores
+         WHERE resultado_codigo = :rid"
+    );
+    $stmt->execute(['rid' => $resultadoCodigo]);
+    $errores = $stmt->fetch();
 
+    $pendientes = (int) ($errores['pendientes'] ?? 0);
+    $rechazados = (int) ($errores['rechazados'] ?? 0);
 
+    // Contar estudios con resultado cargado (y válido)
+    $estudiosConResultado = 0;
+    if (!empty($resultado['resultado'])) {
+        foreach (preg_split('/\R/', $resultado['resultado']) as $linea) {
+            $partes = explode(':', $linea, 2);
+            if (count($partes) === 2) {
+                $valor = trim($partes[1]);
+                if ($valor !== ''
+                    && stripos($valor, 'RECHAZADO') === false
+                    && stripos($valor, 'PENDIENTE') === false
+                ) {
+                    $estudiosConResultado++;
+                }
+            }
+        }
+    }
+
+    // Determinar estado
+    if ($rechazados > 0) {
+        $nuevoEstado = 'Pendiente';
+    } elseif ($pendientes > 0) {
+        $nuevoEstado = 'Pendiente';
+    } elseif ($estudiosConResultado >= $totalEstudios) {
+        $nuevoEstado = 'Finalizado';
+    } else {
+        $nuevoEstado = 'Validado';
+    }
+
+    $update = $conexion->prepare('UPDATE ordenes SET estado = :estado WHERE codigo = :oid');
+    $update->execute(['estado' => $nuevoEstado, 'oid' => $ordenCodigo]);
+}
+
+/* ============================================================
+   Protección CSRF
+   ============================================================ */
+
+function csrf_token(): string
+{
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+function csrf_field(): string
+{
+    return '<input type="hidden" name="csrf_token" value="' . escapar_html(csrf_token()) . '">';
+}
+
+function verificar_csrf(): void
+{
+    $enviado = (string) ($_POST['csrf_token'] ?? $_GET['csrf_token'] ?? '');
+    if ($enviado === '' || !hash_equals(csrf_token(), $enviado)) {
+        http_response_code(403);
+        exit('Token de seguridad inválido. Volvé a la página anterior e intentá de nuevo.');
+    }
+}
+require_once __DIR__ . '/helpers.php';

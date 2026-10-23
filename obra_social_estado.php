@@ -11,11 +11,3 @@ if ($id > 0) {
 }
 header('Location: obras_sociales.php');
 exit;
-
-
-
-
-
-
-
-

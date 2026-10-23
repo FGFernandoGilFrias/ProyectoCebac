@@ -1,0 +1,1903 @@
+./caja.php:214:function abrirModalPago(pacienteCodigo) {
+./caja.php:228:                form.addEventListener('submit', function (e) {
+./caja.php:271:document.getElementById('btnGuardarPago').addEventListener('click', function () {
+./comprobante_pago_listado.php:19:function fecha_ddmmyyyy(?string $fecha): string
+./comprobante_pago_pdf.php:53:function fecha_ddmmyyyy(?string $fecha): string
+./comprobante_pago_pdf.php:60:function numero_a_letras(float $numero): string
+./config/base_datos.php:9:function db(): PDO
+./config/database.php:7:function conexion_bd(): PDO
+./estudios.php:125:function abrirModalEstudio(codigo) {
+./estudios.php:141:                form.addEventListener('submit', function (e) {
+./estudios.php:184:document.getElementById('btnGuardarEstudio').addEventListener('click', function () {
+./etiqueta_muestra_listado.php:18:function fecha_ddmmyyyy(?string $fecha): string
+./etiqueta_muestra_pdf.php:37:function fecha_ddmmyyyy(?string $fecha): string
+./index.php:430:document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+./index.php:431:    link.addEventListener('click', function (e) {
+./instrucciones_pdf.php:46:function fecha_ddmmyyyy(?string $fecha): string
+./lib/mPDF/vendor/composer/autoload_real.php:9:    public static function loadClassLoader($class)
+./lib/mPDF/vendor/composer/autoload_real.php:19:    public static function getLoader()
+./lib/mPDF/vendor/composer/autoload_real.php:35:        $requireFile = \Closure::bind(static function ($fileIdentifier, $file) {
+./lib/mPDF/vendor/composer/autoload_static.php:71:    public static function getInitializer(ClassLoader $loader)
+./lib/mPDF/vendor/composer/autoload_static.php:73:        return \Closure::bind(function () use ($loader) {
+./lib/mPDF/vendor/composer/ClassLoader.php:106:    public function __construct($vendorDir = null)
+./lib/mPDF/vendor/composer/ClassLoader.php:115:    public function getPrefixes()
+./lib/mPDF/vendor/composer/ClassLoader.php:127:    public function getPrefixesPsr4()
+./lib/mPDF/vendor/composer/ClassLoader.php:135:    public function getFallbackDirs()
+./lib/mPDF/vendor/composer/ClassLoader.php:143:    public function getFallbackDirsPsr4()
+./lib/mPDF/vendor/composer/ClassLoader.php:151:    public function getClassMap()
+./lib/mPDF/vendor/composer/ClassLoader.php:161:    public function addClassMap(array $classMap)
+./lib/mPDF/vendor/composer/ClassLoader.php:180:    public function add($prefix, $paths, $prepend = false)
+./lib/mPDF/vendor/composer/ClassLoader.php:230:    public function addPsr4($prefix, $paths, $prepend = false)
+./lib/mPDF/vendor/composer/ClassLoader.php:278:    public function set($prefix, $paths)
+./lib/mPDF/vendor/composer/ClassLoader.php:298:    public function setPsr4($prefix, $paths)
+./lib/mPDF/vendor/composer/ClassLoader.php:319:    public function setUseIncludePath($useIncludePath)
+./lib/mPDF/vendor/composer/ClassLoader.php:330:    public function getUseIncludePath()
+./lib/mPDF/vendor/composer/ClassLoader.php:343:    public function setClassMapAuthoritative($classMapAuthoritative)
+./lib/mPDF/vendor/composer/ClassLoader.php:353:    public function isClassMapAuthoritative()
+./lib/mPDF/vendor/composer/ClassLoader.php:365:    public function setApcuPrefix($apcuPrefix)
+./lib/mPDF/vendor/composer/ClassLoader.php:375:    public function getApcuPrefix()
+./lib/mPDF/vendor/composer/ClassLoader.php:387:    public function register($prepend = false)
+./lib/mPDF/vendor/composer/ClassLoader.php:408:    public function unregister()
+./lib/mPDF/vendor/composer/ClassLoader.php:423:    public function loadClass($class)
+./lib/mPDF/vendor/composer/ClassLoader.php:442:    public function findFile($class)
+./lib/mPDF/vendor/composer/ClassLoader.php:482:    public static function getRegisteredLoaders()
+./lib/mPDF/vendor/composer/ClassLoader.php:492:    private function findFileWithExtension($class, $ext)
+./lib/mPDF/vendor/composer/ClassLoader.php:561:    private static function initializeIncludeClosure()
+./lib/mPDF/vendor/composer/InstalledVersions.php:63:    public static function getInstalledPackages()
+./lib/mPDF/vendor/composer/InstalledVersions.php:84:    public static function getInstalledPackagesByType($type)
+./lib/mPDF/vendor/composer/InstalledVersions.php:108:    public static function isInstalled($packageName, $includeDevRequirements = true)
+./lib/mPDF/vendor/composer/InstalledVersions.php:131:    public static function satisfies(VersionParser $parser, $packageName, $constraint)
+./lib/mPDF/vendor/composer/InstalledVersions.php:148:    public static function getVersionRanges($packageName)
+./lib/mPDF/vendor/composer/InstalledVersions.php:179:    public static function getVersion($packageName)
+./lib/mPDF/vendor/composer/InstalledVersions.php:200:    public static function getPrettyVersion($packageName)
+./lib/mPDF/vendor/composer/InstalledVersions.php:221:    public static function getReference($packageName)
+./lib/mPDF/vendor/composer/InstalledVersions.php:242:    public static function getInstallPath($packageName)
+./lib/mPDF/vendor/composer/InstalledVersions.php:259:    public static function getRootPackage()
+./lib/mPDF/vendor/composer/InstalledVersions.php:273:    public static function getRawData()
+./lib/mPDF/vendor/composer/InstalledVersions.php:296:    public static function getAllRawData()
+./lib/mPDF/vendor/composer/InstalledVersions.php:319:    public static function reload($data)
+./lib/mPDF/vendor/composer/InstalledVersions.php:334:    private static function getSelfDir()
+./lib/mPDF/vendor/composer/InstalledVersions.php:347:    private static function getInstalled()
+./lib/mPDF/vendor/mpdf/mpdf/src/AssetFetcher.php:24:	public function __construct(Mpdf $mpdf, LocalContentLoaderInterface $contentLoader, ClientInterface $http, LoggerInterface $logger)
+./lib/mPDF/vendor/mpdf/mpdf/src/AssetFetcher.php:32:	public function fetchDataFromPath($path, $originalSrc = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/AssetFetcher.php:56:	public function fetchLocalContent($path, $originalSrc)
+./lib/mPDF/vendor/mpdf/mpdf/src/AssetFetcher.php:78:	public function fetchRemoteContent($path)
+./lib/mPDF/vendor/mpdf/mpdf/src/AssetFetcher.php:115:	public function isPathLocal($path)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/AbstractBarcode.php:16:	public function getData()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/AbstractBarcode.php:26:	public function getKey($key)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/AbstractBarcode.php:34:	public function getChecksum()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/AbstractBarcode.php:47:	protected function binseqToArray($seq, array $barcodeData)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/BarcodeInterface.php:11:	public function getType();
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/BarcodeInterface.php:16:	public function getData();
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/BarcodeInterface.php:23:	public function getKey($key);
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/BarcodeInterface.php:28:	public function getChecksum();
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Codabar.php:16:	public function __construct($code, $printRatio, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Codabar.php:31:	private function init($code, $printRatio)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Codabar.php:91:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code11.php:16:	public function __construct($code, $printRatio, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code11.php:31:	private function init($code, $printRatio)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code11.php:136:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code128.php:19:	public function __construct($code, $type = 'B', $ean = false, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code128.php:35:	protected function init($code, $type, $ean)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code128.php:303:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code39.php:17:	public function __construct($code, $printRatio, $extended = false, $checksum = false, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code39.php:36:	private function init($code, $printRatio, $extended, $checksum)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code39.php:147:	protected function encodeExt($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code39.php:205:	protected function checksum($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code39.php:230:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code93.php:15:	public function __construct($code, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code93.php:29:	private function init($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code93.php:168:	protected function checksum($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Code93.php:221:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/EanExt.php:22:	public function __construct($code, $length, $leftMargin, $rightMargin, $xDim, $barHeight, $separatorMargin)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/EanExt.php:37:	private function init($code, $length = 5)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/EanExt.php:109:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/EanUpc.php:22:	public function __construct($code, $length, $leftMargin, $rightMargin, $xDim, $barHeight)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/EanUpc.php:36:	private function init($code, $length)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/EanUpc.php:266:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/I25.php:19:	public function __construct($code, $topBottomMargin, $printRatio, $checksum = false, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/I25.php:35:	private function init($code, $printRatio, $checksum)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/I25.php:111:	private function checksum($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/I25.php:132:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:43:	public function __construct($code, $xDim, $gapWidth, $daft)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:66:	private function init($code, $gapWidth, $daft)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:220:	private function imbCrc11Fcs($codeArray)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:258:	private function imbReverseUs($num)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:277:	private function imbTables($n, $size)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:318:	private function decToHex($number)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:346:	private function hexToDec($hex)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Imb.php:361:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Msi.php:16:	public function __construct($code, $checksum = false, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Msi.php:31:	private function init($code, $checksum)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Msi.php:93:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Postnet.php:18:	public function __construct($code, $xDim, $gapWidth, $planet = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Postnet.php:34:	private function init($code, $gapWidth, $planet)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Postnet.php:119:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Rm4Scc.php:15:	public function __construct($code, $xDim, $gapWidth, $daft, $kix = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Rm4Scc.php:32:	private function init($code, $gapWidth, $daft, $kix)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/Rm4Scc.php:194:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/S25.php:17:	public function __construct($code, $checksum = false, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/S25.php:32:	private function init($code, $checksum)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/S25.php:85:	private function checksum($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode/S25.php:106:	public function getType()
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode.php:8:	public function getBarcodeArray($code, $type, $pr = '', $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode.php:14:	public function getChecksum($code, $type)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode.php:27:	public function getBarcode($code, $type, $pr = 0.0, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Barcode.php:145:	private function sanitizeCode($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:14:	public function __construct($basePath, $cleanupInterval = 3600)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:28:	protected function createBasePath($basePath)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:47:	protected function createDirectory($basePath)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:60:	public function tempFilename($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:65:	public function has($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:70:	public function load($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:75:	public function write($filename, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:87:	public function remove($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:92:	public function clearOld()
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:107:	private function getFilePath($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:112:	private function isOld(DirectoryIterator $item)
+./lib/mPDF/vendor/mpdf/mpdf/src/Cache.php:119:	public function isDotFile(DirectoryIterator $item)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:30:	public function __construct(Mpdf $mpdf, ColorModeConverter $colorModeConverter, ColorSpaceRestrictor $colorSpaceRestrictor)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:39:	public function convert($color, array &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:73:	public function lighten($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:102:	public function darken($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:127:	public function invert($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:152:	public function colAtoString($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:187:	private function convertPlain($color, array &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:216:	private function processHashColor($color)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:238:	private function processModeColor($mode, array $cores)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:290:	private function convertPercentCoreValues($mode, array $cores)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:335:	private function restrictColorSpace($c, $color, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:343:	private function ensureBinaryColorFormat($color)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorConverter.php:364:	private function safeHexDec($hexString)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:13:	public function rgb2gray($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:27:	public function cmyk2gray($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:38:	public function rgb2cmyk($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:70:	public function cmyk2rgb($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:91:	public function rgb2hsl($r, $g, $b)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:146:	public function hsl2rgb($h, $s, $l)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorModeConverter.php:174:	public function hue2rgb($v1, $v2, $vh)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:41:	public function __construct(Mpdf $mpdf, ColorModeConverter $colorModeConverter)
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:54:	public function restrictColorSpace($c, $color, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:85:	private function restrictSpotColorSpace($c, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:114:	private function restrictRgbColorSpace($c, $color, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:137:	private function restrictCmykColorSpace($c, $color, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:160:	private function restrictRgbaColorSpace($c, $color, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Color/ColorSpaceRestrictor.php:190:	private function restrictCmykaColorSpace($c, $color, &$PDFAXwarnings = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/ConfigVariables.php:15:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/ConfigVariables.php:81:			// May improve function with some PostScript printers (GhostScript/GSView)
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/ConfigVariables.php:93:			// mPDF 6.0 (similar to previously using function SetAutoFont() )
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/ConfigVariables.php:246:			// spacing between bottom of header and line (if present) - function of fontsize
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/ConfigVariables.php:248:			// spacing between bottom of header and line (if present) - function of fontsize
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/ConfigVariables.php:524:	public function getDefaults()
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/FontVariables.php:10:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Config/FontVariables.php:327:	public function getDefaults()
+./lib/mPDF/vendor/mpdf/mpdf/src/Container/ContainerInterface.php:8:	public function get($id);
+./lib/mPDF/vendor/mpdf/mpdf/src/Container/ContainerInterface.php:10:	public function has($id);
+./lib/mPDF/vendor/mpdf/mpdf/src/Container/SimpleContainer.php:10:	public function __construct(array $services)
+./lib/mPDF/vendor/mpdf/mpdf/src/Container/SimpleContainer.php:15:	public function get($id)
+./lib/mPDF/vendor/mpdf/mpdf/src/Container/SimpleContainer.php:24:	public function has($id)
+./lib/mPDF/vendor/mpdf/mpdf/src/Container/SimpleContainer.php:29:	public function getServices()
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToAlpha.php:8:	public function convert($valor, $toUpper = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToCjk.php:10:	public function convert($num)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToHebrew.php:10:	public function convert($in, $reverse = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToHebrew.php:24:		// This function only works up to 1,000
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToOther.php:16:	public function __construct(Mpdf $mpdf)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToOther.php:21:	public function convert($num, $cp, $check = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToOther.php:44:	public function getCodePage($script)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:14:	public function __construct(array $symbolMap = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:23:	public function convert($number, $toUpper = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:31:	private function ensureNumberIsAnInteger($number)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:38:	private function ensureNumberIsWithinBounds($number)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:49:	public function getUpperBound()
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:59:	private function constructRomanString($number, $toUpper)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:84:	private function formatDigit($digit, $orderOfMagnitude)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:106:	private function formatFourOrNine($digit, $orderOfMagnitude)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:116:	private function formatOneToThree($orderOfMagnitude, $digit)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:121:	private function getOneSymbol($orderOfMagnitude)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:126:	private function getFiveSymbol($orderOfMagnitude)
+./lib/mPDF/vendor/mpdf/mpdf/src/Conversion/DecToRoman.php:131:	private function getTenSymbol($orderOfMagnitude)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:57:	public function __construct(Mpdf $mpdf, Cache $cache, SizeConverter $sizeConverter, ColorConverter $colorConverter, AssetFetcher $assetFetcher)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:71:	public function ReadCSS($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:487:	function readInlineCSS($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:546:	function _fix_borderStr($bd)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:622:	function fixCSS($prop)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1086:	function setCSSboxshadow($v)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1135:	function setCSStextshadow($v)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1193:	function parseCSSbackground($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1251:	function expand24($mp)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1278:	function border_radius_expand($val, $k)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1362:	function _mergeCSS($p, &$t)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1375:	function array_merge_recursive_unique($array1, $array2)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1396:	function _mergeFullCSS($p, &$t, $tag, $classes, $id, $lang)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1461:	function setBorderDominance($prop, $val)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1477:	function _set_mergedCSS(&$m, &$p, $d = true, $bd = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1492:	function _mergeBorders(&$b, &$a)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1528:	function MergeCSS($inherit, $tag, $attr)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:1536:			$classes = array_map(function ($combination) {
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:2003:	function inlinePropsToCSS($bilp, &$p)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:2146:	function PreviewBlockCSS($tag, $attr)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:2154:			$classes = array_map(function ($combination) {
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:2240:	function _nthchild($f, $c)
+./lib/mPDF/vendor/mpdf/mpdf/src/CssManager.php:2295:	private function normalizePath($path)
+./lib/mPDF/vendor/mpdf/mpdf/src/DirectWrite.php:31:	public function __construct(Mpdf $mpdf, Otl $otl, SizeConverter $sizeConverter, ColorConverter $colorConverter)
+./lib/mPDF/vendor/mpdf/mpdf/src/DirectWrite.php:39:	function Write($h, $txt, $currentx = 0, $link = '', $directionality = 'ltr', $align = '', $fill = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/DirectWrite.php:278:	function CircularText($x, $y, $r, $text, $align = 'top', $fontfamily = '', $fontsizePt = 0, $fontstyle = '', $kerning = 120, $fontwidth = 100, $divider = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/DirectWrite.php:430:	function Shaded_box($text, $font = '', $fontstyle = 'B', $szfont = '', $width = '70%', $style = 'DF', $radius = 2.5, $fill = '#FFFFFF', $color = '#000000', $pad = 2)
+./lib/mPDF/vendor/mpdf/mpdf/src/File/LocalContentLoader.php:8:	public function load($path)
+./lib/mPDF/vendor/mpdf/mpdf/src/File/LocalContentLoaderInterface.php:11:	public function load($path);
+./lib/mPDF/vendor/mpdf/mpdf/src/File/StreamWrapperChecker.php:12:	public function __construct(Mpdf $mpdf)
+./lib/mPDF/vendor/mpdf/mpdf/src/File/StreamWrapperChecker.php:22:	public function hasBlacklistedStreamWrapper($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/File/StreamWrapperChecker.php:41:	public function getWhitelistedStreamWrappers()
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:14:	public function __construct(Cache $cache)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:19:	public function tempFilename($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:24:	public function has($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:29:	public function jsonHas($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:34:	public function load($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:39:	public function jsonLoad($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:49:	public function write($filename, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:54:	public function binaryWrite($filename, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:59:	public function jsonWrite($filename, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:64:	public function remove($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontCache.php:69:	public function jsonRemove($filename)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontFileFinder.php:10:	public function __construct($directories)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontFileFinder.php:15:	public function setDirectories($directories)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/FontFileFinder.php:24:	public function findFontFile($name)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/MetricsGenerator.php:14:	public function __construct(FontCache $fontCache, $fontDescriptor)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/MetricsGenerator.php:20:	public function generateMetrics($ttffile, $ttfstat, $fontkey, $TTCfontID, $debugfonts, $BMPonly, $useOTL, $fontUseOTL)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/MetricsGenerator.php:93:	protected function getFontName($fullName)
+./lib/mPDF/vendor/mpdf/mpdf/src/Fonts/MetricsGenerator.php:98:	protected function getPanose($ttf)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:104:	public function __construct(Mpdf $mpdf, Otl $otl, ColorConverter $colorConverter, BaseWriter $writer, FormWriter $formWriter)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:163:	function print_ob_text($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:267:	function print_ob_textarea($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:373:	function print_ob_select($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:483:	function print_ob_imageinput($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir, $is_table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:507:	function print_ob_button($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:580:	function print_ob_checkbox($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir, $x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:632:	function print_ob_radio($objattr, $w, $h, $texto, $rtlalign, $k, $blockdir, $x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:680:	private function getCountItems($form)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:728:	function countPageForms($n, &$totaladdnum)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:738:	function addFormIds($n, &$s, &$annotid)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:749:	function _putFormItems($n, $hPt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:767:	function _putRadioItems($n)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:810:	function _putFormsCatalog()
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:833:	function SetFormButtonJS($name, $js)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:843:	function SetFormChoiceJS($name, $js)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:853:	function SetFormTextJS($name, $js)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:864:	function Win1252ToPDFDocEncoding($txt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:878:	function SetFormText($w, $h, $name, $value = '', $default = '', $title = '', $flags = [], $align = 'L', $hidden = false, $maxlen = -1, $js = '', $background_col = false, $border_col = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:979:	function SetFormChoice($w, $h, $name, $flags, $array, $align = 'L', $js = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1053:	function SetCheckBox($w, $h, $name, $value, $title = '', $checked = false, $flags = [], $disabled = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1060:	function SetRadio($w, $h, $name, $value, $title = '', $checked = false, $flags = [], $disabled = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1066:	function SetFormReset($w, $h, $name, $value = 'Reset', $title = '', $flags = [], $background_col = false, $border_col = false, $noprint = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1075:	function SetJSButton($w, $h, $name, $value, $js, $image_id = 0, $title = '', $flags = [], $indexed = false, $background_col = false, $border_col = false, $noprint = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1092:	function SetFormSubmit($w, $h, $name, $value = 'Submit', $url = '', $title = '', $typ = 'html', $method = 'POST', $flags = [], $background_col = false, $border_col = false, $noprint = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1105:	function SetFormButtonText($ca, $rc = '', $ac = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1138:	function SetFormButton($bb, $hh, $name, $value, $type, $title = '', $flags = [], $checked = false, $disabled = false, $background_col = false, $border_col = false, $noprint = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1257:	function SetFormBorderWidth($string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1278:	function SetFormBorderStyle($string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1302:	function SetFormBorderColor($r, $g = -1, $b = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1307:	function SetFormBackgroundColor($r, $g = -1, $b = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1312:	private function getColor($r, $g = -1, $b = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1320:	function SetFormD($W, $S, $BC, $BG)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1328:	function _setflag($array)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1337:	function _form_rect($x, $y, $w, $h, $hPt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1347:	function _put_button_icon($array, $w, $h)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1409:	function _putform_bt($form, $hPt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1686:	function _putform_ch($form, $hPt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Form.php:1768:	function _putform_tx($form, $hPt)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:49:	protected function setPageFormat($format, $orientation)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:78:	protected function setMinPdfVersion($pdfVersion)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:90:	protected function getNextTemplateId()
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:111:	public function useTemplate($tpl, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:132:	public function useImportedPage($pageId, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:168:	public function importPage($pageNumber, $box = PageBoundaries::CROP_BOX, $groupXObject = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:186:	public function getImportedExternalPageLinks($pageNumber)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:244:	public function setImportedPageLinks($pageId, $x, $y, $newSize)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:283:	public function getTemplateSize($tpl, $width = null, $height = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:293:	public function writeImportedPagesAndResolvedObjects()
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:328:	public function getImportedPages()
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:333:	protected function _put($s, $newLine = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/FpdiTrait.php:348:	public function writePdfType(PdfType $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/functions-dev.php:4:	function dd(...$args)
+./lib/mPDF/vendor/mpdf/mpdf/src/functions.php:4:	function str_starts_with($haystack, $needle)
+./lib/mPDF/vendor/mpdf/mpdf/src/functions.php:11:	function str_ends_with($haystack, $needle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ColorTable.php:22:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ColorTable.php:28:	function load($lpData, $num)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ColorTable.php:46:	function toString()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ColorTable.php:60:	function colorIndex($rgb)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/FileHeader.php:41:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/FileHeader.php:55:	function load($lpData, &$hdrLen)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/FileHeader.php:90:	function w2i($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Gif.php:26:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Gif.php:34:	function ClearData()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Gif.php:44:	function loadFile(&$data, $iIndex)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Image.php:36:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Image.php:49:	function load($data, &$datLen)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Image.php:100:	function skipExt(&$data, &$extLen)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Image.php:143:	function w2i($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Image.php:148:	function deInterlace()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ImageHeader.php:39:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ImageHeader.php:52:	function load($lpData, &$hdrLen)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/ImageHeader.php:83:	function w2i($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Lzw.php:40:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Lzw.php:55:	function deCompress($data, &$datLen)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Lzw.php:77:	function LZWCommandInit(&$data, &$dp)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Lzw.php:105:	function LZWCommand(&$data, &$dp)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Lzw.php:188:	function GetCodeInit(&$data, &$dp)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gif/Lzw.php:197:	function GetCode(&$data, &$dp)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:34:	public function __construct(Mpdf $mpdf, SizeConverter $sizeConverter, ColorConverter $colorConverter, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:43:	public function CoonsPatchMesh($x, $y, $w, $h, $patch_array = [], $x_min = 0, $x_max = 1, $y_min = 0, $y_max = 1, $colspace = 'RGB', $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:155:	public function Gradient($x, $y, $w, $h, $type, $stops = [], $colorspace = 'RGB', $coords = '', $extend = '', $return = false, $is_mask = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:372:				// -moz If the first parameter to the gradient function is only a <point>, the gradient axis starts from the specified point,
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:398:				// -moz If neither a <point> or <angle> is specified, i.e. the entire function consists of only <stop> values, the gradient
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:475:				// -moz If entire function consists of only <stop> values
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:616:	private function parseMozLinearGradient($m, $repeat)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:712:			// If neither a <point> or <angle> is specified, i.e. the entire function consists of only <stop> values,
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:767:	private function parseMozRadialGradient($m, $repeat)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:849:			// If neither a <point> or <angle> is specified, i.e. the entire function consists of only <stop> values,
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:910:	private function getStop($col, $el, $convertOffset = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:948:	public function parseMozGradient($bg)
+./lib/mPDF/vendor/mpdf/mpdf/src/Gradient.php:968:	public function parseBackgroundGradient($bg)
+./lib/mPDF/vendor/mpdf/mpdf/src/HTMLParserMode.php:36:	public static function getAllModes()
+./lib/mPDF/vendor/mpdf/mpdf/src/Http/ClientInterface.php:10:	public function sendRequest(RequestInterface $request);
+./lib/mPDF/vendor/mpdf/mpdf/src/Http/CurlHttpClient.php:19:	public function __construct(Mpdf $mpdf, LoggerInterface $logger)
+./lib/mPDF/vendor/mpdf/mpdf/src/Http/CurlHttpClient.php:25:	public function sendRequest(RequestInterface $request)
+./lib/mPDF/vendor/mpdf/mpdf/src/Http/CurlHttpClient.php:72:			static function ($curl, $header) use (&$response) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Http/SocketHttpClient.php:17:	public function __construct(LoggerInterface $logger)
+./lib/mPDF/vendor/mpdf/mpdf/src/Http/SocketHttpClient.php:22:	public function sendRequest(RequestInterface $request)
+./lib/mPDF/vendor/mpdf/mpdf/src/Hyphenator.php:26:	public function __construct(Mpdf $mpdf)
+./lib/mPDF/vendor/mpdf/mpdf/src/Hyphenator.php:43:	public function hyphenateWord($word, $currptr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Hyphenator.php:45:		// Do everything inside this function in utf-8
+./lib/mPDF/vendor/mpdf/mpdf/src/Hyphenator.php:161:	private function patternsLoaded()
+./lib/mPDF/vendor/mpdf/mpdf/src/Hyphenator.php:166:	private function loadPatterns()
+./lib/mPDF/vendor/mpdf/mpdf/src/Hyphenator.php:182:	private function loadDictionary()
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Bmp.php:15:	public function __construct(Mpdf $mpdf)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Bmp.php:20:	public function _getBMPimage($data, $file)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Bmp.php:168:	private function _fourbytes2int_le($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Bmp.php:179:	private function _twobytes2int_le($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Bmp.php:192:	private function rle8_decode($str, $width)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Bmp.php:241:	private function rle4_decode($str, $width)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:95:	public function __construct(
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:127:	public function getImage(&$file, $firstTime = true, $allowvector = true, $orig_srcpath = false, $interpolation = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:244:	private function convertImage(&$data, $colspace, $targetcs, $w, $h, $dpi, $mask, $gamma_correction = false, $pngcolortype = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:478:	private function jpgHeaderFromString(&$data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:497:	private function jpgDataFromHeader($hdr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:527:	private function translateValue($s, $bpc)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:544:	private function fourBytesToInt($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:553:	private function twoBytesToInt($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:558:	private function gzCompress($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:570:	private function imageError($file, $firstTime, $msg)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:586:	private function urldecodeParts($url)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:601:	public function processJpg($data, $file, $firstTime, $interpolation)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:737:	public function processPng($data, $file, $firstTime, $interpolation)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:1233:	public function processWebp($data, $file, $firstTime)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:1258:	public function processSvg($data, $file, $firstTime)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:1284:	public function processGif($data, $file, $firstTime, $interpolation)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:1390:	public function processBmp($data, $file, $firstTime, $interpolation)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:1410:	public function processWmf($data, $file, $firstTime)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageProcessor.php:1433:	public function processUnknownType($data, $file, $firstTime, $interpolation)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/ImageTypeGuesser.php:13:	public function guess($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:176:	public function __construct(
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:258:	function svgImage($attribs)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:370:	function svgGradient($gradient_info, $attribs, $element)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:1038:	function svgOffset($attribs)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:1094:	function svg_overflow($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:1130:	function svgDefineStyle($critere_style)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:1348:	function svgStyle($critere_style, $attribs, $element)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:1561:	function svgPath($command, $arguments)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2049:	function Arcto($x1, $y1, $x2, $y2, $rx, $ry, $angle, $largeArcFlag, $sweepFlag)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2178:	function CalcVectorAngle($ux, $uy, $vx, $vy)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2190:	function ConvertSVGSizePixels($size = 5, $maxsize = 'x')
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2214:	function ConvertSVGSizePts($size = 5)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2228:	function svgRect($arguments)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2293:	function svgEllipse($arguments)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2328:	function svgPolyline($arguments, $ispolyline = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2358:	function svgPolygon($arguments)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2377:	function svgText()
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2752:	function svgDefineTxtStyle($critere_style)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:2999:	function svgAddGradient($id, $array_gradient)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3005:	function svgWriteString($content)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3014:	 * This function brutally copies the styles inline
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3021:	function mergeStyles($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3055:		$setStylesInline = function (\DOMNode $xml) use ($styles, &$setStylesInline) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3098:	function ImageSVG($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3330:	function markScriptToLang($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:3442:	function xml_svg2pdf_start($parser, $name, $attribs)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:4078:	function characterData($parser, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:4093:	function xml_svg2pdf_end($parser, $name)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:4210:	private function computeBezierBoundingBox($start, $c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:4269:	private function testIntersectCircle($cx, $cy, $cr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Svg.php:4287:	private function testIntersect($x1, $y1, $x2, $y2, $x3, $y3, $x4, $y4)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:26:	public function __construct(Mpdf $mpdf, ColorConverter $colorConverter)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:32:	function _getWMFimage($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:254:	function _MoveTo($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:260:	function _LineTo($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:265:	function _AddGDIObject($obj)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:281:	function _GetGDIObject($idx)
+./lib/mPDF/vendor/mpdf/mpdf/src/Image/Wmf.php:286:	function _DeleteGDIObject($idx)
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/LanguageToFont.php:8:	public function getLanguageOptions($llcc, $adobeCJK)
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/LanguageToFont.php:454:	protected function fontByScript($script, $adobeCJK)
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/LanguageToFontInterface.php:27:	public function getLanguageOptions($llcc, $adobeCJK);
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/ScriptToLanguage.php:131:	public function getLanguageByScript($script)
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/ScriptToLanguage.php:136:	public function getLanguageDelimiters($language)
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/ScriptToLanguageInterface.php:8:	public function getLanguageByScript($script);
+./lib/mPDF/vendor/mpdf/mpdf/src/Language/ScriptToLanguageInterface.php:10:	public function getLanguageDelimiters($language);
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1049:	public function __construct(array $config = [], $container = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1569:	public function cleanup()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1583:	private function initConfig(array $config)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1596:	private function initConstructorParams(array $config)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1621:	private function initFontConfig(array $config)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1633:	function _setPageSize($format, &$orientation)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1685:	function RestrictUnicodeFonts($res)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1699:	function setMBencoding($enc)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1707:	function SetMargins($left, $right, $top)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1715:	function ResetMargins()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1744:	function SetLeftMargin($margin)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1753:	function SetTopMargin($margin)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1759:	function SetRightMargin($margin)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1765:	function SetAutoPageBreak($auto, $margin = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1773:	function SetDisplayMode($zoom, $layout = 'continuous')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1792:	function SetCompression($compress)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1802:	function SetTitle($title)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1808:	function SetSubject($subject)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1814:	function SetAuthor($author)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1820:	function SetKeywords($keywords)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1826:	function SetCreator($creator)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1832:	function AddCustomProperty($key, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1860:	function SetAssociatedFiles(array $files)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1865:	function SetAdditionalXmpRdf($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1870:	function SetAnchor2Bookmark($x)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1875:	public function AliasNbPages($alias = '{nb}')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1881:	public function AliasNbPageGroups($alias = '{nbpg}')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1887:	function SetAlpha($alpha, $bm = 'Normal', $return = false, $mode = 'B')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1916:	function AddExtGState($parms)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1939:	function SetVisibility($v)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1966:	function Open()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:1979:	function Close()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2052:	function _resizeBackgroundImage($imw, $imh, $cw, $ch, $resize, $repx, $repy, $pba = [], $size = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2147:	function SetBackground(&$properties, &$maxwidth)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2242:	function PrintBodyBackgrounds()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2298:	function _setClippingPath($clx, $cly, $clw, $clh)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2310:	function PrintPageBackgrounds($adjustmenty = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2577:	function PrintTableBackgrounds($adjustmenty = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2756:	function BeginLayer($id)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2779:	function EndLayer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2787:	function AddPageByArray($a)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2819:	function _preForcedPagebreak($pagebreaktype)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2854:	function _postForcedPagebreak($pagebreaktype, $startpage, $save_blk, $save_blklvl)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:2902:	function AddPage(
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3324:	function PageNo()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3329:	function AddSpotColorsFromFile($file)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3345:	function AddSpotColor($name, $c, $m, $y, $k)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3355:	function SetColor($col, $type = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3379:	function SetDColor($col, $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3395:	function SetFColor($col, $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3412:	function SetTColor($col, $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3425:	function SetDrawColor($r, $g = -1, $b = -1, $col4 = -1, $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3440:	function SetFillColor($r, $g = -1, $b = -1, $col4 = -1, $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3455:	function SetTextColor($r, $g = -1, $b = -1, $col4 = -1, $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3470:	function _getCharWidth(&$cw, $u, $isdef = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3491:	function _charDefined(&$cw, $u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3504:	function GetCharWidthCore($c)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3535:	function GetCharWidthNonCore($c, $addSubset = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3596:	function GetCharWidth($c, $addSubset = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3605:	function GetStringWidth($s, $addSubset = true, $OTLdata = false, $textvar = 0, $includeKashida = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3744:	function SetLineWidth($width)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3755:	function Line($x1, $y1, $x2, $y2)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3761:	function Arrow($x1, $y1, $x2, $y2, $headsize = 3, $fill = 'B', $angle = 25)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3793:	function Rect($x, $y, $w, $h, $style = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3806:	function AddFontDirectory($directory)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:3812:	function AddFont($family, $style = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4019:	function SetFont($family, $style = '', $size = 0, $write = true, $forcewrite = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4283:	function SetFontSize($size, $write = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4302:	function AddLink()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4310:	function SetLink($link, $y = 0, $page = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4322:	function Link($x, $y, $w, $h, $link)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4347:	function Text($x, $y, $txt, $OTLdata = [], $textvar = 0, $aixextra = '', $coordsys = '', $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4482:	function WriteText($x, $y, $txt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4523:	function WriteCell($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = 0, $link = '', $currentx = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4565:	function ResetSpacing()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4577:	function SetSpacing($cs, $ws)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4600:	function GetJspacing($nc, $ns, $w, $inclCursive, &$cOTLdata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:4733:	function Cell($w, $h = 0, $txt = '', $border = 0, $ln = 0, $align = '', $fill = 0, $link = '', $currentx = 0, $lcpaddingL = 0, $lcpaddingR = 0, $valign = 'M', $spanfill = 0, $exactWidth = false, $OTLdata = false, $textvar = 0, $lineBox = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:5417:	function applyGPOSpdf($txt, $aix, $x, $y, $OTLdata, $textvar = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:5757:	function _kern($txt, $mode, $aix, $x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:5849:	function MultiCell(
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6238:	function Write($h, $txt, $currentx = 0, $link = '', $directionality = 'ltr', $align = '', $fill = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6252:	function saveInlineProperties()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6282:	function restoreInlineProperties(&$saved)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6338:	function GetFirstBlockFill()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6355:	function saveFont()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6381:	function restoreFont(&$saved, $write = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6420:	function newFlowingBlock($w, $h, $a = '', $is_table = false, $blockstate = 0, $newblock = true, $blockdir = 'ltr', $table_draft = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:6452:	function finishFlowingBlock($endofblock = false, $next = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7111:	function printobjectbuffer($is_table = false, $blockdir = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7330:					// NB If change marker-offset, also need to alter in function _getListMarkerWidth
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7468:							function ($col) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7477:							function ($col) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7590:					// NB If change marker-offset, also need to alter in function _getListMarkerWidth
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7683:	function _printListBullet($x, $y, $size, $type, $color)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7705:	function _moveToPrevChar(&$contentctr, &$charctr, $content)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7729:	function _getPrevChar($contentctr, $charctr, $content)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:7752:	function WriteFlowingBlock($s, $sOTLdata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:8781:	function _advanceFloatMargins()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:8827:	function _SetTextRendering($mode)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:8839:	function SetTextOutline($params = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:8861:	function Image($file, $x, $y, $w = 0, $h = 0, $type = '', $link = '', $paint = true, $constrain = true, $watermark = false, $shownoimg = true, $allowvector = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9095:	function _getObjAttr($t)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9108:	function inlineObject($type, $x, $y, $objattr, $Lmargin, $widthUsed, $maxWidth, $lineHeight, $paint = false, $is_table = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9335:	function SetLineJoin($mode = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9344:	function SetLineCap($mode = 2)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9353:	function SetDash($black = false, $white = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9368:	function SetDisplayPreferences($preferences)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9375:	function Ln($h = '', $collapsible = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9397:	function DivLn($h, $level = -3, $move_y = true, $collapsible = false, $state = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9473:	function SetX($x)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9483:	function SetY($y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9494:	function SetXY($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9501:	function Output($name = '', $dest = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9651:	public function OutputBinaryData()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9656:	public function OutputHttpInline()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9664:	public function OutputHttpDownload($fileName)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9672:	public function OutputFile($fileName)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9682:	function _dochecks()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9695:			throw new \Mpdf\MpdfException('Mpdf cannot function properly with mbstring.func_overload enabled');
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9712:	function _puthtmlheaders()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:9935:	function Annotation($text, $x = 0, $y = 0, $icon = 'Note', $author = '', $subject = '', $opacity = 0, $colarray = false, $popup = '', $file = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10005:	function _enddoc()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10128:	function _beginpage(
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10463:	function _setAutoHeaderHeight(&$htmlh)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10490:	function _setAutoFooterHeight(&$htmlf)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10518:	function _endpage()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10532:	function _dounderline($x, $y, $txt, $OTLdata = false, $textvar = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10546:	function watermark($texte, $angle = 45, $fontsize = 96, $alpha = 0.2)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10633:	function watermarkImg($src, $alpha = 0.2)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10654:	function Rotate($angle, $x = -1, $y = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10676:	function CircularText($x, $y, $r, $text, $align = 'top', $fontfamily = '', $fontsize = 0, $fontstyle = '', $kerning = 120, $fontwidth = 100, $divider = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10686:	function RoundedRect($x, $y, $w, $h, $r, $style = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10723:	function _Arc($x1, $y1, $x2, $y2, $x3, $y3)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10734:	function Shaded_box($text, $font = '', $fontstyle = 'B', $szfont = '', $width = '70%', $style = 'DF', $radius = 2.5, $fill = '#FFFFFF', $color = '#000000', $pad = 2)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10745:	function UTF8StringToArray($str, $addSubset = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10774:	function UTF8toSubset($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10836:	function AddCIDFont($family, $style, $name, &$cw, $CMap, $registry, $desc)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10853:	function AddCJKFont($family)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10870:	function AddBig5Font()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10893:	function AddGBFont()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10917:	function AddSJISFont()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10941:	function AddUHCFont()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10975:	function SetDefaultFont($font)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:10999:	function SetDefaultFontSize($fontsize)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11008:	function SetDefaultBodyCSS($prop, $val)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11016:	function SetDirectionality($dir = 'ltr')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11043:	function fixLineheight($v)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11059:	function _getNormalLineheight($desc = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11078:	function SetLineHeight($FontPt = '', $lh = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11087:	function _computeLineheight($lh, $fs = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11108:	function _setLineYpos(&$fontsize, &$fontdesc, &$CSSlineheight, $blockYpos = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11182:	function _setInlineBlockHeights(&$lineBox, &$stackHeight, &$content, &$font, $is_table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11472:	function SetBasePath($str = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11528:	public function GetFullPath(&$path, $basepath = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11610:	function docPageNum($num = 0, $extras = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11659:	function docPageNumTotal($num = 0, $extras = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11712:	function _getStyledNumber($ppgno, $type, $listmarker = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11764:	function docPageSettings($num = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11809:	function RestartDocTemplate()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11815:	function Header($content = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:11829:	function TableHeaderFooter($content = '', $tablestartpage = '', $tablestartcolumn = '', $horf = 'H', $level = 0, $firstSpread = true, $finalSpread = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12342:	function SetHTMLHeader($header = '', $OE = '', $write = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12409:	function SetHTMLFooter($footer = '', $OE = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12475:	function _getHtmlHeight($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12524:	function writeHTMLHeaders()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12557:	function writeHTMLFooters()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12595:	function _shareHeaderFooterWidth($cl, $cc, $cr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12612:	function _createHTMLheaderFooter($arr, $hf)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12721:	function DefHeaderByName($name, $arr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12732:	function DefFooterByName($name, $arr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12743:	function SetHeaderByName($name, $side = 'O', $write = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12751:	function SetFooterByName($name, $side = 'O')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12759:	function DefHTMLHeaderByName($name, $html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12769:	function DefHTMLFooterByName($name, $html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12779:	function SetHTMLHeaderByName($name, $side = 'O', $write = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12787:	function SetHTMLFooterByName($name, $side = 'O')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12795:	function SetHeader($Harray = [], $side = '', $write = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:12942:	function SetFooter($Farray = [], $side = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:13090:	function SetWatermarkText($txt = '', $alpha = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:13110:	function SetWatermarkImage($src, $alpha = -1, $size = 'D', $pos = 'F')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:13135:	function Footer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:13254:	function WriteHTML($html, $mode = HTMLParserMode::DEFAULT_MODE, $init = true, $close = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:14017:	function WriteFixedPosHTML($html, $x, $y, $w, $h, $overflow = 'visible', $bounding = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:14881:	function initialiseBlock(&$blk)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:14909:	function border_details($bd)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:14993:	function _borderPadding($a, $b, &$px, &$py)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15017:	function SetPagedMediaCSS($name, $first, $oddEven)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15387:	function ClearFloats($clear, $blklvl = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15419:	function GetFloatDivInfo($blklvl = 0, $clear = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15451:	function _setListMarker($listitemtype, $listitemimage, $listitemposition)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15683:	function _getListMarkerWidth(&$currblk, &$a, &$i)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15870:	function _saveTextBuffer($t, $link = '', $intlink = '', $return = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15935:	function _saveCellTextBuffer($t, $link = '', $intlink = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:15990:	function printbuffer($arrayaux, $blockstate = 0, $is_table = false, $table_draft = false, $cell_dir = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:16706:	function _setDashBorder($style, $div, $cp, $side)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:16720:	function _setBorderLine($b, $k = 1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:16731:	function PaintDivBB($divider = '', $blockstate = 0, $blvl = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:17859:	function _EllipseArc($x0, $y0, $rx, $ry, $seg = 1, $part = false, $start = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:17931:	function PaintDivLnBorder($state = 0, $blvl = 0, $h = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:18031:	function PaintImgBorder($objattr, $is_table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:18110:	function Reset()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:18186:	function ReadMetaTags($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:18214:	function ReadCharset($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:18226:	function setCSS($arrayaux, $type = '', $tag = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19088:	function SetStyle($tag, $enable)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19102:	function SetStylesArray($arr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19122:	function SetStyles($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19137:	function ResetStyles()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19146:	function DisableTags($str = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19161:	function TableCheckMinWidth($maxwidth, $forcewrap = 0, $textbuffer = [], $checkletter = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19396:	function shrinkTable(&$table, $k)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19540:	function read_short(&$fh)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19550:	function _packCellBorder($cell)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19564:	function _getBorderWidths($bindata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19581:	function _unpackCellBorder($bindata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:19642:	function _tableColumnWidth(&$table, $firstpass = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20112:	function _tableWidth(&$table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20414:	function _tableHeight(&$table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20749:	function _tableGetWidth(&$table, $i, $j)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20774:	function _splitTableGetWidth(&$table, $i, $j)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20804:	function _tableGetHeight(&$table, $i, $j)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20833:	function _tableGetMaxRowHeight($table, $row)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:20860:	function _tableRect($x, $y, $w, $h, $bord = -1, $details = [], $buffer = false, $bSeparate = false, $cort = 'cell', $tablecorner = '', $bsv = 0, $bsh = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:21393:	function setBorder(&$var, $flag, $set = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:21403:	function issetBorder($var, $flag)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:21410:	function _table2cellBorder(&$tableb, &$cbdb, &$cellb, $bval)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:21422:	function _fixTableBorders(&$table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:21939:	function _reverseTableDir(&$table)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:21978:	function _tableWrite(&$table, $split = false, $startrow = 0, $startcol = 0, $splitpg = 0, $rety = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23416:	function _putextgstates()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23430:	function SetProtection($permissions = [], $user_pass = '', $owner_pass = null, $length = 40)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23437:	function Bookmark($txt, $level = 0, $y = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23471:	function TOC(
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23500:	function TOCpagebreakByArray($a)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23553:	function TOCpagebreak($tocfont = '', $tocfontsize = '', $tocindent = '', $TOCusePaging = true, $TOCuseLinking = '', $toc_orientation = '', $toc_mgl = '', $toc_mgr = '', $toc_mgt = '', $toc_mgb = '', $toc_mgh = '', $toc_mgf = '', $toc_ohname = '', $toc_ehname = '', $toc_ofname = '', $toc_efname = '', $toc_ohvalue = 0, $toc_ehvalue = 0, $toc_ofvalue = 0, $toc_efvalue = 0, $toc_preHTML = '', $toc_postHTML = '', $toc_bookmarkText = '', $resetpagenum = '', $pagenumstyle = '', $suppress = '', $orientation = '', $mgl = '', $mgr = '', $mgt = '', $mgb = '', $mgh = '', $mgf = '', $ohname = '', $ehname = '', $ofname = '', $efname = '', $ohvalue = 0, $ehvalue = 0, $ofvalue = 0, $efvalue = 0, $toc_id = 0, $pagesel = '', $toc_pagesel = '', $sheetsize = '', $toc_sheetsize = '', $tocoutdent = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23574:	function TOC_Entry($txt, $level = 0, $toc_id = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23621:	function MovePages($target_page, $start_page, $end_page = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:23879:	function DeletePages($start_page, $end_page = -1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24049:	function IndexEntry($txt, $xref = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24089:	// Added function to add a reference "Elephants. See Chickens"
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24090:	function IndexEntrySee($txta, $txtb)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24112:	private function filesInDir($directory)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24126:	function InsertIndex($usedivletters = 1, $useLinking = false, $indexCollationLocale = '', $indexCollationGroup = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24162:			if ($indexCollationGroup && \in_array(strtolower($indexCollationGroup), array_map(function ($v) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24193:		usort($this->Reference, function ($a, $b) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24346:	function AcceptPageBreak()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24396:	function SetColumns($NbCol, $vAlign = '', $gap = 5)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24478:	function SetCol($CurrCol)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24492:	function AddColumn()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24498:	function NewColumn()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:24533:	function printcolumnbuffer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25001:	function columnAdjustPregReplace($type, $xadj, $yadj, $pattern, $subject)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25031:	function printcellbuffer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25078:	function printtablebuffer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25254:	function printkwtbuffer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25432:	function printfloatbuffer()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25443:	function Circle($x, $y, $r, $style = 'S')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25448:	function Ellipse($x, $y, $rx, $ry, $style = 'S')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25470:	function AutosizeText($text, $w, $font, $style, $szfont = 72)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25537:	function magic_reverse_dir(&$chunk, $dir, &$chunkOTLdata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25583:	function getBasicOTLdata(&$chunkOTLdata, $unicode, &$is_strong)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25612:	function _setBidiCodes($mode = 'start', $bdf = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25653:	function SetSubstitutions()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25663:	function SubstituteChars($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25680:	function SubstituteCharsSIP(&$writehtml_a, &$writehtml_i, &$writehtml_e)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25701:	function SubstituteCharsNonCore(&$writehtml_a, &$writehtml_i, &$writehtml_e)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:25817:	function SubstituteCharsMB(&$writehtml_a, &$writehtml_i, &$writehtml_e)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26089:	function setHiEntitySubstitutions()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26099:	function SubstituteHiEntities($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26113:	function is_utf8(&$string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26135:	function purify_utf8($html, $lo = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26177:	function purify_utf8_text($txt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26189:	function all_entities_to_utf8($txt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26209:	function WriteBarcode($code, $showtext = 1, $x = '', $y = '', $size = 1, $border = 0, $paddingL = 1, $paddingR = 1, $paddingT = 2, $paddingB = 2, $height = 1, $bgcol = false, $col = false, $btype = 'ISBN', $supplement = '0', $supplement_code = '', $k = 1)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26589:	function WriteBarcode2($code, $x = '', $y = '', $size = 1, $height = 1, $bgcol = false, $col = false, $btype = 'IMB', $print_ratio = '', $k = 1, $quiet_zone_left = null, $quiet_zone_right = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26683:	function StartTransform($returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26692:	function StopTransform($returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26701:	function transformScale($s_x, $s_y, $x = '', $y = '', $returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26737:	function transformTranslate($t_x, $t_y, $returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26756:	function transformRotate($angle, $x = '', $y = '', $returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26790:	function transformSkew($angle_x, $angle_y, $x = '', $y = '', $returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26823:	function _transform($tm, $returnstring = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26833:	function markScriptToLang($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26957:	 * Callback function from function printcolumnbuffer in mpdf
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:26959:	function columnAdjustAdd($type, $k, $xadj, $yadj, $a, $b, $c = 0, $d = 0, $e = 0, $f = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27012:	function ConvertAngle($s, $makepositive = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27047:	function lesser_entity_decode($html)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27060:	function AdjustHTML($html, $tabSpaces = 8)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27237:	function tabs2spaces_callback($matches)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27243:	function date_callback($matches)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27249:	function OverWrite($file_in, $search, $replacement, $dest = Destination::DOWNLOAD, $file_out = "mpdf")
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27409:	function Thumbnail($file, $npr = 3, $spacing = 10)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27453:	function SetPageTemplate($tplidx = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27462:	function SetDocTemplate($file = '', $continue = 0, $continue2pages = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27476:	function _set_object_javascript($string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27486:	function SetJS($script)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27492:	 * This function takes the last comma or dot (if any) to make a clean float, ignoring thousand separator, currency or any other letter
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27498:	public function toFloat($num)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27514:	public function getFontDescriptor()
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27522:	public function _out($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Mpdf.php:27534:	protected function aliasReplace($html, $PAGENO, $NbPgGp, $NbPg)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:111:	public function __construct(Mpdf $mpdf, FontCache $fontCache)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:122:	function applyOTL($str, $useOTL)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:817:					/* This function implements the shaping logic documented here:
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1212:	function _applyTagSettings($tags, $Features, $omittags = '', $onlytags = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1281:	function _applyGSUBrules($usetags, $scriptTag, $langsys)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1332:	function _applyGSUBrulesSingly($usetags, $scriptTag, $langsys)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1386:	function _applyGSUBrulesMyanmar($usetags, $scriptTag, $langsys)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1442:	function _applyGSUBrulesIndic($usetags, $scriptTag, $langsys, $is_old_spec)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1564:	function _applyGSUBsubtableSpecial($lookupID, $subtable, $ptr, $currGlyph, $currGID, $nextGlyph, $nextGID, $subtable_offset, $Type, $LuCoverage)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:1633:	function _applyGSUBsubtable($lookupID, $subtable, $ptr, $currGlyph, $currGID, $subtable_offset, $Type, $Flag, $MarkFilteringSet, $LuCoverage, $level, $currentTag, $is_old_spec, $tagInt)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:2367:	function _updateLigatureMarks($pos, $n)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:2419:	function GSUBsubstitute($pos, $substitute, $Type, $GlyphPos = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:2713:	private function arabic_initialise()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:2838:	private function arabic_shaper($usetags, $scriptTag)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:2899:	private function get_arab_glyphs($char, $type, &$chars, $i, $scriptTag, $usetags)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:2997:	private function tibetanLineBreaking()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:3016:	private function seaLineBreaking()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:3085:	private function checkwordmatch(&$dict, $ptr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:3166:	private function _applyGPOSrules($LookupList, $is_old_spec = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:3213:	private function _applyGPOSvaluerecord($basepos, $Value)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:3268:	private function _getXAdvancePos($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:3282:	private function _applyGPOSsubtable($lookupID, $subtable, $ptr, $currGlyph, $currGID, $subtable_offset, $Type, $Flag, $MarkFilteringSet, $LuCoverage, $tag, $level, $is_old_spec)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4165:	private function checkContextMatch($Input, $Backtrack, $Lookahead, $ignore, $ptr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4223:	private function checkContextMatchMultiple($Input, $Backtrack, $Lookahead, $ignore, $ptr, $class0excl = '', $bclass0excl = '', $lclass0excl = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4291:	private function checkContextMatchMultipleUni($Input, $Backtrack, $Lookahead, $ignore, $ptr, $class0excl = [], $bclass0excl = [], $lclass0excl = [])
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4359:	private function _getClassDefinitionTable($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4396:	private function count_bits($n)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4404:	private function _getValueRecord($ValueFormat)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4444:	private function _getAnchorTable($offset = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4456:	private function _getMarkRecord($offset, $MarkPos)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4468:	private function _getGCOMignoreString($flag, $MarkFilteringSet)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4525:	private function _checkGCOMignore($flag, $glyph, $MarkFilteringSet)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4585:	public function bidiSort($ta, $str, $dir, &$chunkOTLdata, $useGPOS)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:4984:	public function bidiPrepare(&$para, $dir)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5568:	public function bidiReorder(&$chunkorder, &$content, &$cOTLdata, $blockdir)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5705:	public function splitOTLdata(&$cOTLdata, $OTLcutoffpos, $OTLrestartpos = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5741:	public function sliceOTLdata($OTLdata, $pos, $len)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5769:	public function removeChar(&$txt, &$cOTLdata, $char)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5796:	public function replaceSpace(&$txt, &$cOTLdata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5808:	public function trimOTLdata(&$cOTLdata, $Left = true, $Right = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5870:	private function glyphToChar($gid)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5875:	private function unicode_hex($unicode_dec)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5880:	private function seek($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5885:	private function skip($delta)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5890:	private function read_short()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5900:	private function read_ushort()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5907:	private function _getCoverageGID()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5941:	private function _getCoverage()
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:5972:	private function _getClasses($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:6021:	private function _getOTLscriptTag($ScriptLang, $scripttag, $scriptblock, $shaper, $useOTL, $mode)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:6042:		  NB If change for RTL - cf. function magic_reverse_dir in mpdf.php to update
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:6146:	private function _getOTLLangTag($ietf, $available)
+./lib/mPDF/vendor/mpdf/mpdf/src/Otl.php:6196:	private function _dumpproc($GPOSSUB, $lookupID, $subtable, $Type, $Format, $ptr, $currGlyph, $level)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:24:	function unicode_hex($unicode_dec)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:165:	public function __construct(Mpdf $mpdf)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:171:	function getMetrics($file, $fontkey, $TTCfontID = 0, $debug = false, $BMPonly = false, $kerninfo = false, $useOTL = 0, $mode = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:227:	function readTableDirectory($debug = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:247:	function checksumTables()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:268:	function sub32($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:288:	function calcChecksum($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:306:	function get_table_pos($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:314:	function seek($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:320:	function skip($delta)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:326:	function seek_table($tag, $offset_in_table = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:335:	function read_tag()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:342:	function read_short()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:354:	function unpack_short($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:364:	function read_ushort()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:372:	function read_ulong()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:381:	function get_ushort($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:389:	function get_ulong($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:398:	function pack_short($val)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:409:	function splice($stream, $offset, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:414:	function _set_ushort($stream, $offset, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:421:	function _set_short($stream, $offset, $val)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:433:	function get_chunk($pos, $length)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:443:	function get_table($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:454:	function add($tag, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:465:	function extractInfo($debug = false, $BMPonly = false, $kerninfo = false, $useOTL = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:932:	function _getGDEFtables()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:1136:	function _getClassDefinitionTable($offset = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:1172:	function _getGSUBtables()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:1975:	function _getGSUBarray(&$Lookup, &$lul, $scripttag, $level = 1, $coverage = '', $exB = '', $exL = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2688:	function _checkGSUBignore($flag, $glyph, $MarkFilteringSet)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2713:	function _getGSUBignoreString($flag, $MarkFilteringSet)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2812:	function _makeGSUBcontextInputMatch($inputGlyphs, $ignore, $lookupGlyphs, $seqIndex)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2835:	function _makeGSUBinputMatch($inputGlyphs, $ignore)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2852:	function _makeGSUBbacktrackMatch($backtrackGlyphs, $ignore)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2867:	function _makeGSUBlookaheadMatch($lookaheadGlyphs, $ignore)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2882:	function _makeGSUBinputReplacement($nInput, $REPL, $ignore, $nBsubs, $mLen, $seqIndex)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2943:	function _getCoverage($convert2hex = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:2979:	function _getClasses($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:3025:	function _getGPOStables()
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:3221:	function _getGPOSarray(&$Lookup, $lul, $scripttag, $level = 1, $lcoverage = '', $exB = '', $exL = '')
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:3929:	function count_bits($n)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:3938:	function _getValueRecord($ValueFormat)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:3979:	function _getAnchorTable($offset = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:3992:	function _getMarkRecord($offset, $MarkPos)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4007:	function getGlyphData($originalGlyphIdx, &$maxdepth, &$depth, &$points, &$contours)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4026:	function getGlyphs($originalGlyphIdx, &$start, &$glyphSet, &$subsetglyphs)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4071:	function getHMTX($numberOfHMetrics, $numGlyphs, &$glyphToChar, $scale)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4148:	function getHMetric($numberOfHMetrics, $gid)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4164:	function getLOCA($indexToLocFormat, $numGlyphs)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4188:	function getCMAP4($unicode_cmap_offset, &$glyphToChar, &$charToGlyph)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4243:	function formatUni($char)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4258:	function formatEntity($char, $allowjoining = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4271:	function formatUniArr($arr)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4289:	function formatEntityArr($arr)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4304:	function formatClassArr($arr)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4322:	function formatUniStr($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4341:	function formatEntityStr($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/OtlDump.php:4357:	function formatEntityFirst($str)
+./lib/mPDF/vendor/mpdf/mpdf/src/PageBox.php:10:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/PageBox.php:21:	public function offsetSet($offset, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/PageBox.php:31:	public function offsetExists($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/PageBox.php:37:	public function offsetUnset($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/PageBox.php:47:	public function offsetGet($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/PageFormat.php:16:	public static function getSizeFromName($name)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection/UniqidGenerator.php:8:	public function __construct()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection/UniqidGenerator.php:21:	public function generate()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:65:	public function __construct(UniqidGenerator $uniqidGenerator)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:103:	public function setProtection($permissions = [], $user_pass = '', $owner_pass = null, $length = 40)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:135:	public function objectKey($n)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:154:	public function rc4($key, $text)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:192:	public function getUseRC128Encryption()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:200:	public function getUniqid()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:208:	public function getOValue()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:216:	public function getUValue()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:224:	public function getPValue()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:229:	private function getProtectionBitsFromOptions($permissions)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:253:	private function oValue($user_pass, $owner_pass)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:282:	private function uValue()
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:303:	private function generateEncryptionKey($user_pass, $owner_pass, $protection)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:341:	private function md5toBinary($string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Pdf/Protection.php:346:	private function hexToString($hs)
+./lib/mPDF/vendor/mpdf/mpdf/src/ServiceFactory.php:38:	public function __construct($container = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/ServiceFactory.php:43:	public function getServices(
+./lib/mPDF/vendor/mpdf/mpdf/src/ServiceFactory.php:194:	public function getServiceIds()
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:108:	public static function set_indic_properties(&$info, $scriptblock)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:208:	public static function set_syllables(&$o, $s, &$broken_syllables)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:265:	public static function set_syllables_sinhala(&$o, $s, &$broken_syllables)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:298:	public static function set_syllables_khmer(&$o, $s, &$broken_syllables)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:336:	public static function initial_reordering(&$info, $GSUBdata, $broken_syllables, $indic_config, $scriptblock, $is_old_spec, $dottedcircle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:361:	public static function update_consonant_positions(&$info, $GSUBdata)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:379:	public static function insert_dotted_circles(&$info, $dottedcircle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:418:	public static function initial_reordering_syllable(&$info, $GSUBdata, $indic_config, $scriptblock, $is_old_spec, $start, $end)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:893:	public static function final_reordering(&$info, $GSUBdata, $indic_config, $scriptblock, $is_old_spec)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:911:	public static function final_reordering_syllable(&$info, $GSUBdata, $indic_config, $scriptblock, $is_old_spec, $start, $end)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1221:	public static function _move_info_pos(&$info, $from, $to)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1249:	public static function is_ra($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1254:	public static function is_one_of($info, $flags)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1262:	public static function is_joiner($info)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1269:	public static function is_consonant($info)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1274:	public static function is_halant_or_coeng($info)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1280:	public static function in_range($u, $lo, $hi)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1290:	public static function FLAG($x)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1611:	public static function indic_get_categories($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1636:	public static function IN_HALF_BLOCK($u, $Base)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1641:	public static function IS_DEVA($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1646:	public static function IS_BENG($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1651:	public static function IS_GURU($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1656:	public static function IS_GUJR($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1661:	public static function IS_ORYA($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1666:	public static function IS_TAML($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1671:	public static function IS_TELU($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1676:	public static function IS_KNDA($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1681:	public static function IS_MLYM($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1686:	public static function IS_SINH($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1691:	public static function IS_KHMR($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1696:	public static function MATRA_POS_LEFT($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1701:	public static function MATRA_POS_RIGHT($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1718:	public static function MATRA_POS_TOP($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1733:	public static function MATRA_POS_BOTTOM($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1750:	public static function matra_position($u, $side)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1769:	public static function decompose_indic($ab)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Indic.php:1928:	public static function bubble_sort(&$arr, $start, $len)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:113:	public static function set_myanmar_properties(&$info)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:262:	public static function set_syllables(&$o, $s, &$broken_syllables)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:296:	public static function reordering(&$info, $GSUBdata, $broken_syllables, $dottedcircle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:317:	public static function insert_dotted_circles(&$info, $dottedcircle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:344:	public static function reordering_syllable(&$info, $GSUBdata, $start, $end)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:439:	public static function is_one_of($info, $flags)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:449:	public static function is_consonant($info)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:455:	public static function in_range($u, $lo, $hi)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:465:	public static function FLAG($x)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:470:	public static function FLAG_RANGE($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:509:	public static function myanmar_get_categories($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Myanmar.php:526:	public static function bubble_sort(&$arr, $start, $len)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:125:	public static function set_sea_properties(&$info, $scriptblock)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:171:	public static function set_syllables(&$o, $s, &$broken_syllables)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:203:	public static function initial_reordering(&$info, $GSUBdata, $broken_syllables, $scriptblock, $dottedcircle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:226:	public static function insert_dotted_circles(&$info, $dottedcircle)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:243:	public static function initial_reordering_syllable(&$info, $GSUBdata, $scriptblock, $start, $end)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:284:	public static function final_reordering(&$info, $GSUBdata, $scriptblock)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:302:	public static function final_reordering_syllable(&$info, $GSUBdata, $scriptblock, $start, $end)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:360:	public static function sea_get_categories($u)
+./lib/mPDF/vendor/mpdf/mpdf/src/Shaper/Sea.php:380:	public static function bubble_sort(&$arr, $start, $len)
+./lib/mPDF/vendor/mpdf/mpdf/src/SizeConverter.php:23:	public function __construct($dpi, $defaultFontSize, Mpdf $mpdf, LoggerInterface $logger)
+./lib/mPDF/vendor/mpdf/mpdf/src/SizeConverter.php:43:	public function convert($size = 5, $maxsize = 0, $fontsize = false, $usefontsize = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/SizeConverter.php:146:	private function multiplyFontSize($fontsize, $maxsize, $ratio)
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:12:	public function __call($name, $args)
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:22:	public static function __callStatic($name, $args)
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:25:		throw new \Mpdf\MpdfException("Call to undefined static function $class::$name()");
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:31:	public function &__get($name)
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:41:	public function __set($name, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:51:	public function __isset($name)
+./lib/mPDF/vendor/mpdf/mpdf/src/Strict.php:61:	public function __unset($name)
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:78:	public function __construct(Mpdf $mpdf, SizeConverter $sizeConverter)
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:91:	public function beginTocPaint()
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:96:	public function TOCpagebreak(
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:243:	public function TOC(
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:300:	public function insertTOC()
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:450:				$this->mpdf->PageNumSubstitutions = array_map(function ($sub) {
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:599:	public function openTagTOC($attr)
+./lib/mPDF/vendor/mpdf/mpdf/src/TableOfContents.php:644:	public function openTagTOCPAGEBREAK($attr)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/A.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/A.php:44:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Annotation.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Annotation.php:98:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/BarCode.php:15:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/BarCode.php:268:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/BlockTag.php:14:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/BlockTag.php:950:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Bookmark.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Bookmark.php:31:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Br.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Br.php:85:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Columns.php:11:	private function getTagInstance($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Columns.php:32:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Columns.php:64:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/DotTab.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/DotTab.php:67:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/FormFeed.php:9:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/FormFeed.php:290:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Hr.php:11:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Hr.php:124:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Img.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Img.php:455:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/IndexEntry.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/IndexEntry.php:31:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/IndexInsert.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/IndexInsert.php:30:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/InlineTag.php:11:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/InlineTag.php:179:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Input.php:11:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Input.php:427:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Legend.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Legend.php:19:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Meter.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Meter.php:297:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Meter.php:304:	protected function makeSVG($type, $value, $max, $min, $optimum, $low, $high)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/NewColumn.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/NewColumn.php:15:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Option.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Option.php:33:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/PageFooter.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/PageFooter.php:150:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Pre.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Progress.php:7:	protected function makeSVG($type, $value, $max, $min, $optimum, $low, $high)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Select.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Select.php:61:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/SetHtmlPageFooter.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/SetHtmlPageFooter.php:70:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/SubstituteTag.php:8:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Table.php:11:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Table.php:524:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Table.php:1250:	 * This function determines the shrink factor when resizing tables
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Table.php:1256:	private function tbsqrt($val, $iteration = 3)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tag.php:86:	public function __construct(
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tag.php:111:	public function getTagName()
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tag.php:117:	protected function getAlign($property)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tag.php:123:	abstract public function open($attr, &$ahtml, &$ihtml);
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tag.php:125:	abstract public function close(&$ahtml, &$ihtml);
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TBody.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TBody.php:17:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Td.php:12:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Td.php:437:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TextArea.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TextArea.php:157:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TextCircle.php:11:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TextCircle.php:247:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TFoot.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TFoot.php:45:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Th.php:8:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/THead.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/THead.php:43:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Toc.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Toc.php:14:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TocEntry.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TocEntry.php:37:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/TocPageBreak.php:7:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tr.php:10:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tr.php:73:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tta.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Tts.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/Ttz.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/WatermarkImage.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/WatermarkImage.php:38:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/WatermarkText.php:8:	public function open($attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag/WatermarkText.php:22:	public function close(&$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag.php:77:	public function __construct(
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag.php:106:	private function getTagInstance($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag.php:131:	public static function getTagClassName($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag.php:173:	public function OpenTag($tag, $attr, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/Tag.php:244:	public function CloseTag($tag, &$ahtml, &$ihtml)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:31:	function unicode_hex($unicode_dec)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:214:	public function __construct(FontCache $fontCache, $fontDescriptor)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:223:	public function getMetrics($file, $fontkey, $TTCfontID = 0, $debug = false, $BMPonly = false, $useOTL = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:298:	function readTableDirectory($debug = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:320:	function checksumTables()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:341:	function sub32($x, $y)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:362:	function calcChecksum($data)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:384:	function get_table_pos($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:395:	function seek($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:401:	function skip($delta)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:407:	function seek_table($tag, $offset_in_table = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:416:	function read_tag()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:423:	function read_short()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:435:	function unpack_short($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:445:	function read_ushort()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:453:	function read_ulong()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:462:	function get_ushort($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:470:	function get_ulong($pos)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:479:	function pack_short($val)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:490:	function splice($stream, $offset, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:495:	function _set_ushort($stream, $offset, $value)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:502:	function _set_short($stream, $offset, $val)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:514:	function get_chunk($pos, $length)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:536:	function get_table($tag)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:547:	function add($tag, $data)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:555:	function getCTG($file, $TTCfontID = 0, $debug = false, $useOTL = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:645:	function getTTCFonts($file)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:672:	function extractInfo($debug = false, $BMPonly = false, $useOTL = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:1231:	function _getGDEFtables()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:1394:	function _getClassDefinitionTable()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:1437:	function _getGSUBtables()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:2418:	function _getGSUBarray(&$Lookup, &$lul, $scripttag)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:2928:	function _checkGSUBignore($flag, $glyph, $MarkFilteringSet)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:2957:	function _getGSUBignoreString($flag, $MarkFilteringSet)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3066:	function _makeGSUBcontextInputMatch($inputGlyphs, $ignore, $lookupGlyphs, $seqIndex)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3089:	function _makeGSUBinputMatch($inputGlyphs, $ignore)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3106:	function _makeGSUBbacktrackMatch($backtrackGlyphs, $ignore)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3121:	function _makeGSUBlookaheadMatch($lookaheadGlyphs, $ignore)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3136:	function _makeGSUBinputReplacement($nInput, $REPL, $ignore, $nBsubs, $mLen, $seqIndex)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3194:	function _getCoverage($convert2hex = true, $mode = 1)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3237:	function _getClasses($offset)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3276:	function _getGPOStables()
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3458:	function makeSubset($file, &$subset, $TTCfontID = 0, $debug = false, $useOTL = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:3951:	function makeSubsetSIP($file, &$subset, $TTCfontID = 0, $debug = false, $useOTL = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4466:	function getGlyphData($originalGlyphIdx, &$maxdepth, &$depth, &$points, &$contours)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4483:	function getGlyphs($originalGlyphIdx, &$start, &$glyphSet, &$subsetglyphs)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4524:	function getHMTX($numberOfHMetrics, $numGlyphs, &$glyphToChar, $scale)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4610:	function getHMetric($numberOfHMetrics, $gid)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4626:	function getLOCA($indexToLocFormat, $numGlyphs)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4650:	function getCMAP4($unicode_cmap_offset, &$glyphToChar, &$charToGlyph)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4712:	function endTTFile(&$stm)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFile.php:4762:	function repackageTTF($file, $TTCfontID = 0, $debug = false, $useOTL = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/TTFontFileAnalysis.php:9:	function extractCoreInfo($file, $TTCfontID = 0)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:116:	public static function get_ucd_record($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:130:	public static function get_general_category($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:136:	public static function get_combining_class($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:142:	public static function get_bidi_class($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:148:	public static function get_mirrored($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:154:	public static function get_east_asian_width($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:160:	public static function get_normalization_check($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:166:	public static function get_script($code)
+./lib/mPDF/vendor/mpdf/mpdf/src/Ucdn.php:673:	function general_category_is_mark($gen_cat)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/Arrays.php:8:	public static function get($array, $key, $default = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/Arrays.php:34:	public static function allUniqueSortedCombinations($array)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/Arrays.php:67:	public static function combinations($array, $k)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/NumericString.php:8:	public static function containsPercentChar($string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/NumericString.php:13:	public static function removePercentChar($string)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/PdfDate.php:23:	public static function format($date)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/UtfString.php:17:	public static function strcode2utf($str, $lo = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/UtfString.php:19:		$str = preg_replace_callback('/\&\#(\d+)\;/m', function ($matches) use ($lo) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/UtfString.php:22:		$str = preg_replace_callback('/\&\#x([0-9a-fA-F]+)\;/m', function ($matches) use ($lo) {
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/UtfString.php:35:	public static function code2utf($num, $lo = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Utils/UtfString.php:59:	public static function codeHex2utf($hex, $lo = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:32:	public function __construct($path, $size = self::SIZE_DEFAULT, $position = self::POSITION_CENTER_PAGE, $alpha = -1, $behindContent = false, $alphaBlend = 'Normal')
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:42:	public function getPath()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:47:	public function getSize()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:52:	public function getPosition()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:57:	public function getAlpha()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:62:	public function isBehindContent()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkImage.php:67:	public function getAlphaBlend()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:26:	public function __construct($text, $size = 96, $angle = 45, $color = 0, $alpha = 0.2, $font = null)
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:36:	public function getText()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:41:	public function getSize()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:46:	public function getAngle()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:51:	public function getColor()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:56:	public function getAlpha()
+./lib/mPDF/vendor/mpdf/mpdf/src/WatermarkText.php:61:	public function getFont()
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BackgroundWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BackgroundWriter.php:29:	public function writePatterns() // _putpatterns
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BackgroundWriter.php:224:	public function writeShaders() // _putshaders
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:24:	public function __construct(Mpdf $mpdf, Protection $protection)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:30:	public function write($s, $ln = true)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:39:	public function string($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:48:	public function object($obj_id = false, $onlynewobj = false)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:62:	public function stream($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:73:	public function utf16BigEndianTextString($s) // _UTF16BEtextstring
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:84:	public function utf8ToUtf16BigEndian($str, $setbom = true) // UTF8ToUTF16BE
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:106:	public function escape($s) // _escape
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:111:	public function escapeSlashes($s) // _escapeName
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:122:	public function unescape($s)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BaseWriter.php:181:	private function endPage($s, $ln)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BookmarkWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/BookmarkWriter.php:29:	public function writeBookmarks() // _putbookmarks
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ColorWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ColorWriter.php:29:	public function writeSpotColors() // _putspotcolors
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FontWriter.php:35:	public function __construct(Mpdf $mpdf, BaseWriter $writer, FontCache $fontCache, $fontDescriptor)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FontWriter.php:43:	public function writeFonts()
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FontWriter.php:443:	private function writeTTFontWidths(&$font, $asSubset, $maxUni) // _putTTfontwidths
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FontWriter.php:541:	private function writeFontRanges(&$range) // _putfontranges
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FontWriter.php:585:	private function writeFontWidths(&$font, $cidoffset = 0) // _putfontwidths
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FontWriter.php:639:	public function writeType0(&$font) // _putType0
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FormWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/FormWriter.php:29:	public function writeFormObjects() // _putformobjects
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ImageWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ImageWriter.php:29:	public function writeImages()
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/JavaScriptWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/JavaScriptWriter.php:29:	public function writeJavascript() // _putjavascript
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:40:	public function __construct(Mpdf $mpdf, BaseWriter $writer, Form $form, Protection $protection, LoggerInterface $logger)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:49:	public function writeMetadata() // _putmetadata
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:148:	public function writeInfo() // _putinfo
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:185:	public function writeOutputIntent() // _putoutputintent
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:258:	public function writeAssociatedFiles() // _putAssociatedFiles
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:327:	public function writeCatalog() //_putcatalog
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:505:	public function writeAnnotations() // _putannots
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:777:	public function writeEncryption() // _putencryption
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:793:	public function writeTrailer() // _puttrailer
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/MetadataWriter.php:808:	private function getVersionString()
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ObjectWriter.php:24:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ObjectWriter.php:30:	public function writeImportedObjects()
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/OptionalContentWriter.php:23:	public function __construct(Mpdf $mpdf, BaseWriter $writer)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/OptionalContentWriter.php:29:	public function writeOptionalContentGroups() // _putocg Optional Content Groups
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/PageWriter.php:34:	public function __construct(Mpdf $mpdf, Form $form, BaseWriter $writer, MetadataWriter $metadataWriter)
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/PageWriter.php:42:	public function writePages() // _putpages
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ResourceWriter.php:71:	public function __construct(
+./lib/mPDF/vendor/mpdf/mpdf/src/Writer/ResourceWriter.php:99:	public function writeResources() // _putresources
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:46:	public function __construct(
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:71:	public function getRequestTarget(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:88:	public function withRequestTarget(string $requestTarget): RequestInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:100:	public function getMethod(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:105:	public function withMethod(string $method): RequestInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:113:	public function getUri(): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:118:	public function withUri(UriInterface $uri, bool $preserveHost = false): RequestInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:134:	private function updateHostFromUri()
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:157:	public function getProtocolVersion(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:162:	public function withProtocolVersion(string $version): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:174:	public function getHeaders(): array
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:179:	public function hasHeader(string $header): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:184:	public function getHeader(string $header): array
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:197:	public function getHeaderLine(string $header):string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:202:	public function withHeader(string $header, $value): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:221:	public function withAddedHeader(string $header, $value): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:242:	public function withoutHeader(string $header): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:258:	public function getBody(): StreamInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:268:	public function withBody(StreamInterface $body): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:280:	private function setHeaders(array $headers)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:314:	private function trimHeaderValues(array $values)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Request.php:316:		return array_map(function ($value) {
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:51:	public function __construct($status = 200, array $headers = [], $body = null, $version = '1.1', $reason = null)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:69:	public function getStatusCode(): int
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:74:	public function getReasonPhrase(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:79:	public function withStatus(int $code, string $reasonPhrase = ''): ResponseInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:100:	public function getProtocolVersion(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:105:	public function withProtocolVersion(string $version): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:117:	public function getHeaders(): array
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:122:	public function hasHeader(string $header): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:127:	public function getHeader(string $header): array
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:140:	public function getHeaderLine(string $header): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:145:	public function withHeader(string $header, $value): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:164:	public function withAddedHeader(string $header, $value): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:185:	public function withoutHeader(string $header): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:201:	public function getBody(): StreamInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:210:	public function withBody(StreamInterface $body): MessageInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:222:	private function setHeaders(array $headers)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:256:	private function trimHeaderValues(array $values)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Response.php:258:		return array_map(function ($value) {
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:58:	private function __construct()
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:67:	public static function createFromResource($resource)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:89:	public static function create($content)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:102:	public function __destruct()
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:107:	public function __toString(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:120:	public function close(): void
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:130:	public function detach()
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:144:	public function getSize(): ?int
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:168:	public function tell(): int
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:179:	public function eof(): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:184:	public function isSeekable(): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:189:	public function seek(int $offset, int $whence = SEEK_SET): void
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:200:	public function rewind(): void
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:205:	public function isWritable(): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:210:	public function write(string $string): int
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:227:	public function isReadable(): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:232:	public function read(int $length): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:241:	public function getContents(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Stream.php:256:	public function getMetadata(?string $key = null): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:41:	public function __construct($uri = '')
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:62:	public function __toString(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:67:	public function getScheme(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:72:	public function getAuthority(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:90:	public function getUserInfo(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:95:	public function getHost(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:100:	public function getPort(): ?int
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:105:	public function getPath(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:110:	public function getQuery(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:115:	public function getFragment(): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:120:	public function withScheme(string $scheme): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:137:	public function withUserInfo(string $user, ?string $password = null): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:154:	public function withHost(string $host): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:170:	public function withPort(?int $port): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:182:	public function withPath(string $path): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:194:	public function withQuery(string $query): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:206:	public function withFragment(string $fragment): UriInterface
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:221:	private static function createUriString(string $scheme, string $authority, string $path, string $query, string $fragment): string
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:263:	private static function isNonStandardPort(string $scheme, int $port): bool
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:268:	private function filterPort(int $port): ?int
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:282:	private function filterPath($path)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:291:	private function filterQueryAndFragment($str)
+./lib/mPDF/vendor/mpdf/psr-http-message-shim/src/Uri.php:300:	private static function rawurlencodeMatchZero(array $match)
+./lib/mPDF/vendor/mpdf/psr-log-aware-trait/src/MpdfPsrLogAwareTrait.php:15:	public function setLogger(LoggerInterface $logger): void
+./lib/mPDF/vendor/mpdf/psr-log-aware-trait/src/PsrLogAwareTrait.php:15:	public function setLogger(LoggerInterface $logger): void
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:64:    public function __construct($useCloneMethod = false)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:82:    public function skipUncloneable($skipUncloneable = true)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:98:    public function copy($object)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:105:    public function addFilter(Filter $filter, Matcher $matcher)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:113:    public function prependFilter(Filter $filter, Matcher $matcher)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:121:    public function addTypeFilter(TypeFilter $filter, TypeMatcher $matcher)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:129:    public function prependTypeFilter(TypeFilter $filter, TypeMatcher $matcher)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:137:    private function recursiveCopy($var)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:173:    private function copyArray(array $array)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:191:    private function copyObject($object)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:233:    private function copyObjectProperty($object, ReflectionProperty $property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:256:                    function ($object) {
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:294:    private function getFirstMatchedTypeFilter(array $filterRecords, $var)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:298:            function (array $record) use ($var) {
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/DeepCopy.php:318:    private function first(array $elements, callable $predicate)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/deep_copy.php:5:use function function_exists;
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/deep_copy.php:16:    function deep_copy($value, $useCloneMethod = false)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/ChainableFilter.php:15:    public function __construct(Filter $filter)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/ChainableFilter.php:20:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php:18:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineCollectionFilter.php:28:            function ($item) use ($objectCopier) {
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineEmptyCollectionFilter.php:21:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/Doctrine/DoctrineProxyFilter.php:18:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/Filter.php:17:    public function apply($object, $property, $objectCopier);
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/KeepFilter.php:12:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/ReplaceFilter.php:20:    public function __construct(callable $callable)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/ReplaceFilter.php:30:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Filter/SetNullFilter.php:17:    public function apply($object, $property, $objectCopier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/Doctrine/DoctrineProxyMatcher.php:18:    public function matches($object, $property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/Matcher.php:13:    public function matches($object, $property);
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyMatcher.php:24:    public function __construct($class, $property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyMatcher.php:35:    public function matches($object, $property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyNameMatcher.php:18:    public function __construct($property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyNameMatcher.php:28:    public function matches($object, $property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyTypeMatcher.php:26:    public function __construct($propertyType)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Matcher/PropertyTypeMatcher.php:34:    public function matches($object, $property)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Reflection/ReflectionHelper.php:25:    public static function getProperties(ReflectionClass $ref)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/Reflection/ReflectionHelper.php:58:    public static function getProperty($object, $name)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Date/DateIntervalFilter.php:23:    public function apply($element)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Date/DatePeriodFilter.php:20:    public function apply($element)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/ReplaceFilter.php:18:    public function __construct(callable $callable)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/ReplaceFilter.php:26:    public function apply($element)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/ShallowCopyFilter.php:13:    public function apply($element)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/ArrayObjectFilter.php:18:    public function __construct(DeepCopy $copier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/ArrayObjectFilter.php:26:    public function apply($arrayObject)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php:17:    public function __construct(DeepCopy $copier)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php:25:    public function apply($element)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php:34:    private function createCopyClosure()
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php:38:        $copy = function (SplDoublyLinkedList $list) use ($copier) {
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php:12:    public function apply($element);
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php:15:    public function __construct($type)
+./lib/mPDF/vendor/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php:25:    public function matches($element)
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:26:    public function getProtocolVersion(): string;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:41:    public function withProtocolVersion(string $version): MessageInterface;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:68:    public function getHeaders(): array;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:78:    public function hasHeader(string $name): bool;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:94:    public function getHeader(string $name): array;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:115:    public function getHeaderLine(string $name): string;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:132:    public function withHeader(string $name, $value): MessageInterface;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:150:    public function withAddedHeader(string $name, $value): MessageInterface;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:164:    public function withoutHeader(string $name): MessageInterface;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:171:    public function getBody(): StreamInterface;
+./lib/mPDF/vendor/psr/http-message/src/MessageInterface.php:186:    public function withBody(StreamInterface $body): MessageInterface;
+./lib/mPDF/vendor/psr/http-message/src/RequestInterface.php:42:    public function getRequestTarget(): string;
+./lib/mPDF/vendor/psr/http-message/src/RequestInterface.php:61:    public function withRequestTarget(string $requestTarget): RequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/RequestInterface.php:69:    public function getMethod(): string;
+./lib/mPDF/vendor/psr/http-message/src/RequestInterface.php:86:    public function withMethod(string $method): RequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/RequestInterface.php:97:    public function getUri(): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/RequestInterface.php:129:    public function withUri(UriInterface $uri, bool $preserveHost = false): RequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/ResponseInterface.php:30:    public function getStatusCode(): int;
+./lib/mPDF/vendor/psr/http-message/src/ResponseInterface.php:52:    public function withStatus(int $code, string $reasonPhrase = ''): ResponseInterface;
+./lib/mPDF/vendor/psr/http-message/src/ResponseInterface.php:67:    public function getReasonPhrase(): string;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:54:    public function getServerParams(): array;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:66:    public function getCookieParams(): array;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:85:    public function withCookieParams(array $cookies): ServerRequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:99:    public function getQueryParams(): array;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:123:    public function withQueryParams(array $query): ServerRequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:137:    public function getUploadedFiles(): array;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:150:    public function withUploadedFiles(array $uploadedFiles): ServerRequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:167:    public function getParsedBody();
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:197:    public function withParsedBody($data): ServerRequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:210:    public function getAttributes(): array;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:227:    public function getAttribute(string $name, $default = null);
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:244:    public function withAttribute(string $name, $value): ServerRequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/ServerRequestInterface.php:260:    public function withoutAttribute(string $name): ServerRequestInterface;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:28:    public function __toString(): string;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:35:    public function close(): void;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:44:    public function detach();
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:51:    public function getSize(): ?int;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:59:    public function tell(): int;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:66:    public function eof(): bool;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:73:    public function isSeekable(): bool;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:87:    public function seek(int $offset, int $whence = SEEK_SET): void;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:99:    public function rewind(): void;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:106:    public function isWritable(): bool;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:115:    public function write(string $string): int;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:122:    public function isReadable(): bool;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:134:    public function read(int $length): string;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:143:    public function getContents(): string;
+./lib/mPDF/vendor/psr/http-message/src/StreamInterface.php:157:    public function getMetadata(?string $key = null);
+./lib/mPDF/vendor/psr/http-message/src/UploadedFileInterface.php:31:    public function getStream(): StreamInterface;
+./lib/mPDF/vendor/psr/http-message/src/UploadedFileInterface.php:65:    public function moveTo(string $targetPath): void;
+./lib/mPDF/vendor/psr/http-message/src/UploadedFileInterface.php:76:    public function getSize(): ?int;
+./lib/mPDF/vendor/psr/http-message/src/UploadedFileInterface.php:92:    public function getError(): int;
+./lib/mPDF/vendor/psr/http-message/src/UploadedFileInterface.php:107:    public function getClientFilename(): ?string;
+./lib/mPDF/vendor/psr/http-message/src/UploadedFileInterface.php:122:    public function getClientMediaType(): ?string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:41:    public function getScheme(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:61:    public function getAuthority(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:78:    public function getUserInfo(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:91:    public function getHost(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:108:    public function getPort(): ?int;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:135:    public function getPath(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:157:    public function getQuery(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:175:    public function getFragment(): string;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:192:    public function withScheme(string $scheme): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:208:    public function withUserInfo(string $user, ?string $password = null): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:222:    public function withHost(string $host): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:241:    public function withPort(?int $port): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:265:    public function withPath(string $path): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:282:    public function withQuery(string $query): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:298:    public function withFragment(string $fragment): UriInterface;
+./lib/mPDF/vendor/psr/http-message/src/UriInterface.php:323:    public function __toString(): string;
+./lib/mPDF/vendor/psr/log/src/LoggerAwareInterface.php:13:    public function setLogger(LoggerInterface $logger): void;
+./lib/mPDF/vendor/psr/log/src/LoggerAwareTrait.php:18:    public function setLogger(LoggerInterface $logger): void
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:27:    public function emergency(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:37:    public function alert(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:46:    public function critical(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:54:    public function error(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:64:    public function warning(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:71:    public function notice(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:80:    public function info(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:87:    public function debug(string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerInterface.php:97:    public function log($level, string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:18:    public function emergency(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:29:    public function alert(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:39:    public function critical(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:48:    public function error(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:59:    public function warning(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:67:    public function notice(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:77:    public function info(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:85:    public function debug(string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/psr/log/src/LoggerTrait.php:97:    abstract public function log($level, string|\Stringable $message, array $context = []): void;
+./lib/mPDF/vendor/psr/log/src/NullLogger.php:22:    public function log($level, string|\Stringable $message, array $context = []): void
+./lib/mPDF/vendor/setasign/fpdi/src/autoload.php:11:spl_autoload_register(static function ($class) {
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:48:    public function setPageFormat($size, $orientation)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:102:    public function useTemplate($tpl, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:152:    public function getTemplateSize($tpl, $width = null, $height = null)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:190:    public function beginTemplate($width = null, $height = null, $groupXObject = false)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:271:    public function endTemplate()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:320:    protected function getNextTemplateId()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:330:    public function AddPage($orientation = '', $size = '', $rotation = 0)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:341:    public function Link($x, $y, $w, $h, $link)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:352:    public function SetLink($link, $y = 0, $page = -1)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:363:    public function SetDrawColor($r, $g = null, $b = null)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:374:    public function SetFillColor($r, $g = null, $b = null)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:385:    public function SetLineWidth($width)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:396:    public function SetFont($family, $style = '', $size = 0)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:407:    public function SetFontSize($size)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:415:    protected function _putimages()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:453:    protected function _putxobjectdict()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTplTrait.php:465:    public function _out($s)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:24:    protected function _enddoc()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:46:    public function useTemplate($tpl, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:70:    public function getTemplateSize($tpl, $width = null, $height = null)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:84:    protected function _putimages()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:122:    protected function _putxobjectdict()
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:136:    protected function _putlinks($n)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdfTrait.php:185:    protected function _put($s, $newLine = true)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:99:    public function cleanUp($allReaders = false)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:115:    protected function setMinPdfVersion($pdfVersion)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:130:    protected function getPdfParserInstance(
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:155:    protected function getPdfReaderId(
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:202:    protected function getPdfReader($id)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:220:    public function setSourceFile($file)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:237:    public function setSourceFileWithParserParams(
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:266:    public function importPage(
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:449:    public function useImportedPage($pageId, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:531:    protected function adjustLastLink($externalLink, $xPt, $scaleX, $yPt, $newHeightPt, $scaleY, $importedPage)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:558:    public function getImportedPageSize($tpl, $width = null, $height = null)
+./lib/mPDF/vendor/setasign/fpdi/src/FpdiTrait.php:596:    protected function writePdfType(PdfType $value)
+./lib/mPDF/vendor/setasign/fpdi/src/GraphicsState.php:29:    public function __construct(?Matrix $ctm = null)
+./lib/mPDF/vendor/setasign/fpdi/src/GraphicsState.php:42:    public function add(Matrix $matrix)
+./lib/mPDF/vendor/setasign/fpdi/src/GraphicsState.php:54:    public function rotate($x, $y, $angle)
+./lib/mPDF/vendor/setasign/fpdi/src/GraphicsState.php:74:    public function translate($shiftX, $shiftY)
+./lib/mPDF/vendor/setasign/fpdi/src/GraphicsState.php:84:    public function scale($scaleX, $scaleY)
+./lib/mPDF/vendor/setasign/fpdi/src/GraphicsState.php:93:    public function toUserSpace(Vector $vector)
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Matrix.php:56:    public function __construct($a = 1, $b = 0, $c = 0, $d = 1, $e = 0, $f = 0)
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Matrix.php:69:    public function getValues()
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Matrix.php:78:    public function multiply(self $by)
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Vector.php:32:    public function __construct($x = .0, $y = .0)
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Vector.php:41:    public function getX()
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Vector.php:49:    public function getY()
+./lib/mPDF/vendor/setasign/fpdi/src/Math/Vector.php:58:    public function multiplyWithMatrix(Matrix $matrix)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php:39:    public function __construct(PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php:50:    public function getTrailer()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php:60:    protected function readTrailer()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:57:    public function __construct(PdfParser $parser, $fileHeaderOffset = 0)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:118:    public function getSize()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:128:    public function getTrailer()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:138:    public function getReaders()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:149:    public function getOffsetFor($objectNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:168:    public function getIndirectObject($objectNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:214:    protected function readXref($offset)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:231:    protected function initReaderInstance($initValue)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:287:    protected function checkForEncryption(PdfDictionary $dictionary)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php:303:    protected function findStartXref()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php:42:    public function __construct(PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php:54:    public function getSubSections()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php:63:    public function getOffsetFor($objectNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php:93:    protected function read()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php:179:    public function fixFaultySubSectionShift()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php:37:    public function __construct(PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php:47:    public function getOffsetFor($objectNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php:61:    public function getOffsets()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php:73:    protected function extract(StreamReader $reader)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php:105:    protected function read($xrefContent)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/ReaderInterface.php:26:    public function getOffsetFor($objectNumber);
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/CrossReference/ReaderInterface.php:33:    public function getTrailer();
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85.php:25:    public function decode($data)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/AsciiHex.php:24:    public function decode($data)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/AsciiHex.php:41:    public function encode($data, $leaveEOD = false)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/FilterInterface.php:24:    public function decode($data);
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Flate.php:26:    protected function extensionLoaded()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Flate.php:38:    public function decode($data)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php:70:    public function decode($data)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php:120:    protected function initsTable()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php:138:    protected function addStringToTable($oldString, $newString = '')
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php:159:    protected function getNextCode()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:76:    public function __construct(StreamReader $streamReader)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:87:    public function cleanUp()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:97:    public function getStreamReader()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:107:    public function getTokenizer()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:118:    protected function resolveFileHeader()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:155:    public function getCrossReference()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:170:    public function getPdfVersion()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:204:    public function getCatalog()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:222:    public function getIndirectObject($objectNumber, $cache = false)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:246:    public function readValue($token = null, $expectedType = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:353:    protected function parsePdfString()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:361:    protected function parsePdfHexString()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:370:    protected function parsePdfDictionary()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:378:    protected function parsePdfName()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:387:    protected function parsePdfArray()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:398:    protected function parsePdfIndirectObject($objectNumber, $generationNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/PdfParser.php:417:    protected function ensureExpectedType($token, $expectedType)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:25:    public static function createByString($content, $maxMemory = 2097152)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:40:    public static function createByFile($filename)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:101:    public function __construct($stream, $closeStream = false)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:130:    public function __destruct()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:138:    public function cleanUp()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:151:    public function getBufferLength($atOffset = false)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:165:    public function getPosition()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:176:    public function getBuffer($atOffset = true)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:197:    public function getByte($position = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:220:    public function readByte($position = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:257:    public function readBytes($length, $position = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:291:    public function readLine($length = 1024)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:327:    public function setOffset($offset)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:343:    public function getOffset()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:353:    public function addOffset($offset)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:363:    public function ensureContent()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:378:    public function getStream()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:388:    public function getTotalLength()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:410:    public function reset($pos = 0, $length = 200)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:446:    public function ensure($pos, $length)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/StreamReader.php:465:    public function increaseLength($minLength = 100)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Tokenizer.php:35:    public function __construct(StreamReader $streamReader)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Tokenizer.php:45:    public function getStreamReader()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Tokenizer.php:53:    public function clearStack()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Tokenizer.php:63:    public function pushStack($token)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Tokenizer.php:73:    public function getNextToken()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Tokenizer.php:135:    public function leapWhiteSpaces()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php:31:    public static function parse(Tokenizer $tokenizer, PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php:35:        // Recurse into this function until we reach the end of the array.
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php:56:    public static function create(array $values = [])
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php:72:    public static function ensure($array, $size = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfBoolean.php:24:    public static function create($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfBoolean.php:38:    public static function ensure($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php:31:    public static function parse(Tokenizer $tokenizer, StreamReader $streamReader, PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php:92:    public static function create(array $entries = [])
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php:109:    public static function get($dictionary, $key, ?PdfType $default = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php:127:    public static function ensure($dictionary)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php:26:    public static function parse(StreamReader $streamReader)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php:58:    public static function create($string)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php:73:    public static function ensure($hexString)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php:33:    public static function parse(
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php:68:    public static function create($objectNumber, $generationNumber, PdfType $value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php:85:    public static function ensure($indirectObject)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObjectReference.php:25:    public static function create($objectNumber, $generationNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObjectReference.php:41:    public static function ensure($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php:28:    public static function parse(Tokenizer $tokenizer, StreamReader $streamReader)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php:46:    public static function unescape($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php:52:        return \preg_replace_callback('/#([a-fA-F\d]{2})/', function ($matches) {
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php:63:    public static function create($string)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php:78:    public static function ensure($name)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfNumeric.php:24:    public static function create($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfNumeric.php:39:    public static function ensure($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:38:    public static function parse(PdfDictionary $dictionary, StreamReader $reader, ?PdfParser $parser = null)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:81:    public static function create(PdfDictionary $dictionary, $stream)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:97:    public static function ensure($stream)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:132:    public function getStream($cache = false)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:175:    protected function extractStream()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:221:    public function getFilters()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php:244:    public function getUnfilteredStream()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php:26:    public static function parse(StreamReader $streamReader)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php:61:    public static function create($value)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php:76:    public static function ensure($string)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php:87:    public static function escape($s)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php:117:    public static function unescape($s)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfToken.php:24:    public static function create($token)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfToken.php:39:    public static function ensure($token)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php:35:    public static function resolve(
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php:71:    protected static function ensureType($type, $value, $errorMessage)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php:92:    public static function flatten(PdfType $value, PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:57:    public static function byPdfArray($array, PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:68:    public static function byVectors(Vector $ll, Vector $ur)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:81:    public function __construct($ax, $ay, $bx, $by)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:94:    public function getWidth()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:104:    public function getHeight()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:114:    public function getLlx()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:124:    public function getLly()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:134:    public function getUrx()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:144:    public function getUry()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:154:    public function toArray()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php:169:    public function toPdfArray()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:66:    public function __construct(PdfIndirectObject $page, PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:77:    public function getPageObject()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:90:    public function getPageDictionary()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:109:    public function getAttribute($name, $inherited = true)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:121:                $inheritedKeys = \array_filter($inheritedKeys, static function ($key) use ($dict) {
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:172:    public function getRotation()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:199:    public function getBoundary($box = PageBoundaries::CROP_BOX, $fallback = true)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:233:    public function getWidthAndHeight($box = PageBoundaries::CROP_BOX, $fallback = true)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:258:    public function getContentStream()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/Page.php:309:    public function getExternalLinks($box = PageBoundaries::CROP_BOX)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PageBoundaries.php:90:    public static function isValidName($name)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:51:    public function __construct(PdfParser $parser)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:59:    public function __destruct()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:71:    public function getParser()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:82:    public function getPdfVersion()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:95:    public function getPageCount()
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:119:    public function getPage($pageNumber)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:145:            $readPages = function ($kids) use (&$readPages, &$alreadyReadKids) {
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:209:    protected function readPages($readAll = false)
+./lib/mPDF/vendor/setasign/fpdi/src/PdfReader/PdfReader.php:217:        $readPages = function ($kids, $count) use (&$readPages, &$alreadyReadKids, $readAll, $expectedPageCount) {
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:65:    protected function _enddoc()
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:76:    protected function getNextTemplateId()
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:97:    public function useTemplate($tpl, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:118:    public function useImportedPage($pageId, $x = 0, $y = 0, $width = null, $height = null, $adjustPageSize = false)
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:140:    public function getTemplateSize($tpl, $width = null, $height = null)
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:149:    protected function _getxobjectdict()
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:165:    protected function _putxobjects()
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:217:    protected function _put($s, $newLine = true)
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:232:    protected function _newobj($objid = '')
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:244:    protected function writePdfType(PdfType $value)
+./lib/mPDF/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php:290:    protected function adjustLastLink($externalLink, $xPt, $scaleX, $yPt, $newHeightPt, $scaleY, $importedPage)
+./lib/PHPMailer/language/phpmailer.lang-si.php:20:$PHPMAILER_LANG['instantiate']          = 'mail function එක ක්‍රියාත්මක කළ නොහැක.';
+./lib/PHPMailer/src/DSNConfigurator.php:41:    public static function mailer($dsn, $exceptions = null)
+./lib/PHPMailer/src/DSNConfigurator.php:60:    public function configure(PHPMailer $mailer, $dsn)
+./lib/PHPMailer/src/DSNConfigurator.php:78:    private function parseDSN($dsn)
+./lib/PHPMailer/src/DSNConfigurator.php:101:    private function applyConfig(PHPMailer $mailer, $config)
+./lib/PHPMailer/src/DSNConfigurator.php:138:    private function configureSMTP($mailer, $config)
+./lib/PHPMailer/src/DSNConfigurator.php:173:    private function configureOptions(PHPMailer $mailer, $options)
+./lib/PHPMailer/src/DSNConfigurator.php:222:     * Wrapper for the built-in parse_url function to work around a bug in PHP 5.5.
+./lib/PHPMailer/src/DSNConfigurator.php:228:    protected function parseUrl($url)
+./lib/PHPMailer/src/Exception.php:36:    public function errorMessage()
+./lib/PHPMailer/src/OAuth.php:87:    public function __construct($options)
+./lib/PHPMailer/src/OAuth.php:101:    protected function getGrant()
+./lib/PHPMailer/src/OAuth.php:111:    protected function getToken()
+./lib/PHPMailer/src/OAuth.php:124:    public function getOauth64()
+./lib/PHPMailer/src/OAuthTokenProvider.php:43:    public function getOauth64();
+./lib/PHPMailer/src/PHPMailer.php:549:     * Callback Action function name.
+./lib/PHPMailer/src/PHPMailer.php:551:     * The function that handles the result of the send email action.
+./lib/PHPMailer/src/PHPMailer.php:569:    public $action_function = '';
+./lib/PHPMailer/src/PHPMailer.php:845:    public function __construct($exceptions = null)
+./lib/PHPMailer/src/PHPMailer.php:857:    public function __destruct()
+./lib/PHPMailer/src/PHPMailer.php:877:    private function mailPassthru($to, $subject, $body, $header, $params)
+./lib/PHPMailer/src/PHPMailer.php:879:        //Check overloading of mail function to avoid double-encoding
+./lib/PHPMailer/src/PHPMailer.php:912:    protected function edebug($str)
+./lib/PHPMailer/src/PHPMailer.php:923:        //Avoid clash with built-in function names
+./lib/PHPMailer/src/PHPMailer.php:967:    public function isHTML($isHtml = true)
+./lib/PHPMailer/src/PHPMailer.php:979:    public function isSMTP()
+./lib/PHPMailer/src/PHPMailer.php:987:    public function isMail()
+./lib/PHPMailer/src/PHPMailer.php:999:    private function parseSendmailPath($sendmailPath)
+./lib/PHPMailer/src/PHPMailer.php:1043:    public function isSendmail()
+./lib/PHPMailer/src/PHPMailer.php:1057:    public function isQmail()
+./lib/PHPMailer/src/PHPMailer.php:1078:    public function addAddress($address, $name = '')
+./lib/PHPMailer/src/PHPMailer.php:1093:    public function addCC($address, $name = '')
+./lib/PHPMailer/src/PHPMailer.php:1108:    public function addBCC($address, $name = '')
+./lib/PHPMailer/src/PHPMailer.php:1123:    public function addReplyTo($address, $name = '')
+./lib/PHPMailer/src/PHPMailer.php:1142:    protected function addOrEnqueueAnAddress($kind, $address, $name)
+./lib/PHPMailer/src/PHPMailer.php:1204:    public function setBoundaries()
+./lib/PHPMailer/src/PHPMailer.php:1224:    protected function addAnAddress($kind, $address, $name = '')
+./lib/PHPMailer/src/PHPMailer.php:1287:     * Uses the imap_rfc822_parse_adrlist function if the IMAP extension is available and
+./lib/PHPMailer/src/PHPMailer.php:1301:    public static function parseAddresses($addrstr, $useimap = null, $charset = self::CHARSET_ISO88591)
+./lib/PHPMailer/src/PHPMailer.php:1353:    protected static function parseSimplerAddresses($addrstr, $charset)
+./lib/PHPMailer/src/PHPMailer.php:1396:    private static function parseEmailString($input)
+./lib/PHPMailer/src/PHPMailer.php:1435:    public function setFrom($address, $name = '', $auto = true)
+./lib/PHPMailer/src/PHPMailer.php:1480:    public function getLastMessageID()
+./lib/PHPMailer/src/PHPMailer.php:1510:    public static function validateAddress($address, $patternselect = null)
+./lib/PHPMailer/src/PHPMailer.php:1594:    public static function idnSupported()
+./lib/PHPMailer/src/PHPMailer.php:1602:     * This function silently returns unmodified address if:
+./lib/PHPMailer/src/PHPMailer.php:1613:    public function punyencodeAddress($address)
+./lib/PHPMailer/src/PHPMailer.php:1663:    public function send()
+./lib/PHPMailer/src/PHPMailer.php:1689:    public function preSend()
+./lib/PHPMailer/src/PHPMailer.php:1846:    public function postSend()
+./lib/PHPMailer/src/PHPMailer.php:1892:    protected function sendmailSend($header, $body)
+./lib/PHPMailer/src/PHPMailer.php:2005:    protected static function isShellSafe($string)
+./lib/PHPMailer/src/PHPMailer.php:2046:    protected static function isPermittedPath($path)
+./lib/PHPMailer/src/PHPMailer.php:2059:    protected static function fileIsAccessible($path)
+./lib/PHPMailer/src/PHPMailer.php:2084:    protected function mailSend($header, $body)
+./lib/PHPMailer/src/PHPMailer.php:2158:     * Override this function to load your own SMTP implementation,
+./lib/PHPMailer/src/PHPMailer.php:2163:    public function getSMTPInstance()
+./lib/PHPMailer/src/PHPMailer.php:2177:    public function setSMTPInstance(SMTP $smtp)
+./lib/PHPMailer/src/PHPMailer.php:2192:    public function setSMTPXclientAttribute($name, $value)
+./lib/PHPMailer/src/PHPMailer.php:2211:    public function getSMTPXclientAttributes()
+./lib/PHPMailer/src/PHPMailer.php:2231:    protected function smtpSend($header, $body)
+./lib/PHPMailer/src/PHPMailer.php:2324:    public function smtpConnect($options = null)
+./lib/PHPMailer/src/PHPMailer.php:2474:    public function smtpClose()
+./lib/PHPMailer/src/PHPMailer.php:2494:    public static function setLanguage($langcode = 'en', $lang_path = '')
+./lib/PHPMailer/src/PHPMailer.php:2622:    public function getTranslations()
+./lib/PHPMailer/src/PHPMailer.php:2642:    public function addrAppend($type, $addr)
+./lib/PHPMailer/src/PHPMailer.php:2660:    public function addrFormat($addr)
+./lib/PHPMailer/src/PHPMailer.php:2682:    public function wrapText($message, $length, $qp_mode = false)
+./lib/PHPMailer/src/PHPMailer.php:2782:    public function utf8CharBoundary($encodedText, $maxLength)
+./lib/PHPMailer/src/PHPMailer.php:2826:    public function setWordWrap()
+./lib/PHPMailer/src/PHPMailer.php:2850:    public function createHeader()
+./lib/PHPMailer/src/PHPMailer.php:2953:    public function getMailMIME()
+./lib/PHPMailer/src/PHPMailer.php:3012:    public function getSentMIMEMessage()
+./lib/PHPMailer/src/PHPMailer.php:3023:    protected function generateId()
+./lib/PHPMailer/src/PHPMailer.php:3056:    public function createBody()
+./lib/PHPMailer/src/PHPMailer.php:3343:    public function getBoundaries()
+./lib/PHPMailer/src/PHPMailer.php:3361:    protected function getBoundary($boundary, $charSet, $contentType, $encoding)
+./lib/PHPMailer/src/PHPMailer.php:3392:    protected function endBoundary($boundary)
+./lib/PHPMailer/src/PHPMailer.php:3401:    protected function setMessageType()
+./lib/PHPMailer/src/PHPMailer.php:3428:    public function headerLine($name, $value)
+./lib/PHPMailer/src/PHPMailer.php:3440:    public function textLine($value)
+./lib/PHPMailer/src/PHPMailer.php:3462:    public function addAttachment(
+./lib/PHPMailer/src/PHPMailer.php:3515:    public function getAttachments()
+./lib/PHPMailer/src/PHPMailer.php:3531:    protected function attachAll($disposition_type, $boundary)
+./lib/PHPMailer/src/PHPMailer.php:3641:    protected function encodeFile($path, $encoding = self::ENCODING_BASE64)
+./lib/PHPMailer/src/PHPMailer.php:3676:    public function encodeString($str, $encoding = self::ENCODING_BASE64)
+./lib/PHPMailer/src/PHPMailer.php:3723:    public function encodeHeader($str, $position = 'text')
+./lib/PHPMailer/src/PHPMailer.php:3787:                    //Use a custom function which correctly encodes and wraps long
+./lib/PHPMailer/src/PHPMailer.php:3819:    public static function decodeHeader($value, $charset = self::CHARSET_ISO88591)
+./lib/PHPMailer/src/PHPMailer.php:3853:    public function hasMultiBytes($str)
+./lib/PHPMailer/src/PHPMailer.php:3870:    public function has8bitChars($text)
+./lib/PHPMailer/src/PHPMailer.php:3878:     * Adapted from a function by paravoid.
+./lib/PHPMailer/src/PHPMailer.php:3887:    public function base64EncodeWrapMB($str, $linebreak = null)
+./lib/PHPMailer/src/PHPMailer.php:3928:    public function encodeQP($string)
+./lib/PHPMailer/src/PHPMailer.php:3943:    public function encodeQ($str, $position = 'text')
+./lib/PHPMailer/src/PHPMailer.php:4001:    public function addStringAttachment(
+./lib/PHPMailer/src/PHPMailer.php:4064:    public function addEmbeddedImage(
+./lib/PHPMailer/src/PHPMailer.php:4134:    public function addStringEmbeddedImage(
+./lib/PHPMailer/src/PHPMailer.php:4183:    protected function validateEncoding($encoding)
+./lib/PHPMailer/src/PHPMailer.php:4205:    protected function cidExists($cid)
+./lib/PHPMailer/src/PHPMailer.php:4221:    public function inlineImageExists()
+./lib/PHPMailer/src/PHPMailer.php:4237:    public function attachmentExists()
+./lib/PHPMailer/src/PHPMailer.php:4253:    public function alternativeExists()
+./lib/PHPMailer/src/PHPMailer.php:4263:    public function clearQueuedAddresses($kind)
+./lib/PHPMailer/src/PHPMailer.php:4267:            static function ($params) use ($kind) {
+./lib/PHPMailer/src/PHPMailer.php:4276:    public function clearAddresses()
+./lib/PHPMailer/src/PHPMailer.php:4288:    public function clearCCs()
+./lib/PHPMailer/src/PHPMailer.php:4300:    public function clearBCCs()
+./lib/PHPMailer/src/PHPMailer.php:4312:    public function clearReplyTos()
+./lib/PHPMailer/src/PHPMailer.php:4321:    public function clearAllRecipients()
+./lib/PHPMailer/src/PHPMailer.php:4333:    public function clearAttachments()
+./lib/PHPMailer/src/PHPMailer.php:4341:    public function clearCustomHeaders()
+./lib/PHPMailer/src/PHPMailer.php:4356:    public function clearCustomHeader($name, $value = null)
+./lib/PHPMailer/src/PHPMailer.php:4388:    public function replaceCustomHeader($name, $value = null)
+./lib/PHPMailer/src/PHPMailer.php:4424:    protected function setError($msg)
+./lib/PHPMailer/src/PHPMailer.php:4450:    public static function rfcDate()
+./lib/PHPMailer/src/PHPMailer.php:4477:    private static function sanitiseDate($date)
+./lib/PHPMailer/src/PHPMailer.php:4509:    protected function serverHostname()
+./lib/PHPMailer/src/PHPMailer.php:4536:    public static function isValidHost($host)
+./lib/PHPMailer/src/PHPMailer.php:4566:    protected function addressHasUnicodeLocalPart($address)
+./lib/PHPMailer/src/PHPMailer.php:4576:    protected function anyAddressHasUnicodeLocalPart($addresses)
+./lib/PHPMailer/src/PHPMailer.php:4594:    public function needsSMTPUTF8()
+./lib/PHPMailer/src/PHPMailer.php:4607:    protected static function lang($key)
+./lib/PHPMailer/src/PHPMailer.php:4634:    private function getSmtpErrorMessage($base_key)
+./lib/PHPMailer/src/PHPMailer.php:4653:    public function isError()
+./lib/PHPMailer/src/PHPMailer.php:4669:    public function addCustomHeader($name, $value = null)
+./lib/PHPMailer/src/PHPMailer.php:4695:    public function getCustomHeaders()
+./lib/PHPMailer/src/PHPMailer.php:4721:    public function msgHTML($message, $basedir = '', $advanced = false)
+./lib/PHPMailer/src/PHPMailer.php:4824:     * Note - older versions of this function used a bundled advanced converter
+./lib/PHPMailer/src/PHPMailer.php:4845:    public function html2text($html, $advanced = false)
+./lib/PHPMailer/src/PHPMailer.php:4865:    public static function _mime_types($ext = '')
+./lib/PHPMailer/src/PHPMailer.php:4998:    public static function filenameToType($filename)
+./lib/PHPMailer/src/PHPMailer.php:5022:    public static function mb_pathinfo($path, $options = null)
+./lib/PHPMailer/src/PHPMailer.php:5060:     * You should avoid this function - it's more verbose, less efficient, more error-prone and
+./lib/PHPMailer/src/PHPMailer.php:5072:    public function set($name, $value = '')
+./lib/PHPMailer/src/PHPMailer.php:5091:    public function secureHeader($str)
+./lib/PHPMailer/src/PHPMailer.php:5106:    public static function normalizeBreaks($text, $breaktype = null)
+./lib/PHPMailer/src/PHPMailer.php:5128:    public static function stripTrailingWSP($text)
+./lib/PHPMailer/src/PHPMailer.php:5140:    public static function stripTrailingBreaks($text)
+./lib/PHPMailer/src/PHPMailer.php:5150:    public static function getLE()
+./lib/PHPMailer/src/PHPMailer.php:5160:    protected static function setLE($le)
+./lib/PHPMailer/src/PHPMailer.php:5173:    public function sign($cert_filename, $key_filename, $key_pass, $extracerts_filename = '')
+./lib/PHPMailer/src/PHPMailer.php:5188:    public function DKIM_QP($txt)
+./lib/PHPMailer/src/PHPMailer.php:5213:    public function DKIM_Sign($signHeader)
+./lib/PHPMailer/src/PHPMailer.php:5257:    public function DKIM_HeaderC($signHeader)
+./lib/PHPMailer/src/PHPMailer.php:5301:    public function DKIM_BodyC($body)
+./lib/PHPMailer/src/PHPMailer.php:5324:    public function DKIM_Add($headers_line, $subject, $body)
+./lib/PHPMailer/src/PHPMailer.php:5468:    public static function hasLineLongerThanMax($str)
+./lib/PHPMailer/src/PHPMailer.php:5483:    public static function quotedString($str)
+./lib/PHPMailer/src/PHPMailer.php:5501:    public function getToAddresses()
+./lib/PHPMailer/src/PHPMailer.php:5512:    public function getCcAddresses()
+./lib/PHPMailer/src/PHPMailer.php:5523:    public function getBccAddresses()
+./lib/PHPMailer/src/PHPMailer.php:5534:    public function getReplyToAddresses()
+./lib/PHPMailer/src/PHPMailer.php:5545:    public function getAllRecipientAddresses()
+./lib/PHPMailer/src/PHPMailer.php:5562:    protected function doCallback($isSent, $to, $cc, $bcc, $subject, $body, $from, $extra)
+./lib/PHPMailer/src/PHPMailer.php:5574:    public function getOAuth()
+./lib/PHPMailer/src/PHPMailer.php:5582:    public function setOAuth(OAuthTokenProvider $oauth)
+./lib/PHPMailer/src/POP3.php:173:    public static function popBeforeSmtp(
+./lib/PHPMailer/src/POP3.php:200:    public function authorise($host, $port = false, $timeout = false, $username = '', $password = '', $debug_level = 0)
+./lib/PHPMailer/src/POP3.php:245:    public function connect($host, $port = false, $tval = 30)
+./lib/PHPMailer/src/POP3.php:254:        set_error_handler(function () {
+./lib/PHPMailer/src/POP3.php:310:    public function login($username = '', $password = '')
+./lib/PHPMailer/src/POP3.php:342:    public function disconnect()
+./lib/PHPMailer/src/POP3.php:379:    protected function getResponse($size = 128)
+./lib/PHPMailer/src/POP3.php:396:    protected function sendString($string)
+./lib/PHPMailer/src/POP3.php:417:    protected function checkResponse($string)
+./lib/PHPMailer/src/POP3.php:434:    protected function setError($error)
+./lib/PHPMailer/src/POP3.php:451:    public function getErrors()
+./lib/PHPMailer/src/POP3.php:464:    protected function catchWarning($errno, $errstr, $errfile, $errline)
+./lib/PHPMailer/src/POP3.php:479:    protected static function stripControls($string)
+./lib/PHPMailer/src/SMTP.php:175:     * This needs to be quite high to function correctly with hosts using greetdelay as an anti-spam measure.
+./lib/PHPMailer/src/SMTP.php:287:    protected function edebug($str, $level = 0)
+./lib/PHPMailer/src/SMTP.php:299:        //Avoid clash with built-in function names
+./lib/PHPMailer/src/SMTP.php:348:    public function connect($host, $port = null, $timeout = 30, $options = [])
+./lib/PHPMailer/src/SMTP.php:407:    protected function getSMTPConnection($host, $port = null, $timeout = 30, $options = [])
+./lib/PHPMailer/src/SMTP.php:420:            set_error_handler(function () {
+./lib/PHPMailer/src/SMTP.php:437:            set_error_handler(function () {
+./lib/PHPMailer/src/SMTP.php:486:    public function startTLS()
+./lib/PHPMailer/src/SMTP.php:505:            set_error_handler(function () {
+./lib/PHPMailer/src/SMTP.php:531:    public function authenticate(
+./lib/PHPMailer/src/SMTP.php:695:     * in case that function is not available.
+./lib/PHPMailer/src/SMTP.php:702:    protected function hmac($data, $key)
+./lib/PHPMailer/src/SMTP.php:734:    public function connected()
+./lib/PHPMailer/src/SMTP.php:757:     * Don't use this function without first trying to use QUIT.
+./lib/PHPMailer/src/SMTP.php:761:    public function close()
+./lib/PHPMailer/src/SMTP.php:773:    private function iterateLines($s)
+./lib/PHPMailer/src/SMTP.php:805:    public function data($msg_data)
+./lib/PHPMailer/src/SMTP.php:899:    public function hello($host = '')
+./lib/PHPMailer/src/SMTP.php:925:    protected function sendHello($hello, $host)
+./lib/PHPMailer/src/SMTP.php:944:    protected function parseHelloFields($type)
+./lib/PHPMailer/src/SMTP.php:1000:    public function mail($from)
+./lib/PHPMailer/src/SMTP.php:1021:    public function quit($close_on_error = true)
+./lib/PHPMailer/src/SMTP.php:1045:    public function recipient($address, $dsn = '')
+./lib/PHPMailer/src/SMTP.php:1078:    public function xclient(array $vars)
+./lib/PHPMailer/src/SMTP.php:1099:    public function reset()
+./lib/PHPMailer/src/SMTP.php:1113:    protected function sendCommand($command, $commandstring, $expect)
+./lib/PHPMailer/src/SMTP.php:1187:    public function sendAndMail($from)
+./lib/PHPMailer/src/SMTP.php:1199:    public function verify($name)
+./lib/PHPMailer/src/SMTP.php:1210:    public function noop()
+./lib/PHPMailer/src/SMTP.php:1224:    public function turn()
+./lib/PHPMailer/src/SMTP.php:1240:    public function client_send($data, $command = '')
+./lib/PHPMailer/src/SMTP.php:1252:        set_error_handler(function () {
+./lib/PHPMailer/src/SMTP.php:1266:    public function getError()
+./lib/PHPMailer/src/SMTP.php:1276:    public function getServerExtList()
+./lib/PHPMailer/src/SMTP.php:1298:    public function getServerExt($name)
+./lib/PHPMailer/src/SMTP.php:1326:    public function getLastReply()
+./lib/PHPMailer/src/SMTP.php:1340:    protected function get_lines()
+./lib/PHPMailer/src/SMTP.php:1357:            set_error_handler(function () {
+./lib/PHPMailer/src/SMTP.php:1440:    public function setVerp($enabled = false)
+./lib/PHPMailer/src/SMTP.php:1450:    public function getVerp()
+./lib/PHPMailer/src/SMTP.php:1460:    public function setSMTPUTF8($enabled = false)
+./lib/PHPMailer/src/SMTP.php:1470:    public function getSMTPUTF8()
+./lib/PHPMailer/src/SMTP.php:1483:    protected function setError($message, $detail = '', $smtp_code = '', $smtp_code_ex = '')
+./lib/PHPMailer/src/SMTP.php:1498:    public function setDebugOutput($method = 'echo')
+./lib/PHPMailer/src/SMTP.php:1508:    public function getDebugOutput()
+./lib/PHPMailer/src/SMTP.php:1518:    public function setDebugLevel($level = 0)
+./lib/PHPMailer/src/SMTP.php:1528:    public function getDebugLevel()
+./lib/PHPMailer/src/SMTP.php:1538:    public function setTimeout($timeout = 0)
+./lib/PHPMailer/src/SMTP.php:1548:    public function getTimeout()
+./lib/PHPMailer/src/SMTP.php:1561:    protected function errorHandler($errno, $errmsg, $errfile = '', $errline = 0)
+./lib/PHPMailer/src/SMTP.php:1584:    protected function recordLastTransactionID()
+./lib/PHPMailer/src/SMTP.php:1613:    public function getLastTransactionID()
+./obras_sociales.php:146:function abrirModalObraSocial(id) {
+./obras_sociales.php:162:                form.addEventListener('submit', function (e) {
+./obras_sociales.php:205:document.getElementById('btnGuardarObraSocial').addEventListener('click', function () {
+./ordenes.php:92:        setTimeout(function () {
+./ordenes.php:254:function ejecutarScripts(container) {
+./ordenes.php:256:    scripts.forEach(function (oldScript) {
+./ordenes.php:268:function abrirModalOrden(id) {
+./ordenes.php:287:                form.addEventListener('submit', function (e) {
+./ordenes.php:336:document.getElementById('btnGuardarOrden').addEventListener('click', function () {
+./orden_formulario.php:267:    (function () {
+./orden_formulario.php:284:        function actualizarDatosPaciente() {
+./orden_formulario.php:311:        function calcularCobro() {
+./orden_formulario.php:314:            seleccionados.forEach(function (cb) {
+./orden_formulario.php:330:            var formato = function (v) {
+./orden_formulario.php:340:        document.querySelectorAll('input[name="estudios_ids[]"]').forEach(function (cb) {
+./orden_formulario.php:344:        function buscarPacientes() {
+./orden_formulario.php:351:            var opciones = Array.from(selectPaciente.options).filter(function (o) { return o.value !== ''; });
+./orden_formulario.php:352:            var matches = opciones.filter(function (o) { return o.text.toLowerCase().includes(term); });
+./orden_formulario.php:361:            matches.slice(0, 10).forEach(function (op) {
+./orden_formulario.php:366:                div.onclick = function () {
+./orden_formulario.php:381:        document.addEventListener('click', function (e) {
+./orden_formulario.php:390:        function filtrarEstudios(term) {
+./orden_formulario.php:391:            listaEstudios.querySelectorAll('.study-option').forEach(function (opt) {
+./orden_formulario.php:398:            inputEstudio.addEventListener('input', function () {
+./orden_formulario.php:402:            inputEstudio.addEventListener('keydown', function (e) {
+./orden_formulario.php:409:                var visibles = Array.from(listaEstudios.querySelectorAll('.study-option')).filter(function (o) { return !o.hidden; });
+./orden_formulario.php:412:                var elegido = visibles.find(function (o) { return (o.dataset.codigo || '').toLowerCase() === term; });
+./orden_formulario.php:422:                        setTimeout(function () { elegido.style.background = ''; }, 600);
+./orden_pdf.php:55:function fecha_ddmmyyyy(?string $fecha): string
+./orden_pdf.php:62:function formato_moneda(float $v): string
+./pacientes.php:151:function abrirModalPaciente(id) {
+./pacientes.php:171:                form.addEventListener('submit', function (e) {
+./pacientes.php:214:document.getElementById('btnGuardarPaciente').addEventListener('click', function () {
+./paciente_formulario.php:228:function renderFormularioPaciente($paciente, $obrasSociales, $obraSocialCodigo, $nroCredencial, $cobertura, $porcentajeCobertura, $error, $esModal, $id, $volverAOrden) {
+./paciente_formulario.php:321:    (function () {
+./paciente_formulario.php:330:        function actualizar() {
+./pdf_helper.php:12:function crear_pdf(string $titulo = 'Resultado'): \Mpdf\Mpdf
+./pdf_helper.php:44:function html_header_pdf(array $config): string
+./pdf_helper.php:69:function html_footer_pdf(array $config): string
+./precios_practicas.php:93:function abrirModalPrecio(id) {
+./precios_practicas.php:109:                form.addEventListener('submit', function (e) {
+./precios_practicas.php:152:document.getElementById('btnGuardarPrecio').addEventListener('click', function () {
+./recepcion_muestras.php:168:function abrirModalCheckin(ordenId) {
+./recepcion_muestras.php:183:                form.addEventListener('submit', function (e) {
+./recepcion_muestras.php:222:    btnValidarTodo.onclick = function () {
+./recepcion_muestras.php:223:        document.querySelectorAll('#modalCheckinBody .checkin-estudio').forEach(function (box) {
+./recepcion_muestras.php:233:document.getElementById('btnGuardarCheckin').addEventListener('click', function () {
+./reporte_estudios_realizados.php:20:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_estudios_realizados_pdf.php:13:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_liquidacion_mensual.php:23:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_liquidacion_mensual.php:289:(function () {
+./reporte_liquidacion_mensual.php:296:        btnObra.addEventListener('click', function () {
+./reporte_liquidacion_mensual.php:301:        btnTotal.addEventListener('click', function () {
+./reporte_liquidacion_mensual_pdf.php:13:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_muestras_rechazadas.php:20:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_muestras_rechazadas_pdf.php:13:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_pacientes_listado.php:36:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_practicas_realizadas.php:24:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_practicas_realizadas_pdf.php:17:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_resultados_paciente.php:23:function fecha_ddmmyyyy(?string $fecha): string
+./reporte_resultados_paciente_pdf.php:20:function fecha_ddmmyyyy(?string $fecha): string
+./resultados.php:169:function ejecutarScripts(container) {
+./resultados.php:171:    scripts.forEach(function (oldScript) {
+./resultados.php:183:function abrirModalResultado(ordenId) {
+./resultados.php:200:                form.addEventListener('submit', function (e) {
+./resultados.php:243:document.getElementById('btnGuardarResultado').addEventListener('click', function () {
+./resultado_formulario.php:325:    function toggleMotivo(codigo, marcado) {
+./resultado_pdf.php:74:function fecha_ddmmyyyy(?string $fecha): string
+./roles.php:111:function abrirModalRol(id) {
+./roles.php:127:                form.addEventListener('submit', function (e) {
+./roles.php:170:document.getElementById('btnGuardarRol').addEventListener('click', function () {
+./usuarios.php:18:function iniciales_listado(string $nombre): string
+./usuarios.php:153:function abrirModalUsuario(id) {
+./usuarios.php:169:                form.addEventListener('submit', function (e) {
+./usuarios.php:212:document.getElementById('btnGuardarUsuario').addEventListener('click', function () {

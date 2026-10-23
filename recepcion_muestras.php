@@ -2,31 +2,240 @@
 require_once __DIR__ . '/includes/auth.php';
 exigir_privilegio('muestras.gestionar');
 
-$mensaje = mensaje_flash();
-$pending = conexion_bd()->query(
-    "SELECT o.id AS orden_id, os.id AS orden_estudio_id, o.codigo AS codigo_orden, o.fecha_orden,
-            p.dni, p.apellido, p.nombre, s.nombre AS nombre_estudio,
-            s.codigo AS codigo_estudio, sa.id AS muestra_id, sa.codigo AS codigo_muestra,
-            sa.recolectado_en, sa.estado, sa.motivo_rechazo
-     FROM ordenes_estudios os
-     JOIN ordenes o ON o.id = os.orden_id
-     JOIN pacientes p ON p.id = o.paciente_id
-     JOIN estudios s ON s.id = os.estudio_id
-     LEFT JOIN muestras sa ON sa.orden_estudio_id = os.id
-     ORDER BY o.fecha_orden DESC, o.id DESC, os.id ASC"
-)->fetchAll();
-$ordenes = [];
-foreach ($pending as $item) {
-    $ordenId = (int) $item['orden_id'];
-    $ordenes[$ordenId]['order'] = $item;
-    $ordenes[$ordenId]['estudios'][] = $item;
+$conexion = conexion_bd();
+
+$stmt = $conexion->query(
+    "SELECT o.codigo AS orden_codigo, o.fecha_orden, o.medico, o.estado,
+            p.codigo AS paciente_codigo, p.apellido, p.nombre, p.dni,
+            COUNT(DISTINCT eo.estudio_codigo) AS cantidad_estudios,
+            GROUP_CONCAT(DISTINCT e.estudio SEPARATOR ', ') AS estudios
+     FROM ordenes o
+     JOIN pacientes p ON p.codigo = o.paciente_codigo
+     LEFT JOIN estudios_orden eo ON eo.orden_codigo = o.codigo
+     LEFT JOIN estudios e ON e.codigo = eo.estudio_codigo
+     WHERE
+         NOT EXISTS (
+             SELECT 1 FROM resultados r_x WHERE r_x.orden_codigo = o.codigo
+         )
+         OR EXISTS (
+             SELECT 1 FROM resultados r_x
+             JOIN historial_errores he_x ON he_x.resultado_codigo = r_x.codigo
+             WHERE r_x.orden_codigo = o.codigo
+               AND (he_x.error_muestra LIKE '%PENDIENTE%' OR he_x.error_muestra LIKE '%RECHAZADO%')
+         )
+     GROUP BY o.codigo
+     ORDER BY o.fecha_orden ASC, o.codigo ASC"
+);
+$ordenesPendientes = $stmt->fetchAll();
+
+$pendientesPorOrden = [];
+$rechazadosPorOrden = [];
+if (!empty($ordenesPendientes)) {
+    $stmtPend = $conexion->query(
+        "SELECT r.orden_codigo, he.error_muestra
+         FROM historial_errores he
+         JOIN resultados r ON r.codigo = he.resultado_codigo
+         WHERE he.error_muestra LIKE '%PENDIENTE%' OR he.error_muestra LIKE '%RECHAZADO%'"
+    );
+    foreach ($stmtPend->fetchAll() as $row) {
+        $oid = (int) $row['orden_codigo'];
+        $texto = $row['error_muestra'];
+        if (stripos($texto, 'PENDIENTE') !== false) {
+            $pendientesPorOrden[$oid] = ($pendientesPorOrden[$oid] ?? 0) + 1;
+        } elseif (stripos($texto, 'RECHAZADO') !== false) {
+            $rechazadosPorOrden[$oid] = ($rechazadosPorOrden[$oid] ?? 0) + 1;
+        }
+    }
 }
-?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Check-in de muestras | CEBAC</title><link rel="stylesheet" href="public/assets/app.css"></head><body><?php include __DIR__ . '/includes/sidebar.php'; ?><main class="container"><div class="page-heading"><div><h1>Check-in de muestras</h1><p class="muted">Selecciona una orden para ver y validar sus estudios.</p></div></div><?php if ($mensaje): ?><div class="alert success-alert"><?= escapar_html($mensaje) ?></div><?php endif; ?><div class="table-wrap order-list"><table><thead><tr><th>Orden</th><th>Paciente</th><th>Fecha</th><th>Estudios</th><th>Estado</th><th></th></tr></thead><tbody><?php foreach ($ordenes as $group): $orden = $group['order']; $allFinished = true; foreach ($group['estudios'] as $estudio) { if (($estudio['estado'] ?? 'Pendiente') !== 'Finalizada') { $allFinished = false; break; } } ?><tr class="order-row" data-order-toggle="<?= (int) $orden['orden_id'] ?>"><td><button type="button" class="order-toggle" aria-expanded="false" aria-controls="order-details-<?= (int) $orden['orden_id'] ?>"><span class="chevron">▸</span><?= escapar_html($orden['codigo_orden']) ?></button></td><td><?= escapar_html($orden['apellido'] . ', ' . $orden['nombre']) ?><br><small>DNI <?= escapar_html($orden['dni']) ?></small></td><td><?= escapar_html($orden['fecha_orden']) ?></td><td><?= count($group['estudios']) ?></td><td><span class="badge <?= $allFinished ? 'success' : '' ?>"><?= $allFinished ? 'Completada' : 'Pendiente' ?></span></td><td><button type="button" class="button-small order-details-button" data-order-toggle="<?= (int) $orden['orden_id'] ?>">Ver detalles</button></td></tr><tr id="order-details-<?= (int) $orden['orden_id'] ?>" class="order-details" hidden><td colspan="6"><div class="order-details-box"><h2>Estudios de la orden <?= escapar_html($orden['codigo_orden']) ?></h2><div class="table-wrap"><table><thead><tr><th>Estudio</th><th>Muestra</th><th>Estado</th><th>Acción</th></tr></thead><tbody><?php foreach ($group['estudios'] as $item): ?><tr><td><?= escapar_html($item['nombre_estudio']) ?><br><small><?= escapar_html($item['codigo_estudio']) ?></small></td><td><?= escapar_html($item['codigo_muestra'] ?? 'Se generará al confirmar') ?></td><td><span class="badge <?= $item['estado'] === 'Finalizada' ? 'success' : '' ?>"><?= escapar_html($item['estado'] ?? 'Pendiente') ?></span><?php if ($item['motivo_rechazo']): ?><br><small><?= escapar_html($item['motivo_rechazo']) ?></small><?php endif; ?></td><td><a class="button-small" href="muestra_formulario.php?orden_estudio_id=<?= (int) $item['orden_estudio_id'] ?>"><?= $item['muestra_id'] ? 'Actualizar' : 'Validar muestra' ?></a></td></tr><?php endforeach; ?></tbody></table></div></div></td></tr><?php endforeach; ?><?php if (!$ordenes): ?><tr><td colspan="6" class="muted">No hay órdenes registradas.</td></tr><?php endif; ?></tbody></table></div></main><script>document.querySelectorAll('[data-order-toggle]').forEach(function (button) { button.addEventListener('click', function (event) { event.stopPropagation(); const id = button.dataset.orderToggle; const details = document.getElementById('order-details-' + id); const toggle = document.querySelector('.order-toggle[aria-controls="order-details-' + id + '"]'); const open = details.hidden; details.hidden = !open; toggle.setAttribute('aria-expanded', open ? 'true' : 'false'); toggle.querySelector('.chevron').textContent = open ? '▾' : '▸'; }); });</script></body></html>
 
+$mensaje = mensaje_flash();
+$tituloPagina = 'Check-in de Muestras | CEBAC';
+include __DIR__ . '/includes/header.php';
+?>
 
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <div>
+        <h1 class="h3 fw-bold mb-1">Check-in de Muestras</h1>
+        <p class="text-muted mb-0">Órdenes pendientes de validación. Una vez validadas todas, salen de la lista.</p>
+    </div>
+</div>
 
+<?php if ($mensaje): ?>
+    <div class="alert alert-success"><?= escapar_html($mensaje) ?></div>
+<?php endif; ?>
 
+<div class="card shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Orden</th>
+                    <th>Paciente</th>
+                    <th>Fecha</th>
+                    <th>Médico</th>
+                    <th>Estudios</th>
+                    <th>Estado</th>
+                    <th class="text-end">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($ordenesPendientes as $o): ?>
+                    <?php
+                    $oid = (int) $o['orden_codigo'];
+                    $cantidadEstudios = (int) $o['cantidad_estudios'];
+                    $cantidadPendientes = $pendientesPorOrden[$oid] ?? 0;
+                    $cantidadRechazados = $rechazadosPorOrden[$oid] ?? 0;
+                    ?>
+                    <tr>
+                        <td><strong>#<?= formatear_codigo_orden($o['orden_codigo']) ?></strong></td>
+                        <td>
+                            <strong><?= escapar_html($o['apellido'] . ', ' . $o['nombre']) ?></strong>
+                            <small class="text-muted d-block">DNI <?= escapar_html($o['dni']) ?></small>
+                        </td>
+                        <td><?= escapar_html($o['fecha_orden']) ?></td>
+                        <td><?= escapar_html($o['medico']) ?></td>
+                        <td>
+                            <?= $cantidadEstudios ?> estudio(s)<br>
+                            <small class="text-muted"><?= escapar_html($o['estudios'] ?? '—') ?></small>
+                        </td>
+                        <td>
+                            <?php if ($cantidadRechazados > 0): ?>
+                                <span class="badge bg-danger">Rechazado</span>
+                                <small class="text-muted d-block"><?= $cantidadRechazados ?> para 2° análisis</small>
+                            <?php elseif ($cantidadPendientes > 0): ?>
+                                <span class="badge bg-warning text-dark">Pendiente</span>
+                                <small class="text-muted d-block"><?= $cantidadPendientes ?> sin validar</small>
+                            <?php else: ?>
+                                <span class="badge bg-secondary">Sin check-in</span>
+                            <?php endif; ?>
+                        </td>
+                        <td class="text-end">
+                            <button type="button" class="btn btn-sm btn-primary" onclick="abrirModalCheckin(<?= $oid ?>)">
+                                <i class="bi bi-clipboard-check"></i> Check-in
+                            </button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                <?php if (!$ordenesPendientes): ?>
+                    <tr><td colspan="7" class="text-center text-muted py-4">
+                        <i class="bi bi-check-circle fs-3 d-block mb-2 text-success"></i>
+                        No hay órdenes pendientes de check-in.
+                    </td></tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
+<!-- MODAL CHECKIN -->
+<div class="modal fade modal-ventana" id="modalCheckin" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-titulo">
+                    <i class="bi bi-clipboard-check text-primary"></i>
+                    <span>Check-in de muestra</span>
+                </h5>
+                <div class="modal-botones">
+                    <button type="button" class="modal-accion minimizar" title="Minimizar"><i class="bi bi-dash-lg"></i></button>
+                    <button type="button" class="modal-accion maximizar" title="Maximizar"><i class="bi bi-fullscreen"></i></button>
+                    <button type="button" class="modal-accion cerrar" title="Cerrar"><i class="bi bi-x-lg"></i></button>
+                </div>
+            </div>
+            <div class="modal-body" id="modalCheckinBody">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Cargando...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-x-lg me-1"></i>Cancelar
+                </button>
+                <button type="button" class="btn btn-success" id="btnValidarTodo">
+                    <i class="bi bi-check-all me-1"></i>Validar todas
+                </button>
+                <button type="button" class="btn btn-primary" id="btnGuardarCheckin">
+                    <i class="bi bi-save me-1"></i>Guardar check-in
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+function abrirModalCheckin(ordenId) {
+    const modal = document.getElementById('modalCheckin');
+    const body = document.getElementById('modalCheckinBody');
+    const btnGuardar = document.getElementById('btnGuardarCheckin');
+    const btnValidarTodo = document.getElementById('btnValidarTodo');
 
+    body.innerHTML = '<div class="text-center py-5"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div></div>';
 
+    fetch('checkin_muestra_formulario.php?_modal=1&orden_id=' + ordenId)
+        .then(r => r.text())
+        .then(html => {
+            body.innerHTML = html;
+
+            const form = document.getElementById('checkin-modal-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    formData.append('_modal', '1');
+
+                    btnGuardar.disabled = true;
+                    btnGuardar.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>Guardando...';
+
+                    fetch('checkin_muestra_formulario.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(r => r.json())
+                    .then(data => {
+                        btnGuardar.disabled = false;
+                        btnGuardar.innerHTML = '<i class="bi bi-save me-1"></i>Guardar check-in';
+
+                        if (data.ok) {
+                            bootstrap.Modal.getInstance(modal).hide();
+                            setTimeout(() => window.location.reload(), 300);
+                        } else {
+                            let alerta = body.querySelector('.alert-danger');
+                            if (!alerta) {
+                                alerta = document.createElement('div');
+                                alerta.className = 'alert alert-danger';
+                                body.insertBefore(alerta, body.firstChild);
+                            }
+                            alerta.textContent = data.error;
+                            body.scrollTop = 0;
+                        }
+                    })
+                    .catch(() => {
+                        btnGuardar.disabled = false;
+                        btnGuardar.innerHTML = '<i class="bi bi-save me-1"></i>Guardar check-in';
+                    });
+                });
+            }
+        });
+
+    btnValidarTodo.onclick = function () {
+        document.querySelectorAll('#modalCheckinBody .checkin-estudio').forEach(function (box) {
+            const radioValidar = box.querySelector('input[type="radio"][value="validar"]');
+            if (radioValidar) radioValidar.checked = true;
+        });
+    };
+
+    const bsModal = new bootstrap.Modal(modal);
+    bsModal.show();
+}
+
+document.getElementById('btnGuardarCheckin').addEventListener('click', function () {
+    const form = document.getElementById('checkin-modal-form');
+    if (form) {
+        form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+    }
+});
+</script>
+
+<?php include __DIR__ . '/includes/footer.php'; ?>

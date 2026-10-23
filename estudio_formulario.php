@@ -2,100 +2,136 @@
 require_once __DIR__ . '/includes/auth.php';
 exigir_privilegio('estudios.gestionar');
 
-$id = (int) ($_GET['id'] ?? 0);
-$estudio = ['codigo' => '', 'nombre' => '', 'parametros' => '', 'precio_practica_id' => '', 'instrucciones' => ''];
-if ($id > 0) {
-    $consulta = conexion_bd()->prepare('SELECT * FROM estudios WHERE id = :id');
-    $consulta->execute(['id' => $id]);
-    $estudio = $consulta->fetch() ?: $estudio;
+$codigoOriginal = (string) ($_GET['id'] ?? '');
+$esEdicion = $codigoOriginal !== '';
+$estudio = ['codigo' => '', 'estudio' => '', 'parametros' => '', 'practica_codigo' => ''];
+
+if ($esEdicion) {
+    $consulta = conexion_bd()->prepare('SELECT * FROM estudios WHERE codigo = :codigo');
+    $consulta->execute(['codigo' => $codigoOriginal]);
+    $fila = $consulta->fetch();
+    if (!$fila) {
+        http_response_code(404);
+        exit('Estudio no encontrado.');
+    }
+    $estudio = $fila;
 }
+
 $error = null;
-$precioPracticas = conexion_bd()->query('SELECT id, codigo_practica, descripcion, precio FROM precios_practicas WHERE activo = 1 ORDER BY codigo_practica')->fetchAll();
-$parametros = $id > 0 ? conexion_bd()->prepare('SELECT nombre_seccion, nombre, minimo, maximo, texto_referencia, descripcion, rango_min, rango_max FROM parametros_estudios WHERE estudio_id = :id ORDER BY orden, id') : null;
-if ($parametros) {
-    $parametros->execute(['id' => $id]);
-    $parametros = $parametros->fetchAll();
-}
-$parametros = $parametros ?: [['nombre_seccion' => '', 'nombre' => '', 'minimo' => '', 'maximo' => '', 'texto_referencia' => '', 'descripcion' => '', 'rango_min' => '', 'rango_max' => '']];
+$precios = conexion_bd()->query('SELECT codigo, precio FROM precio_practica ORDER BY codigo')->fetchAll();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    foreach (array_keys($estudio) as $key) {
-        if (array_key_exists($key, $_POST)) {
-            $estudio[$key] = trim((string) $_POST[$key]);
-        }
-    }
-    $estudio['precio_practica_id'] = $estudio['precio_practica_id'] !== '' ? (int) $estudio['precio_practica_id'] : null;
-    $postedParameters = $_POST['parameter'] ?? [];
-    $parametros = [];
-    foreach ($postedParameters as $parameter) {
-        $parameter = array_map(static fn ($value) => trim((string) $value), (array) $parameter);
-        if ($parameter['nombre'] !== '') {
-            $parametros[] = [
-                'nombre_seccion' => $parameter['nombre_seccion'] ?? '',
-                'nombre' => $parameter['nombre'],
-                'minimo' => $parameter['minimo'] ?? '',
-                'maximo' => $parameter['maximo'] ?? '',
-                'texto_referencia' => $parameter['texto_referencia'] ?? '',
-                'descripcion' => $parameter['descripcion'] ?? '',
-                'rango_min' => $parameter['rango_min'] ?? '',
-                'rango_max' => $parameter['rango_max'] ?? '',
-            ];
-        }
-    }
-    if ($estudio['codigo'] === '' || $estudio['nombre'] === '' || !$estudio['precio_practica_id']) {
-        $error = 'Código, nombre y práctica son obligatorios.';
+    $estudio['codigo'] = trim((string) ($_POST['codigo'] ?? ''));
+    $estudio['estudio'] = trim((string) ($_POST['estudio'] ?? ''));
+    $estudio['parametros'] = trim((string) ($_POST['parametros'] ?? ''));
+    $estudio['practica_codigo'] = trim((string) ($_POST['practica_codigo'] ?? ''));
+
+    if ($estudio['codigo'] === '' || $estudio['estudio'] === '' || $estudio['practica_codigo'] === '') {
+        $error = 'Código, nombre y precio de práctica son obligatorios.';
     } else {
-        $conexion = conexion_bd();
-        try {
-            $conexion->beginTransaction();
-            if ($id > 0) {
-                $consulta = $conexion->prepare('UPDATE estudios SET codigo=:codigo,nombre=:nombre,parametros=:parametros,precio_practica_id=:precio_practica_id,instrucciones=:instrucciones WHERE id=:id');
-                $consulta->execute([
-                    'codigo' => $estudio['codigo'], 'nombre' => $estudio['nombre'], 'parametros' => $estudio['parametros'],
-                    'precio_practica_id' => $estudio['precio_practica_id'],
-                    'instrucciones' => $estudio['instrucciones'], 'id' => $id,
-                ]);
-                $deleteParameters = $conexion->prepare('DELETE FROM parametros_estudios WHERE estudio_id = :id');
-                $deleteParameters->execute(['id' => $id]);
-            } else {
-                $consulta = $conexion->prepare('INSERT INTO estudios (codigo,nombre,parametros,precio_practica_id,instrucciones) VALUES (:codigo,:nombre,:parametros,:precio_practica_id,:instrucciones)');
-                $consulta->execute([
-                    'codigo' => $estudio['codigo'], 'nombre' => $estudio['nombre'], 'parametros' => $estudio['parametros'],
-                    'precio_practica_id' => $estudio['precio_practica_id'],
-                    'instrucciones' => $estudio['instrucciones'],
-                ]);
-                $id = (int) $conexion->lastInsertId();
+        // Verificar código duplicado
+        $stmtCheck = conexion_bd()->prepare('SELECT codigo FROM estudios WHERE codigo = :codigo AND codigo <> :codigo_original LIMIT 1');
+        $stmtCheck->execute(['codigo' => $estudio['codigo'], 'codigo_original' => $codigoOriginal]);
+
+        if ($stmtCheck->fetch()) {
+            $error = 'Ya existe un estudio con el código ' . escapar_html($estudio['codigo']) . '.';
+        } else {
+            try {
+                if ($esEdicion) {
+                    $consulta = conexion_bd()->prepare('UPDATE estudios SET codigo=:codigo, estudio=:estudio, parametros=:parametros, practica_codigo=:practica_codigo WHERE codigo=:codigo_original');
+                    $consulta->execute([
+                        'codigo' => $estudio['codigo'],
+                        'estudio' => $estudio['estudio'],
+                        'parametros' => $estudio['parametros'] !== '' ? $estudio['parametros'] : null,
+                        'practica_codigo' => (int) $estudio['practica_codigo'],
+                        'codigo_original' => $codigoOriginal,
+                    ]);
+                } else {
+                    $consulta = conexion_bd()->prepare('INSERT INTO estudios (codigo, estudio, parametros, practica_codigo) VALUES (:codigo, :estudio, :parametros, :practica_codigo)');
+                    $consulta->execute([
+                        'codigo' => $estudio['codigo'],
+                        'estudio' => $estudio['estudio'],
+                        'parametros' => $estudio['parametros'] !== '' ? $estudio['parametros'] : null,
+                        'practica_codigo' => (int) $estudio['practica_codigo'],
+                    ]);
+                }
+
+                if (isset($_POST['_modal']) && $_POST['_modal'] === '1') {
+                    header('Content-Type: application/json');
+                    echo json_encode([
+                        'ok' => true,
+                        'mensaje' => $esEdicion ? 'Estudio actualizado correctamente.' : 'Estudio registrado correctamente.',
+                    ]);
+                    exit;
+                }
+
+                mensaje_flash($esEdicion ? 'Estudio actualizado correctamente.' : 'Estudio registrado correctamente.');
+                header('Location: estudios.php');
+                exit;
+            } catch (PDOException $exception) {
+                if ($exception->getCode() === '23000') {
+                    $error = 'Ya existe un estudio con ese código.';
+                } else {
+                    $error = 'No se pudo guardar el estudio.';
+                }
             }
-            $saveParameter = $conexion->prepare('INSERT INTO parametros_estudios (estudio_id, nombre_seccion, nombre, minimo, maximo, texto_referencia, descripcion, rango_min, rango_max, orden) VALUES (:estudio_id, :nombre_seccion, :nombre, :minimo, :maximo, :texto_referencia, :descripcion, :rango_min, :rango_max, :orden)');
-            foreach ($parametros as $position => $parameter) {
-                $saveParameter->execute([
-                    'estudio_id' => $id, 'nombre_seccion' => $parameter['nombre_seccion'] !== '' ? $parameter['nombre_seccion'] : null, 'nombre' => $parameter['nombre'],
-                    'minimo' => $parameter['minimo'] !== '' ? $parameter['minimo'] : null,
-                    'maximo' => $parameter['maximo'] !== '' ? $parameter['maximo'] : null,
-                    'texto_referencia' => $parameter['texto_referencia'] !== '' ? $parameter['texto_referencia'] : null,
-                    'descripcion' => $parameter['descripcion'] !== '' ? $parameter['descripcion'] : null,
-                    'rango_min' => $parameter['rango_min'] !== '' ? $parameter['rango_min'] : null,
-                    'rango_max' => $parameter['rango_max'] !== '' ? $parameter['rango_max'] : null,
-                    'orden' => $position,
-                ]);
-            }
-            $conexion->commit();
-            mensaje_flash($id > 0 && isset($_GET['id']) ? 'Estudio actualizado correctamente.' : 'Estudio registrado correctamente.');
-            header('Location: estudios.php');
-            exit;
-        } catch (PDOException $exception) {
-            if ($conexion->inTransaction()) {
-                $conexion->rollBack();
-            }
-            $error = $exception->getCode() === '23000' ? 'Ya existe otro estudio con ese código.' : 'No se pudo guardar el estudio.';
         }
+    }
+
+    if (isset($_POST['_modal']) && $_POST['_modal'] === '1') {
+        header('Content-Type: application/json');
+        echo json_encode(['ok' => false, 'error' => $error]);
+        exit;
     }
 }
-?><!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title><?= $id ? 'Editar' : 'Nuevo' ?> estudio | CEBAC</title><link rel="stylesheet" href="public/assets/app.css"></head><body><?php include __DIR__ . '/includes/sidebar.php'; ?><main class="container narrow"><p><a href="estudios.php">← Volver a estudios</a></p><h1><?= $id ? 'Editar estudio' : 'Nuevo estudio' ?></h1><?php if ($error): ?><div class="alert error"><?= escapar_html($error) ?></div><?php endif; ?><form method="post" class="form-grid"><div><label>Código del estudio *</label><input name="codigo" required value="<?= escapar_html($estudio['codigo']) ?>"></div><div><label>Práctica asociada *</label><select name="precio_practica_id" required><option value="">Seleccionar práctica</option><?php foreach ($precioPracticas as $precioPractica): ?><option value="<?= (int) $precioPractica['id'] ?>" <?= (string) $estudio['precio_practica_id'] === (string) $precioPractica['id'] ? 'selected' : '' ?>><?= escapar_html($precioPractica['codigo_practica'] . ' - ' . $precioPractica['descripcion']) ?> — $ <?= number_format((float) $precioPractica['precio'], 2, ',', '.') ?></option><?php endforeach; ?></select></div><div class="full"><label>Nombre del estudio *</label><input name="nombre" required value="<?= escapar_html($estudio['nombre']) ?>"></div><div class="full"><label>Parámetros del resultado</label><div id="parameter-list"><?php foreach ($parametros as $position => $parameter): ?><div class="parameter-row"><input name="parameter[<?= $position ?>][nombre_seccion]" placeholder="Sección" value="<?= escapar_html($parameter['nombre_seccion']) ?>"><input name="parameter[<?= $position ?>][nombre]" placeholder="Parámetro" value="<?= escapar_html($parameter['nombre']) ?>"><input name="parameter[<?= $position ?>][minimo]" placeholder="Mínimo" value="<?= escapar_html($parameter['minimo']) ?>"><input name="parameter[<?= $position ?>][maximo]" placeholder="Máximo" value="<?= escapar_html($parameter['maximo']) ?>"><input name="parameter[<?= $position ?>][texto_referencia]" placeholder="Referencia" value="<?= escapar_html($parameter['texto_referencia']) ?>"><input name="parameter[<?= $position ?>][descripcion]" placeholder="Descripción (ej. sexo o condición)" value="<?= escapar_html($parameter['descripcion']) ?>"><input name="parameter[<?= $position ?>][rango_min]" placeholder="Rango desde" value="<?= escapar_html($parameter['rango_min']) ?>"><input name="parameter[<?= $position ?>][rango_max]" placeholder="Rango hasta" value="<?= escapar_html($parameter['rango_max']) ?>"><button type="button" class="remove-parameter">Quitar</button></div><?php endforeach; ?></div><button type="button" class="button-small add-parameter" id="add-parameter">+ Agregar parámetro</button><small class="muted">El rango puede ser numérico o textual. Usa la descripción para aclarar a qué corresponde.</small></div><div class="full"><label>Instrucciones para el paciente</label><textarea name="instrucciones" rows="4"><?= escapar_html($estudio['instrucciones']) ?></textarea></div><div class="full"><button type="submit">Guardar estudio</button></div></form></main><script>const list=document.getElementById('parameter-list');let position=list.children.length;document.getElementById('add-parameter').addEventListener('click',function(){const row=document.createElement('div');row.className='parameter-row';row.innerHTML='<input name="parameter['+position+'][nombre_seccion]" placeholder="Sección"><input name="parameter['+position+'][nombre]" placeholder="Parámetro"><input name="parameter['+position+'][minimo]" placeholder="Mínimo"><input name="parameter['+position+'][maximo]" placeholder="Máximo"><input name="parameter['+position+'][texto_referencia]" placeholder="Referencia"><input name="parameter['+position+'][descripcion]" placeholder="Descripción (ej. sexo o condición)"><input name="parameter['+position+'][rango_min]" placeholder="Rango desde"><input name="parameter['+position+'][rango_max]" placeholder="Rango hasta"><button type="button" class="remove-parameter">Quitar</button>';list.appendChild(row);position++;});document.addEventListener('click',function(event){if(event.target.classList.contains('remove-parameter')&&list.children.length>1){event.target.parentElement.remove();}});</script></body></html>
 
+$esModal = isset($_GET['_modal']) && $_GET['_modal'] === '1';
 
+if ($esModal) {
+    ?>
+    <form method="post" id="estudio-modal-form">
+        <input type="hidden" name="_modal" value="1">
 
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= escapar_html($error) ?></div>
+        <?php endif; ?>
 
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label">Código del estudio *</label>
+                <input type="text" name="codigo" class="form-control" required value="<?= escapar_html($estudio['codigo']) ?>" placeholder="Ej: 668020 o LAB-001" maxlength="30">
+                <small class="text-muted">Acepta letras, números y caracteres especiales.</small>
+            </div>
+            <div class="col-md-8">
+                <label class="form-label">Nombre del estudio *</label>
+                <input type="text" name="estudio" class="form-control" required value="<?= escapar_html($estudio['estudio']) ?>" placeholder="Ej: HEMATOCRITO" maxlength="80">
+            </div>
+            <div class="col-12">
+                <label class="form-label">Parámetros de referencia</label>
+                <textarea name="parametros" class="form-control" rows="4" placeholder="Ej:&#10;Hematíes: 4.000.000 - 5.200.000&#10;Hemoglobina: 12 - 16&#10;Hematocrito: 36 - 46"><?= escapar_html($estudio['parametros'] ?? '') ?></textarea>
+                <small class="text-muted">Un parámetro por línea. Se muestra en la orden, instrucciones y resultados.</small>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Precio de la práctica *</label>
+                <select name="practica_codigo" class="form-select" required>
+                    <option value="">Seleccionar precio</option>
+                    <?php foreach ($precios as $p): ?>
+                        <option value="<?= (int) $p['codigo'] ?>" <?= (string) $estudio['practica_codigo'] === (string) $p['codigo'] ? 'selected' : '' ?>>
+                            Código <?= (int) $p['codigo'] ?> — $ <?= number_format((float) $p['precio'], 2, ',', '.') ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </form>
+    <?php
+    exit;
+}
 
-
-
-
+$tituloPagina = ($esEdicion ? 'Editar' : 'Nuevo') . ' estudio | CEBAC';
+include __DIR__ . '/includes/header.php';
+?>
+<main class="main-content">
+    <h1><?= $esEdicion ? 'Editar estudio' : 'Nuevo estudio' ?></h1>
+</main>
+<?php include __DIR__ . '/includes/footer.php'; ?>
